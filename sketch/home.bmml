@@ -52,14 +52,14 @@
             <text>12/12/2014</text>
           </controlProperties>
         </control>
-        <control controlID="4" controlTypeID="com.balsamiq.mockups::Button" x="81" y="65" w="264" h="27" measuredW="163" measuredH="27" zOrder="4" locked="false" isInGroup="16">
+        <control controlID="4" controlTypeID="com.balsamiq.mockups::Button" x="81" y="65" w="264" h="27" measuredW="86" measuredH="27" zOrder="4" locked="false" isInGroup="16">
           <controlProperties>
-            <text>I%20want%20to%20go%20somewhere</text>
+            <text>I%20need%20ride</text>
           </controlProperties>
         </control>
-        <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="397" y="65" w="279" h="27" measuredW="148" measuredH="27" zOrder="5" locked="false" isInGroup="16">
+        <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="397" y="65" w="279" h="27" measuredW="116" measuredH="27" zOrder="5" locked="false" isInGroup="16">
           <controlProperties>
-            <text>I%27m%20going%20somewhere</text>
+            <text>I%27m%20offering%20ride</text>
           </controlProperties>
         </control>
       </groupChildrenDescriptors>

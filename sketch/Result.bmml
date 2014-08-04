@@ -141,9 +141,9 @@
         </control>
       </groupChildrenDescriptors>
     </control>
-    <control controlID="36" controlTypeID="com.balsamiq.mockups::LinkBar" x="317" y="725" w="-1" h="-1" measuredW="166" measuredH="19" zOrder="15" locked="false" isInGroup="-1">
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::LinkBar" x="317" y="725" w="-1" h="-1" measuredW="198" measuredH="19" zOrder="15" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>%3CPrev%20...%202%2C%203%2C%204%20...%20Next%3E</text>
+        <text>%3CPrev%2C%20...%202%2C%203%2C%204%20...%20%2CNext%3E</text>
       </controlProperties>
     </control>
   </controls>

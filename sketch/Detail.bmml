@@ -1,7 +1,7 @@
 <mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="800" measuredH="756" mockupW="800" mockupH="756">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::VSplitter" x="0" y="203" w="800" h="-1" measuredW="100" measuredH="11" zOrder="1" locked="false" isInGroup="-1"/>
-    <control controlID="2" controlTypeID="com.balsamiq.mockups::Image" x="382" y="82" w="411" h="87" measuredW="400" measuredH="266" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Image" x="382" y="74" w="411" h="129" measuredW="400" measuredH="266" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <src>http%3A//www.clipartbest.com/cliparts/4Tb/Mrk/4TbMrkLTg.png</src>
         <text/>

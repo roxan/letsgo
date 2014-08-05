@@ -25,22 +25,22 @@
       </controlProperties>
     </control>
     <control controlID="19" controlTypeID="com.balsamiq.mockups::ModalScreen" x="2" y="215" w="791" h="30" measuredW="320" measuredH="240" zOrder="5" locked="false" isInGroup="-1"/>
-    <control controlID="22" controlTypeID="com.balsamiq.mockups::SearchBox" x="15" y="251" w="235" h="-1" measuredW="120" measuredH="25" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::SearchBox" x="15" y="251" w="210" h="-1" measuredW="120" measuredH="25" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <text>MUM</text>
       </controlProperties>
     </control>
-    <control controlID="23" controlTypeID="com.balsamiq.mockups::SearchBox" x="405" y="251" w="235" h="-1" measuredW="120" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::SearchBox" x="347" y="252" w="210" h="-1" measuredW="120" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Des%20Moines</text>
       </controlProperties>
     </control>
-    <control controlID="24" controlTypeID="com.balsamiq.mockups::DateChooser" x="261" y="252" w="-1" h="-1" measuredW="109" measuredH="25" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::DateChooser" x="235" y="252" w="97" h="-1" measuredW="109" measuredH="25" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
         <text>11/11/2014</text>
       </controlProperties>
     </control>
-    <control controlID="25" controlTypeID="com.balsamiq.mockups::DateChooser" x="668" y="251" w="-1" h="-1" measuredW="112" measuredH="25" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::DateChooser" x="566" y="252" w="100" h="-1" measuredW="112" measuredH="25" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <text>11/12/2014</text>
       </controlProperties>
@@ -144,6 +144,11 @@
     <control controlID="36" controlTypeID="com.balsamiq.mockups::LinkBar" x="317" y="725" w="-1" h="-1" measuredW="198" measuredH="19" zOrder="15" locked="false" isInGroup="-1">
       <controlProperties>
         <text>%3CPrev%2C%20...%202%2C%203%2C%204%20...%20%2CNext%3E</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::Button" x="672" y="251" w="121" h="27" measuredW="106" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Modify%20Search</text>
       </controlProperties>
     </control>
   </controls>

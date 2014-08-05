@@ -231,5 +231,15 @@
         <icon>EmoticonIcon%7Csmall</icon>
       </controlProperties>
     </control>
+    <control controlID="69" controlTypeID="com.balsamiq.mockups::Label" x="39" y="452" w="-1" h="-1" measuredW="70" measuredH="21" zOrder="47" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Description%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::TextArea" x="135" y="439" w="232" h="49" measuredW="200" measuredH="140" zOrder="48" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>

@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 public class DataAccess {
 	// queries
-	String QUERY = "SELECT cityName, stateName FROM LOCATION where LOWER(cityName) like '";
+	String QUERY = "SELECT cityName, stateName, zip FROM LOCATION where LOWER(cityName) like '";
 
 	DataSource ds;
 	Connection con;
@@ -52,9 +52,11 @@ public class DataAccess {
 		try {
 			s = con.createStatement();
 			// ToDo: use preparedStatement
-			rs = s.executeQuery(QUERY + str.toLowerCase() + "%' FETCH FIRST 10 ROWS ONLY");
+			rs = s.executeQuery(QUERY + str.toLowerCase()
+					+ "%' FETCH FIRST 10 ROWS ONLY");
 			while (rs.next()) {
-				output.add(rs.getString(1) + "," + rs.getString(2));
+				output.add(rs.getString(1) + "," + rs.getString(2) + ","
+						+ rs.getString(3));
 			}
 			s.close();
 		} catch (SQLException e) {

@@ -51,9 +51,9 @@
             <text>Dave</text>
           </controlProperties>
         </control>
-        <control controlID="2" controlTypeID="com.balsamiq.mockups::Link" x="91" y="21" w="-1" h="-1" measuredW="104" measuredH="19" zOrder="2" locked="false" isInGroup="32">
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Link" x="91" y="21" w="-1" h="-1" measuredW="173" measuredH="19" zOrder="2" locked="false" isInGroup="32">
           <controlProperties>
-            <text>Dave%20Summerson</text>
+            <text>Driver1%3A%20offered%20price%3A%20%2420.00</text>
           </controlProperties>
         </control>
         <control controlID="3" controlTypeID="com.balsamiq.mockups::Paragraph" x="76" y="56" w="291" h="99" measuredW="275" measuredH="80" zOrder="3" locked="false" isInGroup="32">
@@ -75,9 +75,9 @@
             <text>Dave</text>
           </controlProperties>
         </control>
-        <control controlID="2" controlTypeID="com.balsamiq.mockups::Link" x="91" y="21" w="-1" h="-1" measuredW="104" measuredH="19" zOrder="2" locked="false" isInGroup="33">
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Link" x="91" y="21" w="-1" h="-1" measuredW="176" measuredH="19" zOrder="2" locked="false" isInGroup="33">
           <controlProperties>
-            <text>Dave%20Summerson</text>
+            <text>Driver2%3A%20offered%20price%3A%20%2422.00</text>
           </controlProperties>
         </control>
         <control controlID="3" controlTypeID="com.balsamiq.mockups::Paragraph" x="76" y="56" w="291" h="99" measuredW="275" measuredH="80" zOrder="3" locked="false" isInGroup="33">
@@ -99,9 +99,9 @@
             <text>Dave</text>
           </controlProperties>
         </control>
-        <control controlID="2" controlTypeID="com.balsamiq.mockups::Link" x="91" y="21" w="-1" h="-1" measuredW="104" measuredH="19" zOrder="2" locked="false" isInGroup="34">
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Link" x="91" y="21" w="-1" h="-1" measuredW="175" measuredH="19" zOrder="2" locked="false" isInGroup="34">
           <controlProperties>
-            <text>Dave%20Summerson</text>
+            <text>Driver2%3A%20offered%20price%3A%20%2425.00</text>
           </controlProperties>
         </control>
         <control controlID="3" controlTypeID="com.balsamiq.mockups::Paragraph" x="76" y="56" w="291" h="99" measuredW="275" measuredH="80" zOrder="3" locked="false" isInGroup="34">
@@ -123,9 +123,9 @@
             <text>Dave</text>
           </controlProperties>
         </control>
-        <control controlID="2" controlTypeID="com.balsamiq.mockups::Link" x="91" y="21" w="-1" h="-1" measuredW="104" measuredH="19" zOrder="2" locked="false" isInGroup="35">
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Link" x="91" y="21" w="-1" h="-1" measuredW="176" measuredH="19" zOrder="2" locked="false" isInGroup="35">
           <controlProperties>
-            <text>Dave%20Summerson</text>
+            <text>Driver4%3A%20offered%20price%3A%20%2430.00</text>
           </controlProperties>
         </control>
         <control controlID="3" controlTypeID="com.balsamiq.mockups::Paragraph" x="76" y="56" w="291" h="99" measuredW="275" measuredH="80" zOrder="3" locked="false" isInGroup="35">

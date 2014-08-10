@@ -18,6 +18,7 @@ public class Ride {
 	private String vehicleDescription;
 	private BigDecimal expectedExpense;
 	private String rideType;
+	private int hitCounter;
 
 	public int getId() {
 		return id;
@@ -113,6 +114,14 @@ public class Ride {
 
 	public void setRideType(String rideType) {
 		this.rideType = rideType;
+	}
+
+	public int getHitCounter() {
+		return hitCounter;
+	}
+
+	public void setHitCounter(int hitCounter) {
+		this.hitCounter = hitCounter;
 	}
 
 }

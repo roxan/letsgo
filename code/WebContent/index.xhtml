@@ -3,12 +3,32 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Hello</title>
+	<title>#{msgs.head1}</title>
 </h:head>
 <h:body>
-	Let's Go
+	<h:form>
+		<p:autoComplete id="searchFrom" dropdown="true"
+			value="#{locationControl.selectedLocation}"
+			completeMethod="#{locationControl.filterLocation}" cache="true"
+			minQueryLength="3" forceSelection="true"
+			emptyMessage="No such location" />
+		<p:outputLabel value="Location:" for="searchFrom" />
+		<p:calendar />
+
+		<p:autoComplete id="searchTo" dropdown="true"
+			value="#{locationControl.selectedLocation}"
+			completeMethod="#{locationControl.filterLocation}" cache="true"
+			minQueryLength="3" forceSelection="true"
+			emptyMessage="No such location" />
+		<p:outputLabel value="Location:" for="searchTo" />
+		<p:calendar />
+
+		<h:commandButton action="#{locationControl.showValue}" value="Go" />
+
+	</h:form>
 </h:body>
 </html>

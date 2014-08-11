@@ -1,8 +1,13 @@
 package edu.mum.waa.group9.beanImpl;
 
+import java.io.Serializable;
 import java.sql.Blob;
 
-public class Person {
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+@Named
+@SessionScoped
+public class Person implements Serializable {
 
 	private int id;
 	private String firstName;

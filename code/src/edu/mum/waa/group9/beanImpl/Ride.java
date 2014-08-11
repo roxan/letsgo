@@ -1,10 +1,22 @@
 package edu.mum.waa.group9.beanImpl;
 
+import java.io.Serializable;
+
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-public class Ride {
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
+@Named
+@SessionScoped
+public class Ride implements Serializable {
+	public enum RideTypes {
+		FREE_RIDE, EQUAL_SHARE, DECIDE_MUTUALLY
+	};
 
 	private int id;
 	private String source;
@@ -17,7 +29,7 @@ public class Ride {
 	private int capacity;
 	private String vehicleDescription;
 	private BigDecimal expectedExpense;
-	private String rideType;
+	private RideTypes rideType = RideTypes.DECIDE_MUTUALLY;
 	private int hitCounter;
 
 	public int getId() {
@@ -76,14 +88,6 @@ public class Ride {
 		this.returnTime = returnTime;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public int getCapacity() {
 		return capacity;
 	}
@@ -108,11 +112,11 @@ public class Ride {
 		this.expectedExpense = expectedExpense;
 	}
 
-	public String getRideType() {
+	public RideTypes getRideType() {
 		return rideType;
 	}
 
-	public void setRideType(String rideType) {
+	public void setRideType(RideTypes rideType) {
 		this.rideType = rideType;
 	}
 
@@ -120,8 +124,28 @@ public class Ride {
 		return hitCounter;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public void setHitCounter(int hitCounter) {
 		this.hitCounter = hitCounter;
 	}
+
+	public Map<String, RideTypes> getRideTypeItems() {
+		return rideTypeItems;
+	}
+
+	private static Map<String, RideTypes> rideTypeItems;
+	static {
+		rideTypeItems = new LinkedHashMap<String, RideTypes>();
+		rideTypeItems.put("Decide Mutually", RideTypes.DECIDE_MUTUALLY); // label,																			//value
+		rideTypeItems.put("Equal Share", RideTypes.EQUAL_SHARE);
+		rideTypeItems.put("Free Ride", RideTypes.FREE_RIDE);
+	};
 
 }

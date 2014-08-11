@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>#{msgs.offerRide}</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2" cellpadding="3" cellspacing="3">
+			<f:facet name="header">#{msgs.rideInformation}</f:facet>
+
+			<h:outputLabel value="#{msgs.from}" />
+
+			<p:autoComplete id="searchFrom" dropdown="true"
+				value="#{ride.source}"
+				completeMethod="#{locationControl.filterLocation}" cache="true"
+				minQueryLength="3" forceSelection="true" emptyMessage="Source" />
+
+			<h:outputLabel value="#{msgs.to}" />
+
+			<p:autoComplete id="searchTo" dropdown="true"
+				value="#{ride.destination}"
+				completeMethod="#{locationControl.filterLocation}" cache="true"
+				minQueryLength="3" forceSelection="true" emptyMessage="Destination" />
+
+			<h:outputLabel value="#{msgs.departDate}" />
+
+
+			<h:panelGroup>
+				<h:panelGrid columns="3">
+					<p:calendar value="#{ride.departDate}" />
+					<h:outputLabel value="#{msgs.time}"></h:outputLabel>
+					<h:inputText value="#{ride.departTime}">
+					</h:inputText>
+				</h:panelGrid>
+			</h:panelGroup>
+
+
+			<h:outputLabel value="#{msgs.returnDate}" />
+			<h:panelGroup>
+				<h:panelGrid columns="3">
+					<p:calendar value="#{ride.returnDate}" />
+					<h:outputLabel value="#{msgs.time}"></h:outputLabel>
+					<h:inputText value="#{ride.returnTime}">
+					</h:inputText>
+
+				</h:panelGrid>
+			</h:panelGroup>
+
+			<h:outputLabel value="#{msgs.description}" />
+
+			<h:inputTextarea value="#{ride.description}" />
+
+			<h:outputLabel value="#{msgs.vehicleDesc}" />
+
+			<h:inputTextarea value="#{ride.vehicleDescription}" />
+
+			<h:outputLabel value="#{msgs.expectedExpences}" />
+
+			<p:inputText id="expectedExpencesID" value="#{person.firstName}"
+				label="#{msgs.expectedExpences}" />
+
+			<h:outputLabel value="#{msgs.paymentType}" />
+
+			<h:selectOneRadio value="#{ride.rideType}" layout="pageDirection">
+				<f:selectItems value="#{ride.rideTypeItems}" />
+			</h:selectOneRadio>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

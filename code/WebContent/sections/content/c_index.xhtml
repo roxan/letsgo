@@ -11,24 +11,49 @@
 <body>
 	<ui:composition>
 		<h:form>
-			<p:autoComplete id="searchFrom" dropdown="true"
-				value="#{search.fromLocation}"
-				completeMethod="#{locationControl.filterLocation}" cache="true"
-				minQueryLength="3" forceSelection="true"
-				emptyMessage="No such location" />
-			<p:outputLabel value="Location:" for="searchFrom" />
-			<p:calendar />
+			<h:panelGrid columns="2" styleClass="noBorderPanelColumns">
 
-			<p:autoComplete id="searchTo" dropdown="true"
-				value="#{search.toLocation}"
-				completeMethod="#{locationControl.filterLocation}" cache="true"
-				minQueryLength="3" forceSelection="true"
-				emptyMessage="No such location" />
-			<p:outputLabel value="Location:" for="searchTo" />
-			<p:calendar />
+				<h:panelGrid columns="5">
+					<h:panelGrid>
+						<f:facet name="header" styleClass="headingSmall">
+				#{msgs.from}
+				</f:facet>
+						<p:autoComplete id="searchFrom" dropdown="true"
+							value="#{search.fromLocation}"
+							completeMethod="#{locationControl.filterLocation}" cache="true"
+							minQueryLength="3" forceSelection="true"
+							emptyMessage="No such location" />
+					</h:panelGrid>
+					<h:panelGrid>
+						<f:facet name="header" styleClass="headingSmall">
+				#{msgs.departDate}
+				</f:facet>
+						<p:calendar />
+					</h:panelGrid>
 
+
+					<h:panelGrid>
+						<f:facet name="header" styleClass="headingSmall">
+				#{msgs.to}</f:facet>
+						<p:autoComplete id="searchTo" dropdown="true"
+							value="#{search.toLocation}"
+							completeMethod="#{locationControl.filterLocation}" cache="true"
+							minQueryLength="3" forceSelection="true"
+							emptyMessage="No such location" />
+					</h:panelGrid>
+
+					<h:panelGrid>
+						<f:facet name="header" styleClass="headingSmall">
+				#{msgs.returnDate}</f:facet>
+						<p:calendar />
+					</h:panelGrid>
+
+				</h:panelGrid>
+
+
+
+			</h:panelGrid>
 			<h:commandButton action="#{control.search}" value="Go" />
-
 		</h:form>
 
 	</ui:composition>

@@ -1,6 +1,6 @@
 package edu.mum.waa.group9.beanInterfaces;
 
-import java.sql.Date;
+import java.util.Date;
 
 public interface SearchInterface {
 	public String getFromLocation();

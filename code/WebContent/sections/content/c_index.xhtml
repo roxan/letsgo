@@ -11,21 +11,26 @@
 <body>
 	<ui:composition>
 		<h:form>
+
+			<p:outputLabel value="Location:" for="searchFrom" />
 			<p:autoComplete id="searchFrom" dropdown="true"
 				value="#{search.fromLocation}"
 				completeMethod="#{locationControl.filterLocation}" cache="true"
 				minQueryLength="3" forceSelection="true"
 				emptyMessage="No such location" />
-			<p:outputLabel value="Location:" for="searchFrom" />
-			<p:calendar />
 
+			<p:outputLabel value="Date:" for="fromDate" />
+			<p:calendar id="fromDate" value="#{search.fromDate}" readOnlyInput="true"/>
+
+			<p:outputLabel value="Location:" for="searchTo" />
 			<p:autoComplete id="searchTo" dropdown="true"
 				value="#{search.toLocation}"
 				completeMethod="#{locationControl.filterLocation}" cache="true"
 				minQueryLength="3" forceSelection="true"
 				emptyMessage="No such location" />
-			<p:outputLabel value="Location:" for="searchTo" />
-			<p:calendar />
+
+			<p:outputLabel value="Date:" for="toDate" />
+			<p:calendar id="toDate" value="#{search.toDate}" readOnlyInput="true"/>
 
 			<h:commandButton action="#{control.search}" value="Go" />
 

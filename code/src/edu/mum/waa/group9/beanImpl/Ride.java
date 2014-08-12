@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -16,6 +14,7 @@ import edu.mum.waa.group9.beanInterfaces.RideInterface;
 @Named
 @SessionScoped
 public class Ride implements RideInterface, Serializable {
+
 	private int id;
 	private String source;
 	private String destination;
@@ -143,4 +142,5 @@ public class Ride implements RideInterface, Serializable {
 		this.hitCounter = hitCounter;
 	}
 
+	private static final long serialVersionUID = 1L;
 }

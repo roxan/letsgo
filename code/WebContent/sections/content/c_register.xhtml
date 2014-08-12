@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition>
+		<h:form>
+		<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+			styleClass="borderPanelColumns">
+			<f:facet name="header">
+				#{msgs.registerText}
+			</f:facet>
+			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+				styleClass="noBorderPanelColumns">
+				<f:facet name="header">
+				</f:facet>
+				<h:outputLabel for="firstName" value="#{msgs.firstNameLabel}" />
+				<p:inputText id="firstName" value="#{person.firstName}"
+					label="#{msgs.firstNameLabel}" />
+				<h:outputLabel for="lastName" value="#{msgs.lastNameLabel}" />
+				<p:inputText id="lastName" value="#{person.lastName}"
+					label="#{msgs.lastNameLabel}" />
+				<p:outputLabel value="#{msgs.dobLabel}" for="dob" />
+				<p:calendar id="dob" />
+
+				<p:outputLabel value="#{msgs.sexLabel}" for="sexRadio" />
+				<p:selectOneRadio id="sexRadio" value="#{person.sex}">
+					<f:selectItem itemLabel="Male" itemValue="#{msgs.maleText}" />
+					<f:selectItem itemLabel="Female" itemValue="#{msgs.femaleText}" />
+				</p:selectOneRadio>
+
+				<h:outputLabel for="phone" value="#{msgs.phoneLabel}" />
+				<p:inputText id="phone" value="#{person.phone}"
+					label="#{msgs.phoneLabel}" />
+
+				<h:outputLabel for="email" value="#{msgs.emailLabel}" />
+				<p:inputText id="email" value="#{person.email}"
+					label="#{msgs.emailLabel}" />
+
+				<h:outputLabel for="password" value="#{msgs.passwordLabel}" />
+				<p:password id="password" value="#{person.password}"
+					label="#{msgs.passwordLabel}" />
+
+				<h:outputLabel for="confirmPassword"
+					value="#{msgs.confirmPasswordLabel}" />
+				<p:password id="confirmPassword" value="#{person.confirmPassword}"
+					label="#{msgs.confirmPasswordLabel}" />
+
+				<f:facet name="footer">
+				</f:facet>
+			</p:panelGrid>
+
+			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+				styleClass="noBorderPanelColumns">
+				<f:facet name="header">
+				</f:facet>
+				<h:outputLabel for="street" value="#{msgs.streetLabel}" />
+				<p:inputText id="street" value="#{address.street}"
+					label="#{msgs.streetLabel}" />
+				<h:outputLabel for="city" value="#{msgs.cityLabel}" />
+				<p:inputText id="city" value="#{address.city}"
+					label="#{msgs.cityLabel}" />
+
+				<h:outputLabel for="state" value="#{msgs.stateLabel}" />
+				<p:inputText id="state" value="#{address.state}"
+					label="#{msgs.stateLabel}" />
+
+				<h:outputLabel for="zip" value="#{msgs.zipLabel}" />
+				<p:inputText id="zip" value="#{address.zip}"
+					label="#{msgs.zipLabel}" />
+
+				<h:outputLabel for="country" value="#{msgs.countryLabel}" />
+				<p:selectOneMenu id="country" value="#{address.country}">
+					<f:selectItem itemLabel="US" itemValue="#{msgs.maleText}" />
+				</p:selectOneMenu>
+				<h:outputLabel for="photo" value="#{msgs.photoLabel}" />
+				<p:fileUpload id="photo" mode="advanced"
+					fileUploadListener="#{person.handleFileUpload}"
+					allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
+					auto="true" />
+				<f:facet name="footer">
+				</f:facet>
+			</p:panelGrid>
+			<f:facet name="footer">
+				<p:commandButton type="button" value="#{msgs.clearButton}"
+					icon="ui-icon-check" styleClass="buttonRight" />
+				<p:commandButton type="button" value="#{msgs.registerButton}"
+					icon="ui-icon-check" styleClass="buttonRight" />
+			</f:facet>
+		</p:panelGrid>
+	</h:form>
+	</ui:composition>
+</body>
+</html>

@@ -9,23 +9,23 @@
 </h:head>
 <h:body>
 <h5>#{msgs.loginPageTitle}</h5>
-<h:form>
-<p:panelGrid columns="2" id="matchGrid">
+	<h:form>
+		<p:panelGrid columns="2" id="matchGrid">
 
-<f:facet name="header">
+			<f:facet name="header">
 				#{msgs.loginPageTitle}
 			</f:facet>
-<h:outputLabel for="userName" value="#{msgs.userName}" />
-<p:password id="userName" required="true"/>
-        <h:outputLabel for="password" value="#{msgs.password}" />
-        <p:password id="password"  match="confirmPassword" required="true" />
- 
-     
-<f:facet name="footer">
-<p:commandButton value="#{msgs.loginButton}"/>
-<p:commandButton value="#{msgs.cancelButton}" immediate="true"/>
-</f:facet>
-</p:panelGrid>
-</h:form>
+			<h:outputLabel for="userName" value="#{msgs.userName}" />
+			<p:password id="userName" required="true" />
+			<h:outputLabel for="password" value="#{msgs.password}" />
+			<p:password id="password" match="confirmPassword" required="true" />
+
+
+			<f:facet name="footer">
+				<p:commandButton value="#{msgs.loginButton}" />
+				<p:commandButton value="#{msgs.cancelButton}" immediate="true" />
+			</f:facet>
+		</p:panelGrid>
+	</h:form>
 </h:body>
 </html>

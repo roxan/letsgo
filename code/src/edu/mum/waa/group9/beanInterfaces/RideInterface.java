@@ -4,7 +4,10 @@ import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
 
+import edu.mum.waa.group9.beanImpl.Person;
+
 public interface RideInterface {
+	
 	public String getSource();
 	public String getDestination();
 	public Date getDepartDate();
@@ -16,8 +19,10 @@ public interface RideInterface {
 	public String getDescription();
 	public String getVehicleDescription();
 	public String getRideType();
+	public PersonInterface getPerson();
 	public int getHitCounter();
 	
+	public void setId(int Id);
 	public void setSource(String source);
 	public void setDestination(String destination);
 	public void setDepartDate(Date departDate);
@@ -29,5 +34,6 @@ public interface RideInterface {
 	public void setDescription(String description);
 	public void setVehicleDescription(String vehicleDescription);
 	public void setRideType(String rideType);
+	public void setPerson(PersonInterface person);
 	public void setHitCounter(int hitCounter);
 }

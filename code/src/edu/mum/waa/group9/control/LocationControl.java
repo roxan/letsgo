@@ -7,7 +7,7 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import edu.mum.waa.group9.DaoImp.LocationImpl;
+import edu.mum.waa.group9.DaoImp.LocationDaoImpl;
 import edu.mum.waa.group9.daoFacade.LocationDaoFacade;
 
 @Named("locationControl")
@@ -24,7 +24,7 @@ public class LocationControl implements Serializable {
 	}
 
 	public List<String> filterLocation(String s) {
-		LocationDaoFacade locationDao = new LocationImpl();
+		LocationDaoFacade locationDao = new LocationDaoImpl();
 		return locationDao.getLocation(s);
 	}
 

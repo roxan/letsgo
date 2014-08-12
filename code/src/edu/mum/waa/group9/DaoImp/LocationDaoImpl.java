@@ -12,7 +12,7 @@ import javax.naming.NamingException;
 import edu.mum.waa.group9.daoFacade.LocationDaoFacade;
 import edu.mum.waa.group9.utils.ConnectionManager;
 
-public class LocationImpl implements LocationDaoFacade {
+public class LocationDaoImpl implements LocationDaoFacade {
 
 	private final String QUERY = "SELECT cityName, stateName, zip FROM LOCATION where LOWER(cityName) like '";
 

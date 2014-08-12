@@ -1,7 +1,6 @@
 package edu.mum.waa.group9.beanImpl;
 
 import java.io.Serializable;
-
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
@@ -11,13 +10,12 @@ import java.util.Map;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import edu.mum.waa.group9.beanInterfaces.PersonInterface;
+import edu.mum.waa.group9.beanInterfaces.RideInterface;
+
 @Named
 @SessionScoped
-public class Ride implements Serializable {
-	public enum RideTypes {
-		FREE_RIDE, EQUAL_SHARE, DECIDE_MUTUALLY
-	};
-
+public class Ride implements RideInterface, Serializable {
 	private int id;
 	private String source;
 	private String destination;
@@ -29,7 +27,8 @@ public class Ride implements Serializable {
 	private int capacity;
 	private String vehicleDescription;
 	private BigDecimal expectedExpense;
-	private RideTypes rideType = RideTypes.DECIDE_MUTUALLY;
+	private String rideType;
+	private PersonInterface person;
 	private int hitCounter;
 
 	public int getId() {
@@ -112,11 +111,11 @@ public class Ride implements Serializable {
 		this.expectedExpense = expectedExpense;
 	}
 
-	public RideTypes getRideType() {
+	public String getRideType() {
 		return rideType;
 	}
 
-	public void setRideType(RideTypes rideType) {
+	public void setRideType(String rideType) {
 		this.rideType = rideType;
 	}
 
@@ -128,6 +127,14 @@ public class Ride implements Serializable {
 		return description;
 	}
 
+	public PersonInterface getPerson() {
+		return person;
+	}
+
+	public void setPerson(PersonInterface person) {
+		this.person = person;
+	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -135,17 +142,5 @@ public class Ride implements Serializable {
 	public void setHitCounter(int hitCounter) {
 		this.hitCounter = hitCounter;
 	}
-
-	public Map<String, RideTypes> getRideTypeItems() {
-		return rideTypeItems;
-	}
-
-	private static Map<String, RideTypes> rideTypeItems;
-	static {
-		rideTypeItems = new LinkedHashMap<String, RideTypes>();
-		rideTypeItems.put("Decide Mutually", RideTypes.DECIDE_MUTUALLY); // label,																			//value
-		rideTypeItems.put("Equal Share", RideTypes.EQUAL_SHARE);
-		rideTypeItems.put("Free Ride", RideTypes.FREE_RIDE);
-	};
 
 }

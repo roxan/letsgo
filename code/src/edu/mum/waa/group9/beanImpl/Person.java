@@ -6,9 +6,11 @@ import java.sql.Blob;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import edu.mum.waa.group9.beanInterfaces.PersonInterface;
+
 @Named("person")
 @SessionScoped
-public class Person implements Serializable {
+public class Person implements PersonInterface, Serializable {
 
 	private int id;
 	private String firstName;

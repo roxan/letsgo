@@ -7,7 +7,7 @@
 <head>
 <title>IGNORED</title>
 </head>
-<body>
+<h:body>
 	<ui:composition template="/templates/masterLayout.xhtml">
 		<ui:define name="windowTitle">
             #{msgs.titleIndex}
@@ -16,7 +16,7 @@
 		<ui:define name="header">
 			<ui:include src="sections/constant/header.xhtml" />
 		</ui:define>
-		
+
 		<ui:define name="navigation">
 			<ui:include src="sections/constant/navigation.xhtml" />
 		</ui:define>
@@ -28,19 +28,11 @@
 		<ui:define name="content">
 			<ui:include src="sections/content/c_index.xhtml" />
 		</ui:define>
-		
+
 		<ui:define name="footer">
-					<ui:include src="sections/constant/footer.xhtml" />
+			<ui:include src="sections/constant/footer.xhtml" />
 		</ui:define>
-		
-		 
-		
+
 	</ui:composition>
-</body>
-=======
-		<h:commandButton action="#{locationControl.showValue}" value="Go" />
-	<h:commandLink action="changePassword">change password</h:commandLink>
-	<h:commandLink action="login">Log in</h:commandLink>
-	</h:form>
 </h:body>
 </html>

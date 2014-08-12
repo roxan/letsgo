@@ -12,28 +12,48 @@
 	<ui:composition>
 		<h:form>
 
-			<p:outputLabel value="Location:" for="searchFrom" />
-			<p:autoComplete id="searchFrom" dropdown="true"
-				value="#{search.fromLocation}"
-				completeMethod="#{locationControl.filterLocation}" cache="true"
-				minQueryLength="3" forceSelection="true"
-				emptyMessage="No such location" />
+			<h:panelGrid columns="5">
+				<h:panelGroup>
+					<f:facet name="header" styleClass="headingSmall">
+						<h:outputText value="#{msgs.from}" />
+					</f:facet>
+					<p:autoComplete id="searchFrom" dropdown="true"
+						value="#{search.fromLocation}"
+						completeMethod="#{locationControl.filterLocation}" cache="true"
+						minQueryLength="3" forceSelection="true"
+						emptyMessage="No such location" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<f:facet name="header" styleClass="headingSmall">
+						<h:outputText value="#{msgs.departDate}" />
+					</f:facet>
+					<p:calendar id="fromDate" value="#{search.fromDate}"
+						readOnlyInput="true" placeholder="From Date" />
+				</h:panelGroup>
 
-			<p:outputLabel value="Date:" for="fromDate" />
-			<p:calendar id="fromDate" value="#{search.fromDate}" readOnlyInput="true"/>
 
-			<p:outputLabel value="Location:" for="searchTo" />
-			<p:autoComplete id="searchTo" dropdown="true"
-				value="#{search.toLocation}"
-				completeMethod="#{locationControl.filterLocation}" cache="true"
-				minQueryLength="3" forceSelection="true"
-				emptyMessage="No such location" />
+				<h:panelGroup>
+					<f:facet name="header" styleClass="headingSmall">
+						<h:outputText value="#{msgs.to}" />
+					</f:facet>
+					<p:autoComplete id="searchTo" dropdown="true"
+						value="#{search.toLocation}"
+						completeMethod="#{locationControl.filterLocation}" cache="true"
+						minQueryLength="3" forceSelection="true"
+						emptyMessage="No such location" />
+				</h:panelGroup>
 
-			<p:outputLabel value="Date:" for="toDate" />
-			<p:calendar id="toDate" value="#{search.toDate}" readOnlyInput="true"/>
+				<h:panelGroup>
+					<f:facet name="header" styleClass="headingSmall">
+						<h:outputText value="#{msgs.returnDate}" />
+					</f:facet>
+					<p:calendar id="toDate" value="#{search.toDate}"
+						readOnlyInput="true" placeholder="To Date" />
+				</h:panelGroup>
 
+
+			</h:panelGrid>
 			<h:commandButton action="#{control.search}" value="Go" />
-
 		</h:form>
 
 	</ui:composition>

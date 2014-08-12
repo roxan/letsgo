@@ -9,6 +9,7 @@ import javax.inject.Named;
 @Named("person")
 @SessionScoped
 public class Person implements Serializable{
+public class Person implements Serializable {
 
 	private int id;
 	private String firstName;

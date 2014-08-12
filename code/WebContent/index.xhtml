@@ -1,34 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<title>IGNORED</title>
+</head>
+<body>
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+            #{msgs.titleIndex}
+         </ui:define>
 
-<h:head>
-	<title>#{msgs.head1}</title>
-</h:head>
-<h:body>
-	<h:form>
-		<p:autoComplete id="searchFrom" dropdown="true"
-			value="#{locationControl.selectedLocation}"
-			completeMethod="#{locationControl.filterLocation}" cache="true"
-			minQueryLength="3" forceSelection="true"
-			emptyMessage="No such location" />
-		<p:outputLabel value="Location:" for="searchFrom" />
-		<p:calendar />
+		<ui:define name="header">
+			<ui:include src="sections/constant/header.xhtml" />
+		</ui:define>
+		
+		<ui:define name="navigation">
+			<ui:include src="sections/constant/navigation.xhtml" />
+		</ui:define>
 
-		<p:autoComplete id="searchTo" dropdown="true"
-			value="#{locationControl.selectedLocation}"
-			completeMethod="#{locationControl.filterLocation}" cache="true"
-			minQueryLength="3" forceSelection="true"
-			emptyMessage="No such location" />
-		<p:outputLabel value="Location:" for="searchTo" />
-		<p:calendar />
+		<ui:define name="leftSidebar">
+			<ui:include src="sections/constant/leftSidebar.xhtml" />
+		</ui:define>
 
-		<h:commandButton action="#{locationControl.showValue}" value="Go" />
-
-	</h:form>
-</h:body>
+		<ui:define name="content">
+			<ui:include src="sections/content/c_index.xhtml" />
+		</ui:define>
+		
+		<ui:define name="footer">
+					<ui:include src="sections/constant/footer.xhtml" />
+		</ui:define>
+		
+		 
+		
+	</ui:composition>
+</body>
 </html>

@@ -1,100 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-	<title>#{msgs.head1}</title>
-	<h:outputStylesheet library="css" name="style.css" />
-</h:head>
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<title>IGNORED</title>
+</head>
 <h:body>
-	<h:form>
-		<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-			styleClass="borderPanelColumns">
-			<f:facet name="header">
-				#{msgs.registerText}
-			</f:facet>
-			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-				styleClass="noBorderPanelColumns">
-				<f:facet name="header">
-				</f:facet>
-				<h:outputLabel for="firstName" value="#{msgs.firstNameLabel}" />
-				<p:inputText id="firstName" value="#{person.firstName}"
-					label="#{msgs.firstNameLabel}" />
-				<h:outputLabel for="lastName" value="#{msgs.lastNameLabel}" />
-				<p:inputText id="lastName" value="#{person.lastName}"
-					label="#{msgs.lastNameLabel}" />
-				<p:outputLabel value="#{msgs.dobLabel}" for="dob" />
-				<p:calendar id="dob" />
+	<ui:composition template="/templates/masterLayout.xhtml">
+		<ui:define name="windowTitle">
+            #{msgs.titleIndex}
+         </ui:define>
 
-				<p:outputLabel value="#{msgs.sexLabel}" for="sexRadio" />
-				<p:selectOneRadio id="sexRadio" value="#{person.sex}">
-					<f:selectItem itemLabel="Male" itemValue="#{msgs.maleText}" />
-					<f:selectItem itemLabel="Female" itemValue="#{msgs.femaleText}" />
-				</p:selectOneRadio>
+		<ui:define name="header">
+			<ui:include src="sections/constant/header.xhtml" />
+		</ui:define>
 
-				<h:outputLabel for="phone" value="#{msgs.phoneLabel}" />
-				<p:inputText id="phone" value="#{person.phone}"
-					label="#{msgs.phoneLabel}" />
+		<ui:define name="navigation">
+			<ui:include src="sections/constant/navigation.xhtml" />
+		</ui:define>
 
-				<h:outputLabel for="email" value="#{msgs.emailLabel}" />
-				<p:inputText id="email" value="#{person.email}"
-					label="#{msgs.emailLabel}" />
+		<ui:define name="leftSidebar">
+			<ui:include src="sections/constant/leftSidebar.xhtml" />
+		</ui:define>
 
-				<h:outputLabel for="password" value="#{msgs.passwordLabel}" />
-				<p:password id="password" value="#{person.password}"
-					label="#{msgs.passwordLabel}" />
+		<ui:define name="content">
+			<ui:include src="sections/content/c_register.xhtml" />
+		</ui:define>
 
-				<h:outputLabel for="confirmPassword"
-					value="#{msgs.confirmPasswordLabel}" />
-				<p:password id="confirmPassword" value="#{person.confirmPassword}"
-					label="#{msgs.confirmPasswordLabel}" />
+		<ui:define name="footer">
+			<ui:include src="sections/constant/footer.xhtml" />
+		</ui:define>
 
-				<f:facet name="footer">
-				</f:facet>
-			</p:panelGrid>
-
-			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-				styleClass="noBorderPanelColumns">
-				<f:facet name="header">
-				</f:facet>
-				<h:outputLabel for="street" value="#{msgs.streetLabel}" />
-				<p:inputText id="street" value="#{address.street}"
-					label="#{msgs.streetLabel}" />
-				<h:outputLabel for="city" value="#{msgs.cityLabel}" />
-				<p:inputText id="city" value="#{address.city}"
-					label="#{msgs.cityLabel}" />
-
-				<h:outputLabel for="state" value="#{msgs.stateLabel}" />
-				<p:inputText id="state" value="#{address.state}"
-					label="#{msgs.stateLabel}" />
-
-				<h:outputLabel for="zip" value="#{msgs.zipLabel}" />
-				<p:inputText id="zip" value="#{address.zip}"
-					label="#{msgs.zipLabel}" />
-
-				<h:outputLabel for="country" value="#{msgs.countryLabel}" />
-				<p:selectOneMenu id="country" value="#{address.country}">
-					<f:selectItem itemLabel="US" itemValue="#{msgs.maleText}" />
-				</p:selectOneMenu>
-				<h:outputLabel for="photo" value="#{msgs.photoLabel}" />
-				<p:fileUpload id="photo" mode="advanced"
-					fileUploadListener="#{person.handleFileUpload}"
-					allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
-					auto="true" />
-				<f:facet name="footer">
-				</f:facet>
-			</p:panelGrid>
-			<f:facet name="footer">
-				<p:commandButton type="button" value="#{msgs.clearButton}"
-					icon="ui-icon-check" styleClass="buttonRight" />
-				<p:commandButton type="button" value="#{msgs.registerButton}"
-					icon="ui-icon-check" styleClass="buttonRight" />
-			</f:facet>
-		</p:panelGrid>
-	</h:form>
+	</ui:composition>
 </h:body>
 </html>

@@ -1,0 +1,1 @@
+INSERT INTO RIDE (person_id,source,destination,depart_date,depart_time,return_date,return_time,description,capacity,vehicle_description,expected_expense,ride_type) VALUES (101,'Fairfield,AL,35064','Coalburg,AL,35068','2010-10-10','12:00','2012-12-12','12:00','fa',3,'nice',12,'fds');

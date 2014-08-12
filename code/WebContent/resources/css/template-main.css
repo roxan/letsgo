@@ -27,9 +27,8 @@ p {
 #header {
 	height: 75px;
 	background: #FF6633;
-	border-radius: 10px;
 	border: 1px solid #eb521f;
-	margin: 5px;
+	/*margin: 5px;*/
 }
 
 #navigationwrap {
@@ -41,9 +40,8 @@ p {
 #navigation {
 	height: 40px;
 	background: #FFCC33;
-	border-radius: 10px;
 	border: 1px solid #ebb81f;
-	margin: 5px;
+	/*margin: 5px;*/
 }
 
 #contentliquid {
@@ -58,9 +56,8 @@ p {
 
 #content {
 	background: #FFFFFF;
-	border-radius: 10px;
 	border: 1px solid #ebebeb;
-	margin: 5px;
+	/*margin: 5px;*/
 }
 
 #leftSidebarWrap {
@@ -71,9 +68,8 @@ p {
 
 #leftSidebar {
 	background: #33CCFF;
-	border-radius: 10px;
 	border: 1px solid #1fb8eb;
-	margin: 5px;
+	/*margin: 5px;*/
 }
 
 #footerwrap {
@@ -86,7 +82,6 @@ p {
 #footer {
 	height: 40px;
 	background: #33FF66;
-	border-radius: 10px;
 	border: 1px solid #1feb52;
-	margin: 5px;
+	/*margin: 5px;*/
 }

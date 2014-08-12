@@ -1,6 +1,13 @@
 package edu.mum.waa.group9.beanImpl;
 
-public class PersonAddress {
+import java.io.Serializable;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
+@Named("address")
+@SessionScoped
+public class PersonAddress implements Serializable {
 
 	private int id;
 	private String street;
@@ -55,6 +62,10 @@ public class PersonAddress {
 
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+	
+	public String getAddress(){
+		return null;
 	}
 
 }

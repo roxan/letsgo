@@ -3,3 +3,21 @@
 .errorMsg {
 	color: #ff0000;
 }
+
+.noBorderPanelColumns td, tr {
+    vertical-align: top;
+    background: none !important;
+    border: none !important;
+}
+
+.borderPanelColumns td, tr {
+    vertical-align: top;
+}
+
+.buttonRight {
+	horizontal-align: right;
+}
+
+.headingSmall {
+	font-size: medium; 
+}

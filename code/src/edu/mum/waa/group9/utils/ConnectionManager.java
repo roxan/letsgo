@@ -12,7 +12,7 @@ public class ConnectionManager {
 
 	public static Connection getConnection() throws NamingException, SQLException {
 		Context ctx = new InitialContext();
-		return ((DataSource) ctx.lookup("jdbc/mydb")).getConnection();
+		return ((DataSource) ctx.lookup("jdbc/letsgodb")).getConnection();
 	}
 
 	public static void closeConnection(Connection con) throws SQLException {

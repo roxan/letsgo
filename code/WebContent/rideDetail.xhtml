@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>#{msgs.head1}</title>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<h:form>
+		<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+			styleClass="borderPanelColumns">
+			<f:facet name="header">
+				#{msgs.rideDetailText}
+			</f:facet>
+			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+				styleClass="noBorderPanelColumns">
+				<f:facet name="header" styleClass="headingSmall">
+				#{msgs.offeredByText}
+				</f:facet>
+				<p:graphicImage value="#{person.photo}" />
+				
+				<h:outputText id="fullName" value="#{person.getFullName()}"/>
+				<h:outputText id="age" value="#{person.getAge()}"/>
+				<h:outputText id="sex" value="#{person.sex}"/>
+	
+				<f:facet name="footer">
+				</f:facet>
+			</p:panelGrid>
+
+			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+				styleClass="noBorderPanelColumns">
+				<f:facet name="header" styleClass="headingSmall">
+				#{msgs.tripDetailText}
+				</f:facet>
+				<h:outputLabel for="source" value="#{msgs.fromLabel}" />
+				<h:outputText id="source" value="#{ride.source}"/>
+				
+				<h:outputLabel for="destination" value="#{msgs.toLabel}" />
+				<h:outputText id="destination" value="#{ride.destination}"/>
+				
+				<h:outputLabel for="description" value="#{msgs.descriptionLabel}" />
+				<h:outputText id="description" value="#{ride.description}"/>
+				
+				<h:outputLabel for="vehicleDescription" value="#{msgs.vehicleDescriptionLabel}" />
+				<h:outputText id="vehicleDescription" value="#{ride.vehicleDescription}"/>
+				
+				<f:facet name="footer">
+				</f:facet>
+			</p:panelGrid>
+			
+			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+				styleClass="noBorderPanelColumns">
+				<f:facet name="header" styleClass="headingSmall">
+				#{msgs.contactInfoText}
+				</f:facet>
+				
+				<h:outputLabel for="phone" value="#{msgs.phoneLabel}" />
+				<h:outputText id="phone" value="#{person.phone}"/>
+				
+				<h:outputLabel for="email" value="#{msgs.emailLabel}" />
+				<h:outputText id="email" value="#{person.email}"/>
+				
+				<h:outputLabel for="address" value="#{msgs.addressLabel}" />
+				<h:outputText id="address" value="#{address.getAddress()}"/>
+				
+				<f:facet name="footer">
+				</f:facet>
+			</p:panelGrid>
+			
+			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+				styleClass="noBorderPanelColumns">
+				<f:facet name="header" styleClass="headingSmall">
+				#{msgs.costInfoText}
+				</f:facet>
+				
+				<h:outputLabel for="expectedExpense" value="#{msgs.expectedExpenseLabel}" />
+				<h:outputText id="expectedExpense" value="#{ride.expectedExpense}"/>
+				
+				<h:outputLabel for="rideType" value="#{msgs.rideTypeLabel}" />
+				<h:outputText id="rideType" value="#{ride.rideType}"/>
+				
+				<f:facet name="footer">
+				</f:facet>
+			</p:panelGrid>
+			
+			<f:facet name="footer">
+			</f:facet>
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>

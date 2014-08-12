@@ -1,15 +1,24 @@
 package edu.mum.waa.group9.beanImpl;
 
+import java.io.Serializable;
 import java.sql.Blob;
 
-public class Person {
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
+@Named("person")
+@SessionScoped
+public class Person implements Serializable{
+public class Person implements Serializable {
 
 	private int id;
 	private String firstName;
 	private String lastName;
 	private String sex;
+	private String phone;
 	private String email;
 	private String password;
+	private String confirmPassword;
 	private PersonAddress address;
 	private Blob photo;
 
@@ -45,6 +54,14 @@ public class Person {
 		this.sex = sex;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -61,6 +78,14 @@ public class Person {
 		this.password = password;
 	}
 
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
 	public PersonAddress getAddress() {
 		return address;
 	}
@@ -75,5 +100,17 @@ public class Person {
 
 	public void setPhoto(Blob photo) {
 		this.photo = photo;
+	}
+	
+	public void handleFileUpload(){
+		
+	}
+	
+	public int getAge(){
+		return 100;
+	}
+	
+	public String getFullName(){
+		return firstName+" "+lastName;
 	}
 }

@@ -23,6 +23,8 @@ public class LocationDaoImpl implements LocationDaoFacade {
 		Connection con;
 		try {
 			con = ConnectionManager.getConnection();
+			System.out.println("fdas");
+			System.out.println(con);
 			try {
 				stmt = con.createStatement();
 				// ToDo: use preparedStatement
@@ -37,9 +39,9 @@ public class LocationDaoImpl implements LocationDaoFacade {
 				ConnectionManager.closeConnection(con);
 			}
 		} catch (SQLException e) {
-
+			e.printStackTrace();
 		} catch (NamingException e) {
-
+			e.printStackTrace();
 		}
 		return output;
 	}

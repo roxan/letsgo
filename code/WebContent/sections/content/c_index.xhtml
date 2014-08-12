@@ -12,7 +12,7 @@
 	<ui:composition>
 		<h:form>
 			<p:autoComplete id="searchFrom" dropdown="true"
-				value="#{locationControl.selectedLocation}"
+				value="#{search.fromLocation}"
 				completeMethod="#{locationControl.filterLocation}" cache="true"
 				minQueryLength="3" forceSelection="true"
 				emptyMessage="No such location" />
@@ -20,14 +20,14 @@
 			<p:calendar />
 
 			<p:autoComplete id="searchTo" dropdown="true"
-				value="#{locationControl.selectedLocation}"
+				value="#{search.toLocation}"
 				completeMethod="#{locationControl.filterLocation}" cache="true"
 				minQueryLength="3" forceSelection="true"
 				emptyMessage="No such location" />
 			<p:outputLabel value="Location:" for="searchTo" />
 			<p:calendar />
 
-			<h:commandButton action="#{locationControl.showValue}" value="Go" />
+			<h:commandButton action="#{control.search}" value="Go" />
 
 		</h:form>
 

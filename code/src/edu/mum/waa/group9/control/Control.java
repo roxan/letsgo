@@ -1,6 +1,7 @@
 package edu.mum.waa.group9.control;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Map;
 
 import javax.enterprise.context.SessionScoped;
@@ -18,6 +19,9 @@ import edu.mum.waa.group9.beanImpl.Search;
 import edu.mum.waa.group9.services.LoginService;
 import edu.mum.waa.group9.services.PersonService;
 import edu.mum.waa.group9.services.SearchService;
+import edu.mum.waa.group9.exceptions.RulesException;
+import edu.mum.waa.group9.utils.MessagesUtil;
+import edu.mum.waa.group9.utils.MessageProvider;
 
 @Named("control")
 @SessionScoped
@@ -45,10 +49,46 @@ public class Control implements Serializable {
 	private String confirmPassword;
 	private String requestedUrl;
 
+	public String runRules() {
+		System.out.println("Inside runRules");
+		String retVal = null;
+		try {
+			checkDepartDateRule();
+			retVal = search();
+		} catch (RulesException e) {
+			System.out.println("Inside runRules --> catch block"
+					+ e.getMessage());
+			MessagesUtil.displayError(e.getMessage());
+		} finally {
+			return retVal;
+		}
+	}
+
+	public void checkDepartDateRule() throws RulesException {
+		long timeDifference = searchBean.getToDate().getTime()
+				- searchBean.getFromDate().getTime();
+
+		System.out.println("searchBean.getToDate().getTime() -- > "
+				+ searchBean.getToDate().getTime());
+		System.out.println("searchBean.getFromDate().getTime() -- > "
+				+ searchBean.getToDate().getTime());
+		System.out.println("timeDifference -- > " + timeDifference);
+
+		if (timeDifference <= 0) {
+			throw new RulesException(
+					MessageProvider
+							.getValue("returnDateSmallerThanDepartDateError"));
+		}
+	}
+
 	public String search() {
 		SearchService searchServ = new SearchService();
 		searchServ.search(searchBean);
 		return "searchResult";
+	}
+
+	public String doSearch() {
+		return runRules();
 	}
 
 	public String registerPerson() {
@@ -66,19 +106,15 @@ public class Control implements Serializable {
 				.getRequestParameterMap();
 		requestedUrl = params.get("url");
 
-		Ride currRide = currentRideFromRideList();
-		if (currRide != null) {
-			System.out.println("currRide.getId-->" + currRide.getId());
-			searchBean.setCurrentRide(currRide);
-		} else {
-			System.out.println("No Ride Found");
-
-		}
-
 		if (loggedIn) {
+			Ride currRide = currentRideFromRideList();
+			if (currRide != null) {
+				System.out.println("currRide.getId-->" + currRide.getId());
+				searchBean.setCurrentRide(currRide);
+			}
 			return requestedUrl;
 		} else {
-			return "rideDetail";
+			return "login";
 		}
 
 	}
@@ -103,11 +139,27 @@ public class Control implements Serializable {
 		LoginService ls = new LoginService();
 		loggedIn = ls.doLogin(login.getUserName(), login.getPassword());
 		if (loggedIn) {
+			FacesContext fc = FacesContext.getCurrentInstance();
+			Map<String, String> params = fc.getExternalContext()
+					.getRequestParameterMap();
 
-			return "register";
+			String rideSeekerStr = params.get("rideSeeker");
+			System.out
+					.println("Inside Control--dologin--params.get(rideSeeker) = "
+							+ params.get("rideSeeker"));
+			System.out.println("Inside Control--dologin--rideSeekerStr = "
+					+ rideSeekerStr);
+
+			if (rideSeekerStr != null) {
+				System.out
+						.println("Inside Control--dologin--rideIdStr not null***");
+				return "rideDetail";
+			} else
+				return "register";
 
 		} else {
 			loginfailure = true;
+			System.out.println("Inside Control--dologin--loggedIn = false***");
 			return "login";
 		}
 	}

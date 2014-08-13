@@ -7,15 +7,11 @@ package edu.mum.waa.group9.utils;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author Administrator
- */
 public class MessagesUtil {
     
     public static void displayError(String message) {
         FacesContext context = FacesContext.getCurrentInstance();
-        FacesMessage errMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null);
+        FacesMessage errMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, null, message);
         context.addMessage(null, errMsg);
     }
 }

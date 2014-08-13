@@ -39,11 +39,11 @@ public class SearchService {
 				tempPerson.setId(searchResult.getInt("PERSON_ID"));
 				tempPerson.setFirstName(searchResult.getString("FIRST_NAME"));
 				tempPerson.setLastName(searchResult.getString("LAST_NAME"));
-				//tempPerson.setSex(searchResult.getString("SEX"));
+				tempPerson.setSex(searchResult.getString("SEX"));
 				tempPerson.setPhone(searchResult.getString("PHONE"));
 				tempPerson.setEmail(searchResult.getString("EMAIL"));
 				tempPerson.setPassword(searchResult.getString("PASSWORD"));
-				tempPerson.setPhoto(searchResult.getBlob("AVATAR"));
+				//tempPerson.setPhoto(searchResult.getBlob("AVATAR"));
 				tempPerson.setAddress(tempAddress);
 
 				tempRide.setId(searchResult.getInt("ID"));

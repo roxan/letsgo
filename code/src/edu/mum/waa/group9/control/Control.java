@@ -18,6 +18,7 @@ import edu.mum.waa.group9.beanImpl.Search;
 import edu.mum.waa.group9.services.LoginService;
 import edu.mum.waa.group9.services.PersonService;
 import edu.mum.waa.group9.services.SearchService;
+import edu.mum.waa.group9.utils.MessagesUtil;
 
 @Named("control")
 @SessionScoped
@@ -33,15 +34,6 @@ public class Control implements Serializable {
 
 	private boolean loggedIn;
 	private boolean loginfailure = false;
-
-	public boolean getLoginfailure() {
-		return loginfailure;
-	}
-
-	public void setLoginfailure(boolean loginfailure) {
-		this.loginfailure = loginfailure;
-	}
-
 	private String confirmPassword;
 	private String requestedUrl;
 
@@ -102,18 +94,21 @@ public class Control implements Serializable {
 	public String doLogin() {
 		LoginService ls = new LoginService();
 		loggedIn = ls.doLogin(login.getUserName(), login.getPassword());
+		//System.out.println("logged:"+loggedIn);
 		if (loggedIn) {
-
 			return "register";
-
 		} else {
 			loginfailure = true;
-			return "login";
+			//MessagesUtil.displayError("you no login");
+			return "register";
 		}
 	}
-
+	public String goToRegister(){
+		return "register";
+	}
 	public void changePassword() {
-
+		LoginService ls = new LoginService();
+		//boolean passwordChanged = ls.changePassword(login,personBean);
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {
@@ -151,6 +146,14 @@ public class Control implements Serializable {
 
 	public void setRequestedUrl(String requestedUrl) {
 		this.requestedUrl = requestedUrl;
+	}
+
+	public boolean getLoginfailure() {
+		return loginfailure;
+	}
+
+	public void setLoginfailure(boolean loginfailure) {
+		this.loginfailure = loginfailure;
 	}
 
 	private static final long serialVersionUID = 6063138477024970939L;

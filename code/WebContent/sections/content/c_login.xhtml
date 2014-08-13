@@ -24,11 +24,10 @@
 				<h:outputText rendered="#{control.loginfailure}"
 					value="#{msgs.invalidUserNameOrPassword}" /> 
 				<f:facet name="footer">
-					<p:commandButton value="#{msgs.loginButton}"
-						action="#{control.doLogin}" />
+					<p:commandButton value="#{msgs.loginButton}" action="#{control.doLogin}" />
 					<p:commandButton value="#{msgs.cancelButton}" immediate="true" />
-					<p:commandLink value="#{msgs.register}" action="register" />
-				</f:facet>
+					<p:commandLink value="#{msgs.register}" action="#{control.goToRegister}"/>
+							</f:facet>
 
 			</p:panelGrid>
 

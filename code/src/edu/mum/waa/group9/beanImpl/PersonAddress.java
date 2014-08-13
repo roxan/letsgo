@@ -64,8 +64,8 @@ public class PersonAddress implements Serializable {
 		this.zip = zip;
 	}
 	
-	public String getAddress(){
-		return null;
+	public String fullAddress(){
+		return street +" "+city+" "+state+" "+zip;
 	}
 
 }

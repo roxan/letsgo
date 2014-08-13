@@ -93,22 +93,26 @@ public class Control implements Serializable {
 
 	public String doLogin() {
 		LoginService ls = new LoginService();
-		loggedIn = ls.doLogin(login.getUserName(), login.getPassword());
-		//System.out.println("logged:"+loggedIn);
+		loggedIn = ls.doLogin(personBean, login);
+		// System.out.println("logged:"+loggedIn);
 		if (loggedIn) {
-			return "register";
+			return "changePassword";
 		} else {
 			loginfailure = true;
-			//MessagesUtil.displayError("you no login");
-			return "register";
+			// MessagesUtil.displayError("you no login");
+			return "index";
 		}
 	}
-	public String goToRegister(){
+
+	public String goToRegister() {
 		return "register";
 	}
-	public void changePassword() {
+
+	public String changePassword() {
 		LoginService ls = new LoginService();
-		//boolean passwordChanged = ls.changePassword(login,personBean);
+		boolean passwordChanged = ls.changePassword(personBean, login);
+		System.out.println("inside changepassord:" +passwordChanged);
+		return "";
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {

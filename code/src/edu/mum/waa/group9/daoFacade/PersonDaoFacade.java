@@ -12,4 +12,5 @@ public interface PersonDaoFacade {
 	public boolean registerPerson(PersonInterface personBean);
 
 	public void saveImage(UploadedFile file,int pid);
+	public void updatePassword(int id,String password);
 }

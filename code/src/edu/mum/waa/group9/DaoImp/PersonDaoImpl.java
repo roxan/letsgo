@@ -87,6 +87,7 @@ public class PersonDaoImpl implements PersonDaoFacade {
 				personInfo.populate(rs);
 				// System.out.println(": " + personInfo.getString("EMAIL"));
 				// }
+				rs.close();
 				ps.close();
 			} finally {
 				ConnectionManager.closeConnection(con);
@@ -97,6 +98,24 @@ public class PersonDaoImpl implements PersonDaoFacade {
 			e.printStackTrace();
 		}
 		return personInfo;
+	}
+	public void updatePassword(int id,String password){
+		String query="UPDATE Person P set P.PASSWORD = ? WHERE P.ID=?";
+		PreparedStatement ps;
+		Connection con;
+		try {
+			con = ConnectionManager.getConnection();
+			ps = con.prepareStatement(query);
+			ps.setString(1,password);
+			ps.setInt(2, id);
+			ps.execute();
+			ps.close();
+			con.close();
+			System.out.println("udating password");
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		} 
+		
 	}
 
 	@Override

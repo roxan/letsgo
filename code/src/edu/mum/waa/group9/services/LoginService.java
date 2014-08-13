@@ -1,9 +1,11 @@
 package edu.mum.waa.group9.services;
 
+import java.io.InputStream;
 import java.sql.SQLException;
 
-import javax.inject.Inject;
 import javax.sql.rowset.CachedRowSet;
+
+import org.primefaces.model.DefaultStreamedContent;
 
 import edu.mum.waa.group9.DaoImp.PersonDaoImpl;
 import edu.mum.waa.group9.beanImpl.Login;
@@ -13,18 +15,17 @@ import edu.mum.waa.group9.daoFacade.PersonDaoFacade;
 public class LoginService {
 	CachedRowSet personRow;
 	PersonDaoFacade personFacade = new PersonDaoImpl();
-	Person person = new Person();
 
-	public boolean doLogin(String email, String password) {
-		personRow = personFacade.getUnameAndPassword(email, password);
-		
+	public boolean doLogin(Person person, Login login) {
+		personRow = personFacade.getUnameAndPassword(login.getUserName(),login.getPassword());
+
 		if (personRow == null) {
 			return false;
 		} else
 			try {
-				if(personRow.next()) {
+				if (personRow.next()) {
 					try {
-						
+
 						person.setId(personRow.getInt("ID"));
 						person.setFirstName(personRow.getString("FIRST_NAME"));
 						person.setLastName(personRow.getString("LAST_NAME"));
@@ -32,25 +33,33 @@ public class LoginService {
 						person.setPassword(personRow.getString("PASSWORD"));
 						person.setPhone(personRow.getString("PHONE"));
 						person.setSex(personRow.getString("SEX"));
+						if (null != personRow.getBlob("AVATAR")) {
+							InputStream bs = personRow.getBlob("AVATAR")
+									.getBinaryStream();
+							DefaultStreamedContent dsc = new DefaultStreamedContent(
+									bs);
+							person.setPhoto(dsc);
+						}
 						return true;
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
 				}
 			} catch (SQLException e) {
+
 				e.printStackTrace();
 			}
 		return false;
 	}
+
 	public boolean changePassword(Person person1, Login login1) {
-		if(person1.getPassword().equals(login1.getOldPassword())){
-			
-			
+		String password=person1.getPassword();
+		String password1=login1.getPassword();
+		 if(password.equals(password1)){
+			 personFacade.updatePassword(person1.getId(), login1.getNewPassword());
 			return true;
 		}
-		return false;	
-		}
-		
-		
-	
+		return false;
+	}
+
 }

@@ -5,13 +5,13 @@
 }
 
 .noBorderPanelColumns td, tr {
-    vertical-align: top;
-    background: none !important;
-    border: none !important;
+	vertical-align: top;
+	background: none !important;
+	border: none !important;
 }
 
 .borderPanelColumns td, tr {
-    vertical-align: top;
+	vertical-align: top;
 }
 
 .buttonRight {
@@ -19,5 +19,15 @@
 }
 
 .headingSmall {
-	font-size: medium; 
+	font-size: medium;
+}
+
+.search {
+	width: 1200px;
+	cellspacing: 10px;
+	padding: 25px;
+}
+
+.rowClass{
+	padding: 25px;
 }

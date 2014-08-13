@@ -19,6 +19,7 @@ public class PersonDaoImpl implements PersonDaoFacade {
 	String INSERT_RECORD = "INSERT INTO Person (FIRST_NAME, LAST_NAME, SEX, PHONE, EMAIL,PASSWORD) VALUES(?,?,?,?,?,?)";
 	String INSERT_ADDRESS = "INSERT INTO Person_Address (PERSON_ID, STREET, CITY, STATE, COUNTRY,ZIP) VALUES(?, ?, ?,?,?,?)";
 	private final String getUserNameAndPassword = "SELECT * FROM PERSON WHERE PERSON.EMAIL=? AND PERSON.PASSWORD=?";
+	private final String OFFERED_RIDES = "SELECT * FROM RIDE WHERE PERSON_ID=?";
 	private CachedRowSet personInfo;
 	private CachedRowSet searchResult;
 
@@ -80,13 +81,8 @@ public class PersonDaoImpl implements PersonDaoFacade {
 				ps.setString(2, password);
 
 				ResultSet rs = ps.executeQuery();
-				// if (rs.next()) {
-				// System.out.println(": " + rs.getString("EMAIL"));
-
 				personInfo = new com.sun.rowset.CachedRowSetImpl();
 				personInfo.populate(rs);
-				// System.out.println(": " + personInfo.getString("EMAIL"));
-				// }
 				rs.close();
 				ps.close();
 			} finally {
@@ -99,14 +95,15 @@ public class PersonDaoImpl implements PersonDaoFacade {
 		}
 		return personInfo;
 	}
-	public void updatePassword(int id,String password){
-		String query="UPDATE Person P set P.PASSWORD = ? WHERE P.ID=?";
+
+	public void updatePassword(int id, String password) {
+		String query = "UPDATE Person P set P.PASSWORD = ? WHERE P.ID=?";
 		PreparedStatement ps;
 		Connection con;
 		try {
 			con = ConnectionManager.getConnection();
 			ps = con.prepareStatement(query);
-			ps.setString(1,password);
+			ps.setString(1, password);
 			ps.setInt(2, id);
 			ps.execute();
 			ps.close();
@@ -114,8 +111,7 @@ public class PersonDaoImpl implements PersonDaoFacade {
 			System.out.println("udating password");
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
-		} 
-		
+		}
 	}
 
 	@Override
@@ -136,5 +132,31 @@ public class PersonDaoImpl implements PersonDaoFacade {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public CachedRowSet getOfferedRides(PersonInterface person) {
+		PreparedStatement ps;
+		Connection con;
+		try {
+			con = ConnectionManager.getConnection();
+			try {
+				ps = con.prepareStatement(OFFERED_RIDES);
+				ps.setInt(1, person.getId());
+
+				ResultSet rs = ps.executeQuery();
+
+				searchResult = new com.sun.rowset.CachedRowSetImpl();
+				searchResult.populate(rs);
+				ps.close();
+			} finally {
+				ConnectionManager.closeConnection(con);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+		return searchResult;
 	}
 }

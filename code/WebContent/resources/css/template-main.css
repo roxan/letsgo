@@ -89,14 +89,6 @@ p, ul, ol, dl, table {
 	background-size: cover;
 }
 
-.headerText {
-	color: #ffd600;
-	font-size: 120px;
-	text-shadow: 2px 2px #bf360c;
-	text-align: center;
-	padding-top: 180px;
-}
-
 #navigationwrap {
 	width: 100%;
 	float: left;

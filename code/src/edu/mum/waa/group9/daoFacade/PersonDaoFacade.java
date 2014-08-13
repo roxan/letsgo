@@ -14,4 +14,6 @@ public interface PersonDaoFacade {
 	public void saveImage(UploadedFile file, int pid);
 
 	public void updatePassword(int id, String password);
+
+	public CachedRowSet getOfferedRides(PersonInterface person);
 }

@@ -100,7 +100,6 @@ public class Control implements Serializable {
 		} else {
 			return "login";
 		}
-
 	}
 
 	public Ride currentRideFromRideList() {

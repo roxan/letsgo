@@ -23,17 +23,17 @@
 						styleClass="noBorderPanelColumns">
 						<f:facet name="header">
 						</f:facet>
-						
-						<h:outputLabel for="firstName" value="#{msgs.firstNameLabel}" />						
+
+						<h:outputLabel for="firstName" value="#{msgs.firstNameLabel}" />
 						<p:inputText id="firstName" value="#{person.firstName}"
 							label="#{msgs.firstNameLabel}" required="true"
 							requiredMessage="#{msgs.requiredMessages}" />
-						
+
 						<h:outputLabel for="lastName" value="#{msgs.lastNameLabel}" />
 						<p:inputText id="lastName" value="#{person.lastName}"
 							label="#{msgs.lastNameLabel}" required="true"
 							requiredMessage="#{msgs.requiredMessages}" />
-						
+
 						<p:outputLabel value="#{msgs.dobLabel}" for="dob" />
 						<p:calendar id="dob" readonlyInput="true" navigator="true"
 							placeholder="hello" pattern="mm/dd/yyyy" yearRange="c-125:c+0" />
@@ -73,11 +73,11 @@
 						styleClass="noBorderPanelColumns">
 						<f:facet name="header">
 						</f:facet>
-						
+
 						<h:outputLabel for="street" value="#{msgs.streetLabel}" />
 						<p:inputText id="street" value="#{address.street}"
 							label="#{msgs.streetLabel}" />
-						
+
 						<h:outputLabel for="city" value="#{msgs.cityLabel}" />
 						<p:inputText id="city" value="#{address.city}"
 							label="#{msgs.cityLabel}" required="true"
@@ -103,26 +103,16 @@
 					</p:panelGrid>
 
 					<f:facet name="footer">
-						<h:commandButton value="#{msgs.clearButton}" onclick="clearField(this.form)"/>						
-						<h:commandButton value="#{msgs.registerButton}"
-							action="#{control.registerPerson}"
-							onclick="clearField(this.form)" />
+						<p:commandButton value="#{msgs.clearButton}" icon="ui-icon-check"
+							styleClass="buttonRight" onclick="clearField(this.form)" />
+						<p:commandButton value="#{msgs.registerButton}"
+							icon="ui-icon-check" styleClass="buttonRight"
+							action="#{control.registerPerson}" />
+						
 					</f:facet>
 				</p:panelGrid>
-<<<<<<< HEAD
-				<f:facet name="footer">
-					<p:commandButton  value="#{msgs.clearButton}"
-						icon="ui-icon-check" styleClass="buttonRight" onclick="clearField(this.form)" />
-					<p:commandButton  value="#{msgs.registerButton}"
-						icon="ui-icon-check" styleClass="buttonRight" action="#{control.registerPerson}" />
-						<p:commandButton value="#{msgs.registerButton}" ></p:commandButton>
-				</f:facet>
-			</p:panelGrid>
-		</h:form>
-=======
 			</h:form>
-		</h:panelGroup>		
->>>>>>> 8e0e3addd307a2297d87e6181969641f7142547a
+		</h:panelGroup>
 	</ui:composition>
 </body>
 </html>

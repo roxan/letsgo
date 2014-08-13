@@ -25,7 +25,7 @@ public class Control implements Serializable {
 	PersonAddress personAddress;
 	@Inject
 	private Login login;
-	
+
 	private boolean loggedIn;
 	private String confirmPassword;
 
@@ -43,15 +43,18 @@ public class Control implements Serializable {
 		return "registration_status";
 	}
 
-	public String checkLogin(){
+	public String checkLogin() {
 		return null;
 	}
-	public String doLogin(){
-		LoginService ls=new LoginService(); 
-		boolean isValid =ls.doLogin(login);
-		if(isValid){		
-		return "userPanel";
-		}else{
+
+	public String doLogin() {
+		LoginService ls = new LoginService();
+		boolean isValid = ls.doLogin(login.getUserName(), login.getPassword());
+		if (isValid) {
+			login.setInvalid(true);
+			return "userPanel";
+		} else {
+			login.setInvalid(false);
 			return "index";
 		}
 	}

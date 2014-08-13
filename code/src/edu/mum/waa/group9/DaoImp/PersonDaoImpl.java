@@ -18,7 +18,7 @@ import edu.mum.waa.group9.utils.DateUtil;
 public class PersonDaoImpl implements PersonDaoFacade {
 	String INSERT_RECORD = "INSERT INTO Person (FIRST_NAME, LAST_NAME, PHONE, EMAIL,PASSWORD) VALUES(?,?,?, ?, ?)";
 	String INSERT_ADDRESS = "INSERT INTO Address (PERSON_ID, STREET, CITY, STATE, COUNTRY,ZIP) VALUES(?, ?, ?, ?,?,?,?)";
-	private final String getUserNameAndPassword = "SELECT EMAIL,PASSWORD FROM PERSON WHERE PERSON.EMAIL=?";
+	private final String getUserNameAndPassword = "SELECT EMAIL,PASSWORD FROM PERSON WHERE PERSON.EMAIL=? AND PERSON.PASSWORD=?";
 	private CachedRowSet personInfo;
 
 	private boolean insert_success = false;
@@ -70,7 +70,7 @@ public class PersonDaoImpl implements PersonDaoFacade {
 		return insert_success;
 	}
 
-	public CachedRowSet getUnameAndPassword(String username) {
+	public CachedRowSet getUnameAndPassword(String username, String password) {
 
 		PreparedStatement ps;
 		Connection con;
@@ -79,6 +79,7 @@ public class PersonDaoImpl implements PersonDaoFacade {
 			try {
 				ps = con.prepareStatement(getUserNameAndPassword);
 				ps.setString(1, username);
+				ps.setString(2, password);
 
 				ResultSet rs = ps.executeQuery();
 

@@ -19,15 +19,19 @@
 				<h:outputLabel for="userName" value="#{msgs.userName}" />
 				<p:inputText id="userName" required="true" value="#{login.userName}" />
 				<h:outputLabel for="password" value="#{msgs.password}" />
-				<p:password id="password" match="confirmPassword" required="true" value="#{login.password}"/>
+				<p:password id="password" required="true" value="#{login.password}" />
 
-
+				<h:outputText rendered="#{login.isCorrect}"
+					value="#{msgs.invalidUserNameOrPassword}" />
 				<f:facet name="footer">
-					<p:commandButton value="#{msgs.loginButton}" action="#{control.doLogin}" />
+					<p:commandButton value="#{msgs.loginButton}"
+						action="#{control.doLogin}" />
 					<p:commandButton value="#{msgs.cancelButton}" immediate="true" />
-					<p:commandLink value="#{msgs.register}" action="register"/>
+					<p:commandLink value="#{msgs.register}" action="register" />
 				</f:facet>
+
 			</p:panelGrid>
+
 		</h:form>
 	</ui:composition>
 </body>

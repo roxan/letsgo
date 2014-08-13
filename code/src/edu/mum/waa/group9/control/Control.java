@@ -51,11 +51,11 @@ public class Control implements Serializable {
 		LoginService ls = new LoginService();
 		boolean isValid = ls.doLogin(login.getUserName(), login.getPassword());
 		if (isValid) {
-			login.setInvalid(true);
-			return "userPanel";
+			login.setIsCorrect(true);
+			return "register";
 		} else {
-			login.setInvalid(false);
-			return "index";
+			login.setIsCorrect(false);
+			return "login";
 		}
 	}
 

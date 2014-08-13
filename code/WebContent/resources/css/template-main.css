@@ -2,12 +2,70 @@
 @import url("css/reset.css");
 
 body {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 13px;
-	color: #333
+	background-color: #f7f7f7;
+	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0)), url('images/bg01.png');
+	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0)), url('images/bg01.png');
+	background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0)), url('images/bg01.png');
+	background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0)), url('images/bg01.png');
+	background-image: linear-gradient(top, rgba(0, 0, 0, 0.05),
+		rgba(0, 0, 0, 0)), url('images/bg01.png');
+	background-position: top left, top left;
+	background-repeat: repeat-x, repeat;
+	background-size: 100% 30em, auto;
+	color: #696969;
+	font-weight: 300;
 }
 
-p {
+a {
+	color: #0090c5;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #444;
+	font-weight: 800;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color: inherit;
+	text-decoration: none;
+	outline: 0;
+}
+
+b, strong {
+	font-weight: 600;
+	color: #444;
+}
+
+i, em {
+	font-style: italic;
+}
+
+br.clear {
+	clear: both;
+}
+
+hr {
+	border: 0;
+	border-top: solid 1px #eee;
+}
+
+blockquote {
+	border-left: solid 0.5em #eee;
+	padding: 1em 0 1em 2em;
+	font-style: italic;
+}
+
+p, ul, ol, dl, table {
+	margin-bottom: 2em;
 	padding: 10px;
 }
 

@@ -3,32 +3,30 @@ package edu.mum.waa.group9.control;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import edu.mum.waa.group9.beanImpl.Person;
+import edu.mum.waa.group9.beanImpl.PersonAddress;
 import edu.mum.waa.group9.beanImpl.Search;
-import edu.mum.waa.group9.beanInterfaces.SearchInterface;
 import edu.mum.waa.group9.services.SearchService;
 
 @Named("control")
 @SessionScoped
-public class Control implements Serializable {
+public class Control implements Serializable{
 	@Inject
 	private Search searchBean;
+	@Inject
+	private Person personBean;
+	@Inject
+	PersonAddress personAddress;
+	
 	private boolean loggedIn;
 	private String confirmPassword;
 
 	public String search() {
-		System.out.println("Inside Control -- > Search");
 		SearchService searchServ = new SearchService();
 		searchServ.search(searchBean);
-//		if (searchBean.getRideList() != null)
-//			System.out.println("Control --> searchBean--rideList--source: "
-//					+ searchBean.getRideList().get(0).getSource());
-//		else
-//			System.out
-//					.println("Control -- > **serachBean.getRideList returned null**");
 		return "searchResult";
 	}
 	
@@ -61,4 +59,5 @@ public class Control implements Serializable {
 	}
 
 	private static final long serialVersionUID = 6063138477024970939L;
+
 }

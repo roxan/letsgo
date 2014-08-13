@@ -6,10 +6,12 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import edu.mum.waa.group9.beanImpl.Login;
 import edu.mum.waa.group9.beanImpl.Person;
 import edu.mum.waa.group9.beanImpl.PersonAddress;
 import edu.mum.waa.group9.beanImpl.Search;
 import edu.mum.waa.group9.beanInterfaces.SearchInterface;
+import edu.mum.waa.group9.services.LoginService;
 import edu.mum.waa.group9.services.PersonService;
 import edu.mum.waa.group9.services.SearchService;
 
@@ -22,6 +24,8 @@ public class Control implements Serializable{
 	private Person personBean;
 	@Inject
 	PersonAddress personAddress;
+	@Inject
+	private Login login;
 	
 	private boolean loggedIn;
 	
@@ -37,5 +41,14 @@ public class Control implements Serializable{
 		personBean.setAddress(personAddress);
 		personServ.register(personBean);
 		return "";
+	}
+	public String doLogin(){
+		LoginService ls=new LoginService(); 
+		boolean isValid =ls.doLogin(login);
+		if(isValid){		
+		return "userPanel";
+		}else{
+			return "index";
+		}
 	}
 }

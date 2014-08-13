@@ -8,32 +8,36 @@ import java.sql.SQLException;
 import javax.naming.NamingException;
 import javax.sql.rowset.CachedRowSet;
 
+import edu.mum.waa.group9.beanInterfaces.LoginInterface;
 import edu.mum.waa.group9.beanInterfaces.PersonInterface;
 import edu.mum.waa.group9.beanInterfaces.SearchInterface;
 import edu.mum.waa.group9.daoFacade.PersonDaoFacade;
 import edu.mum.waa.group9.utils.ConnectionManager;
+import edu.mum.waa.group9.utils.DateUtil;
 
 public class PersonDaoImpl implements PersonDaoFacade {
 	String INSERT_RECORD = "INSERT INTO Person (FIRST_NAME, LAST_NAME, PHONE, EMAIL,PASSWORD) VALUES(?,?,?, ?, ?)";
 	String INSERT_ADDRESS = "INSERT INTO Address (PERSON_ID, STREET, CITY, STATE, COUNTRY,ZIP) VALUES(?, ?, ?, ?,?,?,?)";
-
-public void registerPerson(PersonInterface personBean) {
+	private final String getUserNameAndPassword = "SELECT EMAIL,PASSWORD FROM PERSON WHERE PERSON.EMAIL=?";
+	private CachedRowSet personInfo;
+	public void registerPerson(PersonInterface personBean) {
 		int id;
 		PreparedStatement ps;
 		Connection con;
 		try {
 			con = ConnectionManager.getConnection();
 			try {
-				ps = con.prepareStatement(INSERT_RECORD,PreparedStatement.RETURN_GENERATED_KEYS);
-				ps.setString(1,personBean.getFirstName());
-				ps.setString(2,personBean.getLastName());
-				ps.setString(3,personBean.getPhone());
-				ps.setString(4,personBean.getEmail());
-				ps.setString(5,personBean.getPassword());			
-				
-				ps.executeUpdate();		
-				ResultSet rs=ps.getGeneratedKeys();
-				
+				ps = con.prepareStatement(INSERT_RECORD,
+						PreparedStatement.RETURN_GENERATED_KEYS);
+				ps.setString(1, personBean.getFirstName());
+				ps.setString(2, personBean.getLastName());
+				ps.setString(3, personBean.getPhone());
+				ps.setString(4, personBean.getEmail());
+				ps.setString(5, personBean.getPassword());
+
+				ps.executeUpdate();
+				ResultSet rs = ps.getGeneratedKeys();
+
 				if (rs.next()) {
 					id = rs.getInt(1);
 					ps = con.prepareStatement(INSERT_ADDRESS);
@@ -42,10 +46,10 @@ public void registerPerson(PersonInterface personBean) {
 					ps.setString(3, personBean.getAddress().getCity());
 					ps.setString(4, personBean.getAddress().getState());
 					ps.setString(5, personBean.getAddress().getCountry());
-					ps.setString(6,personBean.getAddress().getZip());
+					ps.setString(6, personBean.getAddress().getZip());
 					/*
-					 * queryStr = String.format(INSERT_ADDRESS, id, street, city,
-					 * state, zip);
+					 * queryStr = String.format(INSERT_ADDRESS, id, street,
+					 * city, state, zip);
 					 */
 
 					ps.executeUpdate();
@@ -62,5 +66,32 @@ public void registerPerson(PersonInterface personBean) {
 		} catch (NamingException e) {
 
 		}
+	}
+
+	public CachedRowSet getUnameAndPassword(String username) {
+		
+		PreparedStatement ps;
+		Connection con;
+		try {
+			con = ConnectionManager.getConnection();
+			try {
+				ps = con.prepareStatement(getUserNameAndPassword);
+				ps.setString(1, username);
+
+				ResultSet rs = ps.executeQuery();
+
+				personInfo = new com.sun.rowset.CachedRowSetImpl();
+				personInfo.populate(rs);
+
+				ps.close();
+			} finally {
+				ConnectionManager.closeConnection(con);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+		return personInfo;
 	}
 }

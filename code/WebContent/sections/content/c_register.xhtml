@@ -11,7 +11,7 @@
 </head>
 <body>
 	<ui:composition>
-		<h:form>
+		<h:form enctype="multipart/form-data">
 			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
 				styleClass="borderPanelColumns">
 				<f:facet name="header">
@@ -94,7 +94,7 @@
 						icon="ui-icon-check" styleClass="buttonRight" onclick="clearField(this.form)" />
 					<p:commandButton  value="#{msgs.registerButton}"
 						icon="ui-icon-check" styleClass="buttonRight" action="#{control.registerPerson}" />
-						<p:commandButton value="#{msgs.registerButton}" action=""></p:commandButton>
+						<p:commandButton value="#{msgs.registerButton}" ></p:commandButton>
 				</f:facet>
 			</p:panelGrid>
 		</h:form>

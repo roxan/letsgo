@@ -20,7 +20,10 @@ public class PersonDaoImpl implements PersonDaoFacade {
 	String INSERT_ADDRESS = "INSERT INTO Address (PERSON_ID, STREET, CITY, STATE, COUNTRY,ZIP) VALUES(?, ?, ?, ?,?,?,?)";
 	private final String getUserNameAndPassword = "SELECT EMAIL,PASSWORD FROM PERSON WHERE PERSON.EMAIL=?";
 	private CachedRowSet personInfo;
-	public void registerPerson(PersonInterface personBean) {
+
+	private boolean insert_success = false;
+
+	public boolean registerPerson(PersonInterface personBean) {
 		int id;
 		PreparedStatement ps;
 		Connection con;
@@ -53,23 +56,22 @@ public class PersonDaoImpl implements PersonDaoFacade {
 					 */
 
 					ps.executeUpdate();
-
-					System.out.println("Generated ID is: " + id);
+					insert_success = true;
 				}
 				ps.close();
 
 			} finally {
 				ConnectionManager.closeConnection(con);
 			}
-		} catch (SQLException e) {
-
-		} catch (NamingException e) {
-
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
+		return insert_success;
 	}
 
 	public CachedRowSet getUnameAndPassword(String username) {
-		
+
 		PreparedStatement ps;
 		Connection con;
 		try {

@@ -3,6 +3,7 @@ package edu.mum.waa.group9.beanImpl;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.enterprise.context.SessionScoped;
@@ -140,6 +141,43 @@ public class Ride implements RideInterface, Serializable {
 
 	public void setHitCounter(int hitCounter) {
 		this.hitCounter = hitCounter;
+	}
+
+	public String nameExpenseSummary() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(person.getFirstName() + " " + person.getLastName());
+		sb.append(": expected expense: $");
+		sb.append(expectedExpense);
+		return sb.toString();
+
+	}
+
+	public String departSummary() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Going from ");
+		sb.append(source);
+		sb.append(" to ");
+		sb.append(destination);
+		sb.append(" on ");
+		sb.append(new SimpleDateFormat("mm/dd/yy").format(departDate));
+		sb.append(" at ");
+		sb.append(departTime);
+
+		return sb.toString();
+	}
+
+	public String returnSummary() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Returning from ");
+		sb.append(destination);
+		sb.append(" to ");
+		sb.append(source);
+		sb.append(" on ");
+		sb.append(new SimpleDateFormat("mm/dd/yy").format(returnDate));
+		sb.append(" at ");
+		sb.append(returnTime);
+
+		return sb.toString();
 	}
 
 	private static final long serialVersionUID = 1L;

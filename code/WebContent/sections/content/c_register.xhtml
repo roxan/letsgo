@@ -6,89 +6,110 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <head>
-<h:outputScript library="javascript" name="clearFields.js"/>
+<h:outputScript library="javascript" name="clearFields.js" />
 <title>IGNORED</title>
 </head>
 <body>
 	<ui:composition>
-		<h:form enctype="multipart/form-data">
-			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-				styleClass="borderPanelColumns">
-				<f:facet name="header">
-				#{msgs.registerText}
-			</f:facet>
+
+		<h:panelGroup rendered="#{! person.registered}">
+			<h:form>
 				<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-					styleClass="noBorderPanelColumns">
+					styleClass="borderPanelColumns">
 					<f:facet name="header">
+						<h:outputLabel value="#{msgs.registerText}" />
 					</f:facet>
-					<h:outputLabel for="firstName" value="#{msgs.firstNameLabel}"  />
-					<p:inputText id="firstName" value="#{person.firstName}"
-						label="#{msgs.firstNameLabel}" required="true" requiredMessage="#{msgs.requiredMessages}"/>
-					<h:outputLabel for="lastName" value="#{msgs.lastNameLabel}" />
-					<p:inputText id="lastName" value="#{person.lastName}"
-						label="#{msgs.lastNameLabel}" required="true" requiredMessage="#{msgs.requiredMessages}"/>
-					<p:outputLabel value="#{msgs.dobLabel}" for="dob" />
-					<p:calendar id="dob" readonlyInput="true" navigator="true"
-						placeholder="hello" pattern="mm/dd/yyyy" yearRange="c-125:c+0"/>
+					<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+						styleClass="noBorderPanelColumns">
+						<f:facet name="header">
+						</f:facet>
+						
+						<h:outputLabel for="firstName" value="#{msgs.firstNameLabel}" />						
+						<p:inputText id="firstName" value="#{person.firstName}"
+							label="#{msgs.firstNameLabel}" required="true"
+							requiredMessage="#{msgs.requiredMessages}" />
+						
+						<h:outputLabel for="lastName" value="#{msgs.lastNameLabel}" />
+						<p:inputText id="lastName" value="#{person.lastName}"
+							label="#{msgs.lastNameLabel}" required="true"
+							requiredMessage="#{msgs.requiredMessages}" />
+						
+						<p:outputLabel value="#{msgs.dobLabel}" for="dob" />
+						<p:calendar id="dob" readonlyInput="true" navigator="true"
+							placeholder="hello" pattern="mm/dd/yyyy" yearRange="c-125:c+0" />
 
-					<p:outputLabel value="#{msgs.sexLabel}" for="sexRadio" />
-					<p:selectOneRadio id="sexRadio" value="#{person.sex}">
-						<f:selectItem itemLabel="Male" itemValue="#{msgs.maleText}" />
-						<f:selectItem itemLabel="Female" itemValue="#{msgs.femaleText}" />
-					</p:selectOneRadio>
+						<p:outputLabel value="#{msgs.sexLabel}" for="sexRadio" />
+						<p:selectOneRadio id="sexRadio" value="#{person.sex}">
+							<f:selectItem itemLabel="Male" itemValue="#{msgs.maleText}" />
+							<f:selectItem itemLabel="Female" itemValue="#{msgs.femaleText}" />
+						</p:selectOneRadio>
 
-					<h:outputLabel for="phone" value="#{msgs.phoneLabel}" />
-					<p:inputText id="phone" value="#{person.phone}"
-						label="#{msgs.phoneLabel}"  required="true" requiredMessage="#{msgs.requiredMessages}"/>
+						<h:outputLabel for="phone" value="#{msgs.phoneLabel}" />
+						<p:inputText id="phone" value="#{person.phone}"
+							label="#{msgs.phoneLabel}" required="true"
+							requiredMessage="#{msgs.requiredMessages}" />
 
-					<h:outputLabel for="email" value="#{msgs.emailLabel}" />
-					<p:inputText id="email" value="#{person.email}"
-						label="#{msgs.emailLabel}" required="true" requiredMessage="#{msgs.requiredMessages}" />
+						<h:outputLabel for="email" value="#{msgs.emailLabel}" />
+						<p:inputText id="email" value="#{person.email}"
+							label="#{msgs.emailLabel}" required="true"
+							requiredMessage="#{msgs.requiredMessages}" />
 
-					<h:outputLabel for="password" value="#{msgs.passwordLabel}" />
-					<p:password id="password" value="#{person.password}"
-						label="#{msgs.passwordLabel}" required="true" requiredMessage="#{msgs.requiredMessages}"/>
+						<h:outputLabel for="password" value="#{msgs.passwordLabel}" />
+						<p:password id="password" value="#{person.password}"
+							label="#{msgs.passwordLabel}" required="true"
+							requiredMessage="#{msgs.requiredMessages}" />
 
-					<h:outputLabel for="confirmPassword"
-						value="#{msgs.confirmPasswordLabel}" />
-					<p:password id="confirmPassword" value="#{person.confirmPassword}"
-						label="#{msgs.confirmPasswordLabel}" required="true" requiredMessage="#{msgs.requiredMessages}"/>
+						<h:outputLabel for="confirmPassword"
+							value="#{msgs.confirmPasswordLabel}" />
+						<p:password id="confirmPassword" value="#{person.confirmPassword}"
+							label="#{msgs.confirmPasswordLabel}" required="true"
+							requiredMessage="#{msgs.requiredMessages}" />
+
+						<f:facet name="footer">
+						</f:facet>
+					</p:panelGrid>
+
+					<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+						styleClass="noBorderPanelColumns">
+						<f:facet name="header">
+						</f:facet>
+						
+						<h:outputLabel for="street" value="#{msgs.streetLabel}" />
+						<p:inputText id="street" value="#{address.street}"
+							label="#{msgs.streetLabel}" />
+						
+						<h:outputLabel for="city" value="#{msgs.cityLabel}" />
+						<p:inputText id="city" value="#{address.city}"
+							label="#{msgs.cityLabel}" required="true"
+							requiredMessage="#{msgs.requiredMessages}" />
+
+						<h:outputLabel for="state" value="#{msgs.stateLabel}" />
+						<p:inputText id="state" value="#{address.state}"
+							label="#{msgs.stateLabel}" required="true"
+							requiredMessage="#{msgs.requiredMessages}" />
+
+						<h:outputLabel for="zip" value="#{msgs.zipLabel}" />
+						<p:inputText id="zip" value="#{address.zip}"
+							label="#{msgs.zipLabel}" required="true"
+							requiredMessage="#{msgs.requiredMessages}" />
+
+						<h:outputLabel for="country" value="#{msgs.countryLabel}" />
+						<p:selectOneMenu id="country" value="#{address.country}">
+							<f:selectItem itemLabel="US" itemValue="#{msgs.maleText}" />
+						</p:selectOneMenu>
+
+						<f:facet name="footer">
+						</f:facet>
+					</p:panelGrid>
 
 					<f:facet name="footer">
+						<h:commandButton value="#{msgs.clearButton}" onclick="clearField(this.form)"/>						
+						<h:commandButton value="#{msgs.registerButton}"
+							action="#{control.registerPerson}"
+							onclick="clearField(this.form)" />
 					</f:facet>
 				</p:panelGrid>
-
-				<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-					styleClass="noBorderPanelColumns">
-					<f:facet name="header">
-					</f:facet>
-					<h:outputLabel for="street" value="#{msgs.streetLabel}" />
-					<p:inputText id="street" value="#{address.street}"
-						label="#{msgs.streetLabel}" />
-					<h:outputLabel for="city" value="#{msgs.cityLabel}" />
-					<p:inputText id="city" value="#{address.city}"
-						label="#{msgs.cityLabel}" required="true" requiredMessage="#{msgs.requiredMessages}"/>
-
-					<h:outputLabel for="state" value="#{msgs.stateLabel}" />
-					<p:inputText id="state" value="#{address.state}"
-						label="#{msgs.stateLabel}" required="true" requiredMessage="#{msgs.requiredMessages}"/>
-
-					<h:outputLabel for="zip" value="#{msgs.zipLabel}" />
-					<p:inputText id="zip" value="#{address.zip}"
-						label="#{msgs.zipLabel}" required="true" requiredMessage="#{msgs.requiredMessages}"/>
-
-					<h:outputLabel for="country" value="#{msgs.countryLabel}" />
-					<p:selectOneMenu id="country" value="#{address.country}">
-						<f:selectItem itemLabel="US" itemValue="#{msgs.maleText}" />
-					</p:selectOneMenu>
-					<h:outputLabel for="photo" value="#{msgs.photoLabel}" />
-					<p:fileUpload id="photo" mode="advanced"
-						fileUploadListener="#{person.handleFileUpload}"
-						allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
-						auto="true" />
-					<f:facet name="footer">
-					</f:facet>
-				</p:panelGrid>
+<<<<<<< HEAD
 				<f:facet name="footer">
 					<p:commandButton  value="#{msgs.clearButton}"
 						icon="ui-icon-check" styleClass="buttonRight" onclick="clearField(this.form)" />
@@ -98,6 +119,10 @@
 				</f:facet>
 			</p:panelGrid>
 		</h:form>
+=======
+			</h:form>
+		</h:panelGroup>		
+>>>>>>> 8e0e3addd307a2297d87e6181969641f7142547a
 	</ui:composition>
 </body>
 </html>

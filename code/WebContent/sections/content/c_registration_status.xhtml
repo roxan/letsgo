@@ -10,22 +10,14 @@
 </head>
 <body>
 	<ui:composition>
-		<p:dataTable var="rideVar" value="#{search.rideList}">
-			<p:column>
-				<p:commandLink actionListener="#{control.checkLogin()}">
-					<h:outputText value="#{rideVar.nameExpenseSummary()}" />
-				</p:commandLink>
-			</p:column>
+		<h:panelGroup rendered="#{person.registered}">
+			<h:outputLabel value="#{msgs.registerSuccess}" />
+		</h:panelGroup>
 
-			<p:column>
-				<h:outputText value="#{rideVar.departSummary()}" />
-			</p:column>
+		<h:panelGroup rendered="#{! person.registered}">
+			<h:outputLabel value="#{msgs.registerError}" />
+		</h:panelGroup>
 
-			<p:column>
-				<h:outputText value="#{rideVar.returnSummary()}" />
-			</p:column>
-
-		</p:dataTable>
 	</ui:composition>
 </body>
 </html>

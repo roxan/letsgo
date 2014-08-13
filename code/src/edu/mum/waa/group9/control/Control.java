@@ -6,6 +6,8 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.FileUploadEvent;
+
 import edu.mum.waa.group9.beanImpl.Login;
 import edu.mum.waa.group9.beanImpl.Person;
 import edu.mum.waa.group9.beanImpl.PersonAddress;
@@ -57,6 +59,11 @@ public class Control implements Serializable {
 			login.setInvalid(false);
 			return "index";
 		}
+	}
+
+	public void handleFileUpload(FileUploadEvent event) {
+		PersonService personServ = new PersonService();
+		personServ.handleFileUpload(event.getFile(), personBean.getId());
 	}
 
 	public Search getSearchBean() {

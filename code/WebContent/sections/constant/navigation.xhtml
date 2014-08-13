@@ -1,10 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:corejsf="http://corejsf.com/facelets">
-	
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:corejsf="http://corejsf.com/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
 <head>
 <title>IGNORED</title>
 </head>
@@ -13,15 +14,18 @@
 		<div id="navigationwrap">
 			<div id="navigation">
 				<h:form>
-				<corejsf:goto name="login" 
-                            image="#{resource['images:Mercury.gif']}"/>
-                            <corejsf:goto name="register" 
-                            image="#{resource['images:Mercury.gif']}"/>
-                             <corejsf:goto name="changePassword" 
-                            image="#{resource['images:Mercury.gif']}"/>
+					<h:panelGroup rendered="#{control.loggedIn}">
+						<p:graphicImage value="#{person.photo}" />
+					</h:panelGroup>
+					<corejsf:goto name="login"
+						image="#{resource['images:Mercury.gif']}" />
+					<corejsf:goto name="register"
+						image="#{resource['images:Mercury.gif']}" />
+					<corejsf:goto name="changePassword"
+						image="#{resource['images:Mercury.gif']}" />
 					<!-- <h:commandLink value="#{msgs.login}" />
 					<h:commandLink value="#{msgs.register}" /> -->
-					
+
 				</h:form>
 			</div>
 		</div>

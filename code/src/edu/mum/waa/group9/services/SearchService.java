@@ -1,10 +1,13 @@
 package edu.mum.waa.group9.services;
 
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.rowset.CachedRowSet;
+
+import org.primefaces.model.DefaultStreamedContent;
 
 import edu.mum.waa.group9.DaoImp.SearchDaoImpl;
 import edu.mum.waa.group9.beanImpl.Person;
@@ -19,7 +22,6 @@ public class SearchService {
 	CachedRowSet searchResult;
 
 	public void search(Search searchBean) {
-		System.out.println("Inside SearchService -- > Search");
 		SearchDaoFacade searchDao = new SearchDaoImpl();
 		searchResult = searchDao.search(searchBean);
 		try {
@@ -43,7 +45,12 @@ public class SearchService {
 				tempPerson.setPhone(searchResult.getString("PHONE"));
 				tempPerson.setEmail(searchResult.getString("EMAIL"));
 				tempPerson.setPassword(searchResult.getString("PASSWORD"));
-				//tempPerson.setPhoto(searchResult.getBlob("AVATAR"));
+				if (null != searchResult.getBlob("AVATAR")) {
+					InputStream bs = searchResult.getBlob("AVATAR")
+							.getBinaryStream();
+					DefaultStreamedContent dsc = new DefaultStreamedContent(bs);
+					tempPerson.setPhoto(dsc);
+				}
 				tempPerson.setAddress(tempAddress);
 
 				tempRide.setId(searchResult.getInt("ID"));
@@ -65,16 +72,8 @@ public class SearchService {
 				tempRide.setPerson(tempPerson);
 				searchBean.getRideList().add(tempRide);
 			}
-//			if (searchBean.getRideList() != null)
-//				System.out
-//						.println("SearchService --> searchBean--rideList--source: "
-//								+ searchBean.getRideList().get(0).getSource());
-//			else
-//				System.out
-//						.println("SearchService -- > **serachBean.getRideList returned null**");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -40,10 +40,6 @@ public class SearchDaoImpl implements SearchDaoFacade {
 				searchResult = new com.sun.rowset.CachedRowSetImpl();
 				searchResult.populate(rs);
 				
-				//rs.next();
-				//System.out.println("SearchDaoImpl-->First Name: "+rs.getString("FIRST_NAME"));
-				//System.out.println("SearchDaoImpl-->STREET: "+rs.getString("STREET"));
-
 				ps.close();
 			} finally {
 				ConnectionManager.closeConnection(con);

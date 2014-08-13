@@ -149,7 +149,6 @@ public class Ride implements RideInterface, Serializable {
 		sb.append(": expected expense: $");
 		sb.append(expectedExpense);
 		return sb.toString();
-
 	}
 
 	public String departSummary() {

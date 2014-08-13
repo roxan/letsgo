@@ -1,8 +1,7 @@
 package edu.mum.waa.group9.beanInterfaces;
 
-import java.sql.Blob;
+import org.primefaces.model.StreamedContent;
 
-import edu.mum.waa.group9.beanImpl.Person;
 import edu.mum.waa.group9.beanImpl.PersonAddress;
 
 public interface PersonInterface {
@@ -10,7 +9,7 @@ public interface PersonInterface {
 
 	public String getLastName();
 
-	public Blob getPhoto();
+	public StreamedContent getPhoto();
 
 	public String getSex();
 
@@ -24,10 +23,8 @@ public interface PersonInterface {
 
 	public String getFullName();
 
-	
-	//setters..............
-	
-	
+	// setters..............
+
 	public void setId(int Id);
 
 	public void setFirstName(String firstName);
@@ -42,5 +39,5 @@ public interface PersonInterface {
 
 	public void setAddress(PersonAddress address);
 
-	public void setPhoto(Blob photo);
+	public void setPhoto(StreamedContent photo);
 }

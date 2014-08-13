@@ -21,7 +21,8 @@ public class Person implements PersonInterface, Serializable {
 	private String password;
 	private String confirmPassword;
 	private PersonAddress address;
-	private Blob photo;
+	private Blob photo;	
+	private boolean registered = false;
 
 	public int getId() {
 		return id;
@@ -114,4 +115,13 @@ public class Person implements PersonInterface, Serializable {
 	public String getFullName(){
 		return firstName+" "+lastName;
 	}
+
+	public boolean isRegistered() {
+		return registered;
+	}
+
+	public void setRegistered(boolean registered) {
+		this.registered = registered;
+	}
+	
 }

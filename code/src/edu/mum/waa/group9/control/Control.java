@@ -15,27 +15,27 @@ import edu.mum.waa.group9.services.SearchService;
 
 @Named("control")
 @SessionScoped
-public class Control implements Serializable{
+public class Control implements Serializable {
 	@Inject
 	private Search searchBean;
 	@Inject
 	private Person personBean;
 	@Inject
 	PersonAddress personAddress;
-	
+
 	private boolean loggedIn;
-	
-	
-	
-	public String search(){
+
+	public String search() {
 		SearchService searchServ = new SearchService();
 		searchServ.search(searchBean);
 		return "showResult";
 	}
-	public String registerPerson(){		
-		PersonService personServ=new PersonService();
-		personBean.setAddress(personAddress);
-		personServ.register(personBean);
-		return "";
+
+	public String registerPerson() {
+		PersonService personServ = new PersonService();
+		personBean.setAddress(personAddress);		
+		personBean.setRegistered(personServ.register(personBean));
+		System.out.println("Boolean Checked: "+personBean.isRegistered());
+		return "registration_status";
 	}
 }

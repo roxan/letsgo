@@ -6,8 +6,8 @@ import edu.mum.waa.group9.daoFacade.PersonDaoFacade;
 
 public class PersonService {
 
-	public void register(Person personBean) {
+	public boolean  register(Person personBean) {
 		PersonDaoFacade registerDao=new PersonDaoImpl();
-		registerDao.registerPerson(personBean);		
+		return registerDao.registerPerson(personBean);		
 	}
 }

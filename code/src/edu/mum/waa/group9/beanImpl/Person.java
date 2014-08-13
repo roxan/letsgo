@@ -19,7 +19,7 @@ public class Person implements PersonInterface, Serializable {
 	private String phone;
 	private String email;
 	private String password;
-	private String confirmPassword;
+	
 	private PersonAddress address;
 	private Blob photo;
 
@@ -77,14 +77,6 @@ public class Person implements PersonInterface, Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
 	}
 
 	public PersonAddress getAddress() {

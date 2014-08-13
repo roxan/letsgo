@@ -10,10 +10,22 @@
 </head>
 <body>
 	<ui:composition>
-		<h:dataTable var="ride" value="#{search.rideList}">
-			<h:outputText value="#{ride.fromLocation}" />
-		</h:dataTable>
+		<p:dataTable var="rideVar" value="#{search.rideList}">
+			<p:column>
+				<p:commandLink actionListener="#{control.checkLogin()}">
+					<h:outputText value="#{rideVar.nameExpenseSummary()}" />
+				</p:commandLink>
+			</p:column>
 
+			<p:column>
+				<h:outputText value="#{rideVar.departSummary()}" />
+			</p:column>
+
+			<p:column>
+				<h:outputText value="#{rideVar.returnSummary()}" />
+			</p:column>
+
+		</p:dataTable>
 	</ui:composition>
 </body>
 </html>

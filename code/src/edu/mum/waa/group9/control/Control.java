@@ -17,14 +17,23 @@ public class Control implements Serializable {
 	@Inject
 	private Search searchBean;
 	private boolean loggedIn;
+	private String confirmPassword;
 
 	public String search() {
 		System.out.println("Inside Control -- > Search");
 		SearchService searchServ = new SearchService();
 		searchServ.search(searchBean);
-		System.out.println("Control --> searchBean--rideList--source: "
-				+ searchBean.getRideList().get(0).getSource());
+//		if (searchBean.getRideList() != null)
+//			System.out.println("Control --> searchBean--rideList--source: "
+//					+ searchBean.getRideList().get(0).getSource());
+//		else
+//			System.out
+//					.println("Control -- > **serachBean.getRideList returned null**");
 		return "searchResult";
+	}
+	
+	public String checkLogin(){
+		return null;
 	}
 
 	public Search getSearchBean() {
@@ -41,6 +50,14 @@ public class Control implements Serializable {
 
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	private static final long serialVersionUID = 6063138477024970939L;

@@ -25,6 +25,7 @@ public class SearchService {
 		SearchDaoFacade searchDao = new SearchDaoImpl();
 		searchResult = searchDao.search(searchBean);
 		try {
+			searchBean.getRideList().clear();
 			while (searchResult.next()) {
 
 				Ride tempRide = new Ride();

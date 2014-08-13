@@ -22,7 +22,6 @@ import edu.mum.waa.group9.services.SearchService;
 import edu.mum.waa.group9.utils.MessageProvider;
 import edu.mum.waa.group9.utils.MessagesUtil;
 
-
 @Named("control")
 @SessionScoped
 public class Control implements Serializable {
@@ -39,6 +38,7 @@ public class Control implements Serializable {
 	private boolean loginfailure = false;
 	private String confirmPassword;
 	private String requestedUrl;
+	private String callingPage;
 
 	public String runRules() {
 		System.out.println("Inside runRules");
@@ -47,8 +47,8 @@ public class Control implements Serializable {
 			checkDepartDateRule();
 			retVal = search();
 		} catch (RulesException e) {
-			System.out.println("Inside runRules --> catch block"
-					+ e.getMessage());
+			// System.out.println("Inside runRules --> catch block"
+			// + e.getMessage());
 			MessagesUtil.displayError(e.getMessage());
 		} finally {
 			return retVal;
@@ -100,11 +100,12 @@ public class Control implements Serializable {
 		if (loggedIn) {
 			Ride currRide = currentRideFromRideList();
 			if (currRide != null) {
-				System.out.println("currRide.getId-->" + currRide.getId());
 				searchBean.setCurrentRide(currRide);
 			}
 			return requestedUrl;
 		} else {
+			callingPage = FacesContext.getCurrentInstance().getViewRoot()
+					.getViewId();
 			return "login";
 		}
 
@@ -129,42 +130,28 @@ public class Control implements Serializable {
 	public String doLogin() {
 		LoginService ls = new LoginService();
 		loggedIn = ls.doLogin(login.getUserName(), login.getPassword());
-		//System.out.println("logged:"+loggedIn);
+
+		System.out.println("Calling page --> " + callingPage);
 		if (loggedIn) {
-
-			FacesContext fc = FacesContext.getCurrentInstance();
-			Map<String, String> params = fc.getExternalContext()
-					.getRequestParameterMap();
-
-			String rideSeekerStr = params.get("rideSeeker");
-			System.out
-					.println("Inside Control--dologin--params.get(rideSeeker) = "
-							+ params.get("rideSeeker"));
-			System.out.println("Inside Control--dologin--rideSeekerStr = "
-					+ rideSeekerStr);
-
-			if (rideSeekerStr != null) {
-				System.out
-						.println("Inside Control--dologin--rideIdStr not null***");
-				return "rideDetail";
-			} else
-				return "register";
+			if (callingPage.contains("searchResult"))
+				return "index";
+			else
+				return "userPanel";
 
 		} else {
 			loginfailure = true;
-			System.out.println("Inside Control--dologin--loggedIn = false***");
-			return "login";
 
+			return "login";
 		}
 	}
 
-	public String goToRegister(){
+	public String goToRegister() {
 		return "register";
 	}
 
 	public void changePassword() {
 		LoginService ls = new LoginService();
-		//boolean passwordChanged = ls.changePassword(login,personBean);
+		// boolean passwordChanged = ls.changePassword(login,personBean);
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {

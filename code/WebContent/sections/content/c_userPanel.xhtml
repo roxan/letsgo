@@ -6,10 +6,55 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <head>
+ <h:outputStylesheet library="css" name="styles.css"/>
 <title>IGNORED</title>
 </head>
 <body>
 	<ui:composition>
+<<<<<<< HEAD
+
+		<h:form>
+			<h:panelGrid columnClasses="displayPanel">
+				<!-- Tabs -->
+
+				<f:facet name="header">
+					<h:panelGrid columns="2" styleClass="tabbedPaneHeader">
+
+						<h:commandButton value="Ride Offered" size="10"
+							actionListener="#{tp.jeffersonAction}">
+						</h:commandButton>
+						<h:commandButton value="Profile"
+							actionListener="#{tp.rooseveltAction}">
+						</h:commandButton>
+
+					</h:panelGrid>
+				</f:facet>
+
+				<!-- Tabbed pane content -->
+
+				<!-- <ui:include src="/sections/content/c_rideOfferedByDriver.html" /> -->
+				
+				
+				<h:panelGrid rendered="#{tp.beerCurrent}">
+		<h:form>
+			<p:dataTable var="rideVar" value="#{person.offerredRidesList}">
+			
+				
+				<p:column>
+					<h:outputText  value="#{rideVar.displaySummary()}" escape="false"/>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</h:panelGrid>								
+
+				<ui:include src="/sections/content/c_userProfile.html"
+					rendered="#{tp.coffeeCurrent}" />
+
+
+			</h:panelGrid>
+		</h:form>
+
+=======
 		<h:form>
 			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
 				styleClass="borderPanelColumns">
@@ -94,6 +139,7 @@
 				</f:facet>
 			</p:panelGrid>
 		</h:form>
+>>>>>>> origin/master
 	</ui:composition>
 </body>
 </html>

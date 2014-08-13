@@ -5,6 +5,8 @@ import org.primefaces.model.StreamedContent;
 import edu.mum.waa.group9.beanImpl.PersonAddress;
 
 public interface PersonInterface {
+	public int getId();
+
 	public String getFirstName();
 
 	public String getLastName();

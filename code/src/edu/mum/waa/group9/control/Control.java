@@ -15,9 +15,11 @@ import edu.mum.waa.group9.beanImpl.Person;
 import edu.mum.waa.group9.beanImpl.PersonAddress;
 import edu.mum.waa.group9.beanImpl.Ride;
 import edu.mum.waa.group9.beanImpl.Search;
+import edu.mum.waa.group9.exceptions.RulesException;
 import edu.mum.waa.group9.services.LoginService;
 import edu.mum.waa.group9.services.PersonService;
 import edu.mum.waa.group9.services.SearchService;
+import edu.mum.waa.group9.utils.MessageProvider;
 import edu.mum.waa.group9.utils.MessagesUtil;
 
 @Named("control")
@@ -37,10 +39,40 @@ public class Control implements Serializable {
 	private String confirmPassword;
 	private String requestedUrl;
 
+	public String runRules() {
+		System.out.println("Inside runRules");
+		String retVal = null;
+		try {
+			checkDepartDateRule();
+			retVal = search();
+		} catch (RulesException e) {
+			System.out.println("Inside runRules --> catch block"
+					+ e.getMessage());
+			MessagesUtil.displayError(e.getMessage());
+		} finally {
+			return retVal;
+		}
+	}
+
+	public void checkDepartDateRule() throws RulesException {
+		long timeDifference = searchBean.getToDate().getTime()
+				- searchBean.getFromDate().getTime();
+
+		if (timeDifference <= 0) {
+			throw new RulesException(
+					MessageProvider
+							.getValue("returnDateSmallerThanDepartDateError"));
+		}
+	}
+
 	public String search() {
 		SearchService searchServ = new SearchService();
 		searchServ.search(searchBean);
 		return "searchResult";
+	}
+
+	public String doSearch() {
+		return runRules();
 	}
 
 	public String registerPerson() {
@@ -58,19 +90,15 @@ public class Control implements Serializable {
 				.getRequestParameterMap();
 		requestedUrl = params.get("url");
 
-		Ride currRide = currentRideFromRideList();
-		if (currRide != null) {
-			System.out.println("currRide.getId-->" + currRide.getId());
-			searchBean.setCurrentRide(currRide);
-		} else {
-			System.out.println("No Ride Found");
-
-		}
-
 		if (loggedIn) {
+			Ride currRide = currentRideFromRideList();
+			if (currRide != null) {
+				System.out.println("currRide.getId-->" + currRide.getId());
+				searchBean.setCurrentRide(currRide);
+			}
 			return requestedUrl;
 		} else {
-			return "rideDetail";
+			return "login";
 		}
 
 	}
@@ -94,13 +122,31 @@ public class Control implements Serializable {
 	public String doLogin() {
 		LoginService ls = new LoginService();
 		loggedIn = ls.doLogin(personBean, login);
-		// System.out.println("logged:"+loggedIn);
 		if (loggedIn) {
-			return "changePassword";
+
+			FacesContext fc = FacesContext.getCurrentInstance();
+			Map<String, String> params = fc.getExternalContext()
+					.getRequestParameterMap();
+
+			String rideSeekerStr = params.get("rideSeeker");
+			System.out
+					.println("Inside Control--dologin--params.get(rideSeeker) = "
+							+ params.get("rideSeeker"));
+			System.out.println("Inside Control--dologin--rideSeekerStr = "
+					+ rideSeekerStr);
+
+			if (rideSeekerStr != null) {
+				System.out
+						.println("Inside Control--dologin--rideIdStr not null***");
+				return "rideDetail";
+			} else
+				return "register";
+
 		} else {
 			loginfailure = true;
-			// MessagesUtil.displayError("you no login");
-			return "index";
+			System.out.println("Inside Control--dologin--loggedIn = false***");
+			return "login";
+
 		}
 	}
 
@@ -108,16 +154,22 @@ public class Control implements Serializable {
 		return "register";
 	}
 
-	public String changePassword() {
+	public void changePassword() {
 		LoginService ls = new LoginService();
 		boolean passwordChanged = ls.changePassword(personBean, login);
-		System.out.println("inside changepassord:" +passwordChanged);
-		return "";
+		System.out.println("inside changepassord:" + passwordChanged);
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {
 		PersonService personServ = new PersonService();
 		personServ.handleFileUpload(event.getFile(), personBean.getId());
+	}
+
+	public String offeredRides() {
+		PersonService personServ = new PersonService();
+		personBean.setId(101);
+		personServ.getOfferedRides(personBean);
+		return null;
 	}
 
 	public Search getSearchBean() {

@@ -20,6 +20,7 @@ public class PersonDaoImpl implements PersonDaoFacade {
 	String INSERT_ADDRESS = "INSERT INTO Person_Address (PERSON_ID, STREET, CITY, STATE, COUNTRY,ZIP) VALUES(?, ?, ?,?,?,?)";
 	private final String getUserNameAndPassword = "SELECT * FROM PERSON WHERE PERSON.EMAIL=? AND PERSON.PASSWORD=?";
 	private CachedRowSet personInfo;
+	private CachedRowSet searchResult;
 
 	private boolean insert_success = false;
 
@@ -52,7 +53,6 @@ public class PersonDaoImpl implements PersonDaoFacade {
 					ps.setString(4, personBean.getAddress().getState());
 					ps.setString(5, personBean.getAddress().getCountry());
 					ps.setString(6, personBean.getAddress().getZip());
-
 					ps.executeUpdate();
 					insert_success = true;
 				}
@@ -136,6 +136,5 @@ public class PersonDaoImpl implements PersonDaoFacade {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 }

@@ -7,6 +7,6 @@ import edu.mum.waa.group9.beanInterfaces.PersonInterface;
 
 
 public interface PersonDaoFacade {
-	public CachedRowSet getUnameAndPassword(String email);
+	public CachedRowSet getUnameAndPassword(String email, String password);
 	public boolean registerPerson(PersonInterface personBean);
 }

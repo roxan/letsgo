@@ -19,7 +19,16 @@ public class Person implements PersonInterface, Serializable {
 	private String phone;
 	private String email;
 	private String password;
+	private String confirmPassword;
 	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
 	private PersonAddress address;
 	private Blob photo;	
 	private boolean registered = false;

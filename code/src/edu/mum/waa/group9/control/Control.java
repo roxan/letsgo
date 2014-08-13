@@ -78,9 +78,9 @@ public class Control implements Serializable {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		Map<String, String> params = fc.getExternalContext()
 				.getRequestParameterMap();
-		
+
 		String rideIdStr = params.get("rideId");
-		System.out.println("rideIdStr is --> "+rideIdStr);
+		System.out.println("rideIdStr is --> " + rideIdStr);
 		for (Ride r : searchBean.getRideList()) {
 			if (r.getId() == Integer.parseInt(rideIdStr)) {
 				retVal = r;
@@ -91,11 +91,13 @@ public class Control implements Serializable {
 
 	public String doLogin() {
 		LoginService ls = new LoginService();
-		boolean isValid = ls.doLogin(login);
+		boolean isValid = ls.doLogin(login.getUserName(), login.getPassword());
 		if (isValid) {
-			return "userPanel";
+			login.setIsCorrect(true);
+			return "register";
 		} else {
-			return "index";
+			login.setIsCorrect(false);
+			return "login";
 		}
 	}
 

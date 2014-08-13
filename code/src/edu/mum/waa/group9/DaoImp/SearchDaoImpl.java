@@ -14,8 +14,11 @@ import edu.mum.waa.group9.utils.ConnectionManager;
 import edu.mum.waa.group9.utils.DateUtil;
 
 public class SearchDaoImpl implements SearchDaoFacade {
-	private final String QUERY = "SELECT * FROM RIDE WHERE RIDE.SOURCE=? AND RIDE.DESTINATION=? "
-			+ "AND RIDE.DEPART_DATE=? AND RIDE.RETURN_DATE=?";
+	private final String QUERY = "SELECT  p.ID as PERSON_ID, r.ID as RIDE_ID, a.ID as ADDRESS_ID, p.*, r.*, a.*  "
+			+ "FROM (RIDE r JOIN PERSON p ON r.PERSON_ID = p.ID) "
+			+ "JOIN PERSON_ADDRESS a ON p.ID = a.PERSON_ID "
+			+ "WHERE r.SOURCE=? AND r.DESTINATION=? "
+			+ "AND r.DEPART_DATE=? AND r.RETURN_DATE=?";
 
 	CachedRowSet searchResult;
 
@@ -33,9 +36,13 @@ public class SearchDaoImpl implements SearchDaoFacade {
 				ps.setDate(4, DateUtil.sqlDate(searchBean.getToDate()));
 
 				ResultSet rs = ps.executeQuery();
-
+				
 				searchResult = new com.sun.rowset.CachedRowSetImpl();
 				searchResult.populate(rs);
+				
+				//rs.next();
+				//System.out.println("SearchDaoImpl-->First Name: "+rs.getString("FIRST_NAME"));
+				//System.out.println("SearchDaoImpl-->STREET: "+rs.getString("STREET"));
 
 				ps.close();
 			} finally {

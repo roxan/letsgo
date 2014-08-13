@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:corejsf="http://corejsf.com/facelets">
+	
 <head>
 <title>IGNORED</title>
 </head>
@@ -12,8 +13,12 @@
 		<div id="navigationwrap">
 			<div id="navigation">
 				<h:form>
-					<h:commandLink value="#{msgs.login}" />
-					<h:commandLink value="#{msgs.register}" />
+				<corejsf:goto name="login" 
+                            image="#{resource['images:Mercury.gif']}"/>
+                            <corejsf:goto name="register" 
+                            image="#{resource['images:Mercury.gif']}"/>
+					<!-- <h:commandLink value="#{msgs.login}" />
+					<h:commandLink value="#{msgs.register}" /> -->
 				</h:form>
 			</div>
 		</div>

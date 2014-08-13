@@ -58,8 +58,6 @@ public class PersonService {
 						.getBigDecimal("EXPECTED_EXPENSE"));
 				tempRide.setRideType(searchResult.getString("RIDE_TYPE"));
 				person.getOfferredRidesList().add(tempRide);
-				System.out.println("Source: "
-						+ searchResult.getString("SOURCE"));
 			}
 
 		} catch (SQLException e) {

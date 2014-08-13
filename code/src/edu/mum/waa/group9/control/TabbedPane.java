@@ -55,8 +55,6 @@ public class TabbedPane implements Serializable {
 	}
 
 	public void lincolnAction(ActionEvent e) {
-		System.out.println("fksdfojsdo");
-
 		index = LINCOLN_INDEX;
 	}
 

@@ -41,14 +41,11 @@ public class Control implements Serializable {
 	private String callingPage;
 
 	public String runRules() {
-		System.out.println("Inside runRules");
 		String retVal = null;
 		try {
 			checkDepartDateRule();
 			retVal = search();
 		} catch (RulesException e) {
-			// System.out.println("Inside runRules --> catch block"
-			// + e.getMessage());
 			MessagesUtil.displayError(e.getMessage());
 		} finally {
 			return retVal;
@@ -80,12 +77,10 @@ public class Control implements Serializable {
 		PersonService personServ = new PersonService();
 		personBean.setAddress(personAddress);
 		personBean.setRegistered(personServ.register(personBean));
-		System.out.println("Boolean Checked: " + personBean.isRegistered());
 		return "registration_status";
 	}
 
 	public String checkLogin() {
-		System.out.println("Inside checkLogin***");
 		FacesContext fc = FacesContext.getCurrentInstance();
 		Map<String, String> params = fc.getExternalContext()
 				.getRequestParameterMap();
@@ -111,7 +106,6 @@ public class Control implements Serializable {
 				.getRequestParameterMap();
 
 		String rideIdStr = params.get("rideId");
-		System.out.println("rideIdStr is --> " + rideIdStr);
 		for (Ride r : searchBean.getRideList()) {
 			if (r.getId() == Integer.parseInt(rideIdStr)) {
 				retVal = r;
@@ -124,7 +118,6 @@ public class Control implements Serializable {
 		LoginService ls = new LoginService();
 		loggedIn = ls.doLogin(personBean, login);
 
-		System.out.println("Calling page --> " + callingPage);
 		if (loggedIn) {
 			if (callingPage.contains("searchResult"))
 				return "index";
@@ -144,7 +137,6 @@ public class Control implements Serializable {
 	public void changePassword() {
 		LoginService ls = new LoginService();
 		boolean passwordChanged = ls.changePassword(personBean, login);
-		System.out.println("inside changepassord:" + passwordChanged);
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {

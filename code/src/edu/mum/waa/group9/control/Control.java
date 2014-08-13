@@ -27,6 +27,15 @@ public class Control implements Serializable {
 	private Login login;
 
 	private boolean loggedIn;
+	private boolean loginfailure=false;
+	public boolean getLoginfailure() {
+		return loginfailure;
+	}
+
+	public void setLoginfailure(boolean loginfailure) {
+		this.loginfailure = loginfailure;
+	}
+
 	private String confirmPassword;
 
 	public String search() {
@@ -49,16 +58,20 @@ public class Control implements Serializable {
 
 	public String doLogin() {
 		LoginService ls = new LoginService();
-		boolean isValid = ls.doLogin(login.getUserName(), login.getPassword());
-		if (isValid) {
-			login.setIsCorrect(true);
+		loggedIn= ls.doLogin(login.getUserName(), login.getPassword());
+		if (loggedIn) {
+			
 			return "register";
+			
 		} else {
-			login.setIsCorrect(false);
+			loginfailure=true;
 			return "login";
 		}
 	}
-
+	
+	public void changePassword(){
+		
+	}
 	public Search getSearchBean() {
 		return searchBean;
 	}

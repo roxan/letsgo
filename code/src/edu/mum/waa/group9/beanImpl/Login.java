@@ -10,19 +10,40 @@ import javax.inject.Named;
 public class Login implements Serializable {
 	private String userName;
 	private String password;
-	private boolean isCorrect=false;
+	private String oldPassword;
+	
+
+	private String newPassword;
+	private String confirmNewPassword;
+	
 
 	public Login() {
 
 	}
-	
-	public boolean getIsCorrect() {
-		return isCorrect;
+	public String getOldPassword() {
+		return oldPassword;
 	}
 
-	public void setIsCorrect(boolean isCorrect) {
-		this.isCorrect = isCorrect;
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
 	}
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
+	public String getConfirmNewPassword() {
+		return confirmNewPassword;
+	}
+
+	public void setConfirmNewPassword(String confirmNewPassword) {
+		this.confirmNewPassword = confirmNewPassword;
+	}
+
+	
 
 	public String getUserName() {
 		return userName;

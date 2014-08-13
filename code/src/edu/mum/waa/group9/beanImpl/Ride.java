@@ -180,5 +180,10 @@ public class Ride implements RideInterface, Serializable {
 		return sb.toString();
 	}
 
+	public String displaySummary(){
+		return String.format("Offered Salary: %s <br /> Going from %s to %s on %s "
+				+ "at %s <br /> Returning from %s to %s on %s at %s",expectedExpense,source,destination,departDate,departTime, description, source,returnDate, returnTime);
+				
+	}
 	private static final long serialVersionUID = 1L;
 }

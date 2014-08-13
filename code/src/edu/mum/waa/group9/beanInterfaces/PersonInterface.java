@@ -6,6 +6,8 @@ import edu.mum.waa.group9.beanImpl.Person;
 import edu.mum.waa.group9.beanImpl.PersonAddress;
 
 public interface PersonInterface {
+	public int getId();
+
 	public String getFirstName();
 
 	public String getLastName();
@@ -24,10 +26,8 @@ public interface PersonInterface {
 
 	public String getFullName();
 
-	
-	//setters..............
-	
-	
+	// setters..............
+
 	public void setId(int Id);
 
 	public void setFirstName(String firstName);

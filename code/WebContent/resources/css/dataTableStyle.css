@@ -1,0 +1,17 @@
+.allColumns {
+   text-align: center;
+}
+.headers {
+   text-align: center;
+   background:blue;
+}
+.oddRow {
+	background: PowderBlue;
+}
+
+.evenRow {
+	background: Pink;
+}
+.caption{
+	background: gray;
+}

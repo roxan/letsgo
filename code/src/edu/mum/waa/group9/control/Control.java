@@ -1,6 +1,8 @@
 package edu.mum.waa.group9.control;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -9,6 +11,7 @@ import javax.inject.Named;
 import edu.mum.waa.group9.beanImpl.Login;
 import edu.mum.waa.group9.beanImpl.Person;
 import edu.mum.waa.group9.beanImpl.PersonAddress;
+import edu.mum.waa.group9.beanImpl.Ride;
 import edu.mum.waa.group9.beanImpl.Search;
 import edu.mum.waa.group9.services.LoginService;
 import edu.mum.waa.group9.services.PersonService;
@@ -54,6 +57,13 @@ public class Control implements Serializable {
 		}else{
 			return "index";
 		}
+	}
+	
+	public String offeredRides(){
+		PersonService personServ = new PersonService();
+		personBean.setId(101);
+		personServ.getOfferedRides(personBean);
+		return null;
 	}
 
 	public Search getSearchBean() {

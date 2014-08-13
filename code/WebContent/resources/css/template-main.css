@@ -83,10 +83,18 @@ p, ul, ol, dl, table {
 }
 
 #header {
-	height: 75px;
-	background: #FF6633;
-	border: 1px solid #eb521f;
-	/*margin: 5px;*/
+	height: 300px;
+	background-image: url("images/headerbg01.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.headerText {
+	color: #ffd600;
+	font-size: 120px;
+	text-shadow: 2px 2px #bf360c;
+	text-align: center;
+	padding-top: 180px;
 }
 
 #navigationwrap {
@@ -99,7 +107,7 @@ p, ul, ol, dl, table {
 	height: 40px;
 	background: #FFCC33;
 	border: 1px solid #ebb81f;
-	/*margin: 5px;*/
+	text-align: right;
 }
 
 #contentliquid {
@@ -108,26 +116,15 @@ p, ul, ol, dl, table {
 }
 
 #contentwrap {
-	margin-left: 150px;
-	float: left;
+	width: 100%;
+	height: 100%;
 }
 
 #content {
-	background: #FFFFFF;
-	border: 1px solid #ebebeb;
-	/*margin: 5px;*/
-}
-
-#leftSidebarWrap {
-	width: 150px;
-	margin-left: -100%;
-	float: left;
-}
-
-#leftSidebar {
-	background: #33CCFF;
-	border: 1px solid #1fb8eb;
-	/*margin: 5px;*/
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 40px;
 }
 
 #footerwrap {
@@ -135,11 +132,12 @@ p, ul, ol, dl, table {
 	float: left;
 	margin: 0 auto;
 	clear: both;
+	text-align: center;
 }
 
 #footer {
 	height: 40px;
-	background: #33FF66;
-	border: 1px solid #1feb52;
-	/*margin: 5px;*/
+	background: #4a148c;
+	padding: 10px;
+	color: #fde0dc;
 }

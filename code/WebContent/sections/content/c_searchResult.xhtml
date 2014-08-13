@@ -12,8 +12,11 @@
 	<ui:composition>
 		<p:dataTable var="rideVar" value="#{search.rideList}">
 			<p:column>
-				<p:commandLink actionListener="#{control.checkLogin()}">
-					<h:outputText value="#{rideVar.nameExpenseSummary()}" />
+				<p:commandLink value="#{rideVar.nameExpenseSummary()}" action="#{control.checkLogin}">
+<!-- 					<h:outputText value="#{rideVar.nameExpenseSummary()}" /> -->
+					<f:param name="url" value="#{msgs.rideDetailPage}" />
+					<f:param name="rideId" value="#{rideVar.id}" />
+					<f:param name="rideSeeker" value="#{msgs.rideDetailPage}" />
 				</p:commandLink>
 			</p:column>
 

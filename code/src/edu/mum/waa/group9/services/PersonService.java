@@ -1,10 +1,14 @@
 package edu.mum.waa.group9.services;
 
+<<<<<<< HEAD
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.rowset.CachedRowSet;
+=======
+import org.primefaces.model.UploadedFile;
+>>>>>>> origin/master
 
 import edu.mum.waa.group9.DaoImp.PersonDaoImpl;
 import edu.mum.waa.group9.beanImpl.Person;
@@ -30,6 +34,7 @@ public class PersonService {
 		try {
 			while (searchResult.next()) {
 
+<<<<<<< HEAD
 				Ride tempRide = new Ride();
 				
 				tempRide.setId(searchResult.getInt("ID"));
@@ -56,5 +61,15 @@ public class PersonService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+=======
+	public boolean register(Person personBean) {
+		PersonDaoFacade registerDao = new PersonDaoImpl();
+		return registerDao.registerPerson(personBean);
+	}
+
+	public void handleFileUpload(UploadedFile file,int pid) {
+		PersonDaoFacade personDao = new PersonDaoImpl();
+		personDao.saveImage(file,pid);
+>>>>>>> origin/master
 	}
 }

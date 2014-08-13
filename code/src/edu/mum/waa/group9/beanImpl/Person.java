@@ -1,20 +1,24 @@
 package edu.mum.waa.group9.beanImpl;
 
 import java.io.Serializable;
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import edu.mum.waa.group9.beanInterfaces.PersonInterface;
 
 @Named("person")
 @SessionScoped
 public class Person implements PersonInterface, Serializable {
-	private static final long serialVersionUID = -3444844973409580862L;
-	
+	private static final long serialVersionUID = -6282590215501200447L;
+
 	private int id;
 	private String firstName;
 	private String lastName;
@@ -22,9 +26,17 @@ public class Person implements PersonInterface, Serializable {
 	private String phone;
 	private String email;
 	private String password;
-
+	private String confirmPassword;
 	private PersonAddress address;
-	private Blob photo;
+	private StreamedContent photo;
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 	private boolean registered = false;
 
 	private List<Ride> offerredRidesList = new ArrayList<Ride>();
@@ -98,16 +110,20 @@ public class Person implements PersonInterface, Serializable {
 		this.address = address;
 	}
 
-	public Blob getPhoto() {
-		return photo;
+	public StreamedContent getPhoto() {
+		if (null != photo) {
+			return photo;
+		} else {
+			ExternalContext externalContext = FacesContext.getCurrentInstance()
+					.getExternalContext();
+			return new DefaultStreamedContent(
+					externalContext
+							.getResourceAsStream("/resources/icons/avatar.png"));
+		}
 	}
 
-	public void setPhoto(Blob photo) {
+	public void setPhoto(StreamedContent photo) {
 		this.photo = photo;
-	}
-
-	public void handleFileUpload() {
-
 	}
 
 	public int getAge() {

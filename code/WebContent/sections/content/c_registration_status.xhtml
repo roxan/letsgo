@@ -12,6 +12,11 @@
 	<ui:composition>
 		<h:panelGroup rendered="#{person.registered}">
 			<h:outputLabel value="#{msgs.registerSuccess}" />
+
+			<h:form enctype="multipart/form-data">
+				<p:fileUpload allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+					fileUploadListener="#{control.handleFileUpload}" />
+			</h:form>
 		</h:panelGroup>
 
 		<h:panelGroup rendered="#{! person.registered}">

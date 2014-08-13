@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import edu.mum.waa.group9.beanInterfaces.SearchInterface;
@@ -18,7 +19,8 @@ public class Search implements SearchInterface, Serializable {
 	private Date fromDate;
 	private Date toDate;
 	private List<Ride> rideList;
-
+	private Ride currentRide;
+	
 	public Search() {
 		rideList = new ArrayList<>();
 	}
@@ -54,13 +56,21 @@ public class Search implements SearchInterface, Serializable {
 	public void setToDate(Date toDate) {
 		this.toDate = toDate;
 	}
-
+	
 	public List<Ride> getRideList() {
 		return rideList;
 	}
 
 	public void setRideList(List<Ride> rideList) {
 		this.rideList = rideList;
+	}
+
+	public Ride getCurrentRide() {
+		return currentRide;
+	}
+
+	public void setCurrentRide(Ride currentRide) {
+		this.currentRide = currentRide;
 	}
 
 	private static final long serialVersionUID = 8820397750715434290L;

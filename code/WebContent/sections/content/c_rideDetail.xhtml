@@ -21,11 +21,11 @@
 				<f:facet name="header" styleClass="headingSmall">
 				#{msgs.offeredByText}
 				</f:facet>
-				<p:graphicImage value="#{person.photo}" />
+				<p:graphicImage value="#{search.currentRide.person.photo}" />
 				
-				<h:outputText id="fullName" value="#{person.getFullName()}"/>
-				<h:outputText id="age" value="#{person.getAge()}"/>
-				<h:outputText id="sex" value="#{person.sex}"/>
+				<h:outputText id="fullName" value="#{search.currentRide.person.firstName}"/>
+				<h:outputText id="age" value="#{search.currentRide.person.getAge()}"/>
+				<h:outputText id="sex" value="#{search.currentRide.person.sex}"/>
 	
 				<f:facet name="footer">
 				</f:facet>
@@ -37,16 +37,16 @@
 				#{msgs.tripDetailText}
 				</f:facet>
 				<h:outputLabel for="source" value="#{msgs.fromLabel}" />
-				<h:outputText id="source" value="#{ride.source}"/>
+				<h:outputText id="source" value="#{search.currentRide.source}"/>
 				
 				<h:outputLabel for="destination" value="#{msgs.toLabel}" />
-				<h:outputText id="destination" value="#{ride.destination}"/>
+				<h:outputText id="destination" value="#{search.currentRide.destination}"/>
 				
 				<h:outputLabel for="description" value="#{msgs.descriptionLabel}" />
-				<h:outputText id="description" value="#{ride.description}"/>
+				<h:outputText id="description" value="#{search.currentRide.description}"/>
 				
 				<h:outputLabel for="vehicleDescription" value="#{msgs.vehicleDescriptionLabel}" />
-				<h:outputText id="vehicleDescription" value="#{ride.vehicleDescription}"/>
+				<h:outputText id="vehicleDescription" value="#{search.currentRide.vehicleDescription}"/>
 				
 				<f:facet name="footer">
 				</f:facet>
@@ -59,13 +59,13 @@
 				</f:facet>
 				
 				<h:outputLabel for="phone" value="#{msgs.phoneLabel}" />
-				<h:outputText id="phone" value="#{person.phone}"/>
+				<h:outputText id="phone" value="#{search.currentRide.person.phone}"/>
 				
 				<h:outputLabel for="email" value="#{msgs.emailLabel}" />
-				<h:outputText id="email" value="#{person.email}"/>
+				<h:outputText id="email" value="#{search.currentRide.person.email}"/>
 				
 				<h:outputLabel for="address" value="#{msgs.addressLabel}" />
-				<h:outputText id="address" value="#{address.getAddress()}"/>
+				<h:outputText id="address" value="#{search.currentRide.person.address.fullAddress()}"/>
 				
 				<f:facet name="footer">
 				</f:facet>
@@ -78,10 +78,10 @@
 				</f:facet>
 				
 				<h:outputLabel for="expectedExpense" value="#{msgs.expectedExpenseLabel}" />
-				<h:outputText id="expectedExpense" value="#{ride.expectedExpense}"/>
+				<h:outputText id="expectedExpense" value="#{search.currentRide.expectedExpense}"/>
 				
 				<h:outputLabel for="rideType" value="#{msgs.rideTypeLabel}" />
-				<h:outputText id="rideType" value="#{ride.rideType}"/>
+				<h:outputText id="rideType" value="#{search.currentRide.rideType}"/>
 				
 				<f:facet name="footer">
 				</f:facet>

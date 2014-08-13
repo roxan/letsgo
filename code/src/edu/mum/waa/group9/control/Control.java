@@ -1,14 +1,19 @@
 package edu.mum.waa.group9.control;
 
 import java.io.Serializable;
+import java.util.Map;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.event.FileUploadEvent;
 
 import edu.mum.waa.group9.beanImpl.Login;
 import edu.mum.waa.group9.beanImpl.Person;
 import edu.mum.waa.group9.beanImpl.PersonAddress;
+import edu.mum.waa.group9.beanImpl.Ride;
 import edu.mum.waa.group9.beanImpl.Search;
 import edu.mum.waa.group9.services.LoginService;
 import edu.mum.waa.group9.services.PersonService;
@@ -27,7 +32,8 @@ public class Control implements Serializable {
 	private Login login;
 
 	private boolean loggedIn;
-	private boolean loginfailure=false;
+	private boolean loginfailure = false;
+
 	public boolean getLoginfailure() {
 		return loginfailure;
 	}
@@ -37,6 +43,7 @@ public class Control implements Serializable {
 	}
 
 	private String confirmPassword;
+	private String requestedUrl;
 
 	public String search() {
 		SearchService searchServ = new SearchService();
@@ -53,25 +60,67 @@ public class Control implements Serializable {
 	}
 
 	public String checkLogin() {
-		return null;
+		System.out.println("Inside checkLogin***");
+		FacesContext fc = FacesContext.getCurrentInstance();
+		Map<String, String> params = fc.getExternalContext()
+				.getRequestParameterMap();
+		requestedUrl = params.get("url");
+
+		Ride currRide = currentRideFromRideList();
+		if (currRide != null) {
+			System.out.println("currRide.getId-->" + currRide.getId());
+			searchBean.setCurrentRide(currRide);
+		} else {
+			System.out.println("No Ride Found");
+
+		}
+
+		if (loggedIn) {
+			return requestedUrl;
+		} else {
+			return "rideDetail";
+		}
+
+	}
+
+	public Ride currentRideFromRideList() {
+		Ride retVal = null;
+		FacesContext fc = FacesContext.getCurrentInstance();
+		Map<String, String> params = fc.getExternalContext()
+				.getRequestParameterMap();
+
+		String rideIdStr = params.get("rideId");
+		System.out.println("rideIdStr is --> " + rideIdStr);
+		for (Ride r : searchBean.getRideList()) {
+			if (r.getId() == Integer.parseInt(rideIdStr)) {
+				retVal = r;
+			}
+		}
+		return retVal;
 	}
 
 	public String doLogin() {
 		LoginService ls = new LoginService();
-		loggedIn= ls.doLogin(login.getUserName(), login.getPassword());
+		loggedIn = ls.doLogin(login.getUserName(), login.getPassword());
 		if (loggedIn) {
-			
+
 			return "register";
-			
+
 		} else {
-			loginfailure=true;
+			loginfailure = true;
 			return "login";
 		}
 	}
-	
-	public void changePassword(){
-		
+
+	public void changePassword() {
+
 	}
+
+	public void handleFileUpload(FileUploadEvent event) {
+		PersonService personServ = new PersonService();
+		personServ.handleFileUpload(event.getFile(), personBean.getId());
+	}
+
 	public Search getSearchBean() {
 		return searchBean;
 	}
@@ -94,6 +143,14 @@ public class Control implements Serializable {
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+	public String getRequestedUrl() {
+		return requestedUrl;
+	}
+
+	public void setRequestedUrl(String requestedUrl) {
+		this.requestedUrl = requestedUrl;
 	}
 
 	private static final long serialVersionUID = 6063138477024970939L;

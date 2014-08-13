@@ -6,94 +6,53 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <head>
+<h:outputStylesheet library="css" name="styles.css" />
 <title>IGNORED</title>
 </head>
 <body>
 	<ui:composition>
+
 		<h:form>
-			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-				styleClass="borderPanelColumns">
+			<h:panelGrid columnClasses="displayPanel">
+				<!-- Tabs -->
+
 				<f:facet name="header">
-				#{msgs.rideDetailText}
-			</f:facet>
-				<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-					styleClass="noBorderPanelColumns">
-					<f:facet name="header" styleClass="headingSmall">
-				#{msgs.offeredByText}
-				</f:facet>
-					<p:graphicImage value="#{person.photo}" />
+					<h:panelGrid columns="2" styleClass="tabbedPaneHeader">
 
-					<h:outputText id="fullName" value="#{person.getFullName()}" />
-					<h:outputText id="age" value="#{person.getAge()}" />
-					<h:outputText id="sex" value="#{person.sex}" />
+						<h:commandButton value="Ride Offered" size="10"
+							actionListener="#{tp.jeffersonAction}">
+						</h:commandButton>
+						<h:commandButton value="Profile"
+							actionListener="#{tp.rooseveltAction}">
+						</h:commandButton>
 
-					<f:facet name="footer">
-					</f:facet>
-				</p:panelGrid>
-
-				<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-					styleClass="noBorderPanelColumns">
-					<f:facet name="header" styleClass="headingSmall">
-				#{msgs.tripDetailText}
-				</f:facet>
-					<h:outputLabel for="source" value="#{msgs.fromLabel}" />
-					<h:outputText id="source" value="#{ride.source}" />
-
-					<h:outputLabel for="destination" value="#{msgs.toLabel}" />
-					<h:outputText id="destination" value="#{ride.destination}" />
-
-					<h:outputLabel for="description" value="#{msgs.descriptionLabel}" />
-					<h:outputText id="description" value="#{ride.description}" />
-
-					<h:outputLabel for="vehicleDescription"
-						value="#{msgs.vehicleDescriptionLabel}" />
-					<h:outputText id="vehicleDescription"
-						value="#{ride.vehicleDescription}" />
-
-					<f:facet name="footer">
-					</f:facet>
-				</p:panelGrid>
-
-				<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-					styleClass="noBorderPanelColumns">
-					<f:facet name="header" styleClass="headingSmall">
-				#{msgs.contactInfoText}
+					</h:panelGrid>
 				</f:facet>
 
-					<h:outputLabel for="phone" value="#{msgs.phoneLabel}" />
-					<h:outputText id="phone" value="#{person.phone}" />
+				<!-- Tabbed pane content -->
 
-					<h:outputLabel for="email" value="#{msgs.emailLabel}" />
-					<h:outputText id="email" value="#{person.email}" />
+				<!-- <ui:include src="/sections/content/c_rideOfferedByDriver.html" /> -->
 
-					<h:outputLabel for="address" value="#{msgs.addressLabel}" />
-					<h:outputText id="address" value="#{address.getAddress()}" />
 
-					<f:facet name="footer">
-					</f:facet>
-				</p:panelGrid>
+				<h:panelGrid rendered="#{tp.beerCurrent}">
+					<h:form>
+						<p:dataTable var="rideVar" value="#{person.offerredRidesList}">
 
-				<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-					styleClass="noBorderPanelColumns">
-					<f:facet name="header" styleClass="headingSmall">
-				#{msgs.costInfoText}
-				</f:facet>
 
-					<h:outputLabel for="expectedExpense"
-						value="#{msgs.expectedExpenseLabel}" />
-					<h:outputText id="expectedExpense" value="#{ride.expectedExpense}" />
+							<p:column>
+								<h:outputText value="#{rideVar.displaySummary()}" escape="false" />
+							</p:column>
+						</p:dataTable>
+					</h:form>
+				</h:panelGrid>
 
-					<h:outputLabel for="rideType" value="#{msgs.rideTypeLabel}" />
-					<h:outputText id="rideType" value="#{ride.rideType}" />
+				<ui:include src="/sections/content/c_userProfile.html"
+					rendered="#{tp.coffeeCurrent}" />
 
-					<f:facet name="footer">
-					</f:facet>
-				</p:panelGrid>
 
-				<f:facet name="footer">
-				</f:facet>
-			</p:panelGrid>
+			</h:panelGrid>
 		</h:form>
+
 	</ui:composition>
 </body>
 </html>

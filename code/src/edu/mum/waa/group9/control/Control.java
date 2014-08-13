@@ -59,12 +59,6 @@ public class Control implements Serializable {
 		long timeDifference = searchBean.getToDate().getTime()
 				- searchBean.getFromDate().getTime();
 
-		System.out.println("searchBean.getToDate().getTime() -- > "
-				+ searchBean.getToDate().getTime());
-		System.out.println("searchBean.getFromDate().getTime() -- > "
-				+ searchBean.getToDate().getTime());
-		System.out.println("timeDifference -- > " + timeDifference);
-
 		if (timeDifference <= 0) {
 			throw new RulesException(
 					MessageProvider
@@ -108,7 +102,6 @@ public class Control implements Serializable {
 					.getViewId();
 			return "login";
 		}
-
 	}
 
 	public Ride currentRideFromRideList() {
@@ -129,7 +122,7 @@ public class Control implements Serializable {
 
 	public String doLogin() {
 		LoginService ls = new LoginService();
-		loggedIn = ls.doLogin(login.getUserName(), login.getPassword());
+		loggedIn = ls.doLogin(personBean, login);
 
 		System.out.println("Calling page --> " + callingPage);
 		if (loggedIn) {
@@ -140,7 +133,6 @@ public class Control implements Serializable {
 
 		} else {
 			loginfailure = true;
-
 			return "login";
 		}
 	}
@@ -151,12 +143,20 @@ public class Control implements Serializable {
 
 	public void changePassword() {
 		LoginService ls = new LoginService();
-		// boolean passwordChanged = ls.changePassword(login,personBean);
+		boolean passwordChanged = ls.changePassword(personBean, login);
+		System.out.println("inside changepassord:" + passwordChanged);
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {
 		PersonService personServ = new PersonService();
 		personServ.handleFileUpload(event.getFile(), personBean.getId());
+	}
+
+	public String offeredRides() {
+		PersonService personServ = new PersonService();
+		personBean.setId(101);
+		personServ.getOfferedRides(personBean);
+		return null;
 	}
 
 	public Search getSearchBean() {

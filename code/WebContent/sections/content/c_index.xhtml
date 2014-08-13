@@ -69,14 +69,9 @@
 						requiredMessage="#{msgs.returnDateValidationError}" />
 					<p:message for="toDate" closable="true" />
 				</p:column>
-				<p:column></p:column>
-				<p:column></p:column>
-				<p:column></p:column>
-				<p:column>
-					<p:commandButton action="#{control.doSearch}" value="Go"
-						style="text-align:right;float:right;" />
-				</p:column>
 			</h:panelGrid>
+					<p:commandButton action="#{control.doSearch}" value="Find Me Rides"
+						 />
 		</h:form>
 		<p:messages id="messages" autoUpdate="true" closable="true" />
 	</ui:composition>

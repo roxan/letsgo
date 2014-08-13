@@ -160,7 +160,7 @@ public class Ride implements RideInterface, Serializable {
 		sb.append(" on ");
 		sb.append(new SimpleDateFormat("mm/dd/yy").format(departDate));
 		sb.append(" at ");
-		sb.append(departTime);
+		sb.append(new SimpleDateFormat("hh:mm a").format(departTime));
 
 		return sb.toString();
 	}
@@ -174,7 +174,7 @@ public class Ride implements RideInterface, Serializable {
 		sb.append(" on ");
 		sb.append(new SimpleDateFormat("mm/dd/yy").format(returnDate));
 		sb.append(" at ");
-		sb.append(returnTime);
+		sb.append(new SimpleDateFormat("hh:mm a").format(returnTime));
 
 		return sb.toString();
 	}

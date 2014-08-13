@@ -36,10 +36,9 @@ public class SearchDaoImpl implements SearchDaoFacade {
 				ps.setDate(4, DateUtil.sqlDate(searchBean.getToDate()));
 
 				ResultSet rs = ps.executeQuery();
-				
+
 				searchResult = new com.sun.rowset.CachedRowSetImpl();
 				searchResult.populate(rs);
-				
 				ps.close();
 			} finally {
 				ConnectionManager.closeConnection(con);

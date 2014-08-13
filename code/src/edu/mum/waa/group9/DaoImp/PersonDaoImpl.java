@@ -18,7 +18,7 @@ import edu.mum.waa.group9.utils.ConnectionManager;
 public class PersonDaoImpl implements PersonDaoFacade {
 	String INSERT_RECORD = "INSERT INTO Person (FIRST_NAME, LAST_NAME, SEX, PHONE, EMAIL,PASSWORD) VALUES(?,?,?,?,?,?)";
 	String INSERT_ADDRESS = "INSERT INTO Person_Address (PERSON_ID, STREET, CITY, STATE, COUNTRY,ZIP) VALUES(?, ?, ?,?,?,?)";
-	private final String getUserNameAndPassword = "SELECT EMAIL,PASSWORD FROM PERSON WHERE PERSON.EMAIL=? AND PERSON.PASSWORD=?";
+	private final String getUserNameAndPassword = "SELECT * FROM PERSON WHERE PERSON.EMAIL=? AND PERSON.PASSWORD=?";
 	private CachedRowSet personInfo;
 
 	private boolean insert_success = false;
@@ -80,10 +80,13 @@ public class PersonDaoImpl implements PersonDaoFacade {
 				ps.setString(2, password);
 
 				ResultSet rs = ps.executeQuery();
+				// if (rs.next()) {
+				// System.out.println(": " + rs.getString("EMAIL"));
 
 				personInfo = new com.sun.rowset.CachedRowSetImpl();
 				personInfo.populate(rs);
-
+				// System.out.println(": " + personInfo.getString("EMAIL"));
+				// }
 				ps.close();
 			} finally {
 				ConnectionManager.closeConnection(con);

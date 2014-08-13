@@ -10,18 +10,18 @@ import javax.inject.Named;
 public class Login implements Serializable {
 	private String userName;
 	private String password;
-	private boolean invalid;
+	private boolean isCorrect=false;
 
 	public Login() {
 
 	}
-
-	public boolean isInvalid() {
-		return invalid;
+	
+	public boolean getIsCorrect() {
+		return isCorrect;
 	}
 
-	public void setInvalid(boolean invalid) {
-		this.invalid = invalid;
+	public void setIsCorrect(boolean isCorrect) {
+		this.isCorrect = isCorrect;
 	}
 
 	public String getUserName() {

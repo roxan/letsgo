@@ -103,13 +103,21 @@
 					</p:panelGrid>
 
 					<f:facet name="footer">
-						<p:commandButton value="#{msgs.clearButton}" icon="ui-icon-check"
-							styleClass="buttonRight" onclick="clearField(this.form)" />
-						<p:commandButton value="#{msgs.registerButton}"
-							icon="ui-icon-check" styleClass="buttonRight"
-							action="#{control.registerPerson}" />
-						
+						<h:commandButton value="#{msgs.clearButton}"
+							onclick="clearField(this.form)" />
+						<h:commandButton value="#{msgs.registerButton}"
+							action="#{control.registerPerson}"
+							onclick="clearField(this.form)" />
 					</f:facet>
+				</p:panelGrid>
+				<f:facet name="footer">
+					<p:commandButton value="#{msgs.clearButton}" icon="ui-icon-check"
+						styleClass="buttonRight" onclick="clearField(this.form)" />
+					<p:commandButton value="#{msgs.registerButton}"
+						icon="ui-icon-check" styleClass="buttonRight"
+						action="#{control.registerPerson}" />
+					<p:commandButton value="#{msgs.registerButton}"></p:commandButton>
+				</f:facet>
 				</p:panelGrid>
 			</h:form>
 		</h:panelGroup>

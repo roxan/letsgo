@@ -10,7 +10,9 @@ import javax.inject.Named;
 public class Goto implements Serializable {
 	private String selectedPage;
 	  
-	  public String getSelectedPlanet() { 
+	
+
+	public String getSelectedPlanet() { 
 		  return selectedPage; 
 		  }
 	  

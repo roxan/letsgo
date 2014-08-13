@@ -8,6 +8,8 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class Login implements Serializable {
+	private static final long serialVersionUID = 742951237784945378L;
+	
 	private String userName;
 	private String password;
 	private String oldPassword;

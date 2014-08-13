@@ -1,7 +1,6 @@
 package edu.mum.waa.group9.control;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Map;
 
 import javax.enterprise.context.SessionScoped;
@@ -16,12 +15,13 @@ import edu.mum.waa.group9.beanImpl.Person;
 import edu.mum.waa.group9.beanImpl.PersonAddress;
 import edu.mum.waa.group9.beanImpl.Ride;
 import edu.mum.waa.group9.beanImpl.Search;
+import edu.mum.waa.group9.exceptions.RulesException;
 import edu.mum.waa.group9.services.LoginService;
 import edu.mum.waa.group9.services.PersonService;
 import edu.mum.waa.group9.services.SearchService;
-import edu.mum.waa.group9.exceptions.RulesException;
-import edu.mum.waa.group9.utils.MessagesUtil;
 import edu.mum.waa.group9.utils.MessageProvider;
+import edu.mum.waa.group9.utils.MessagesUtil;
+
 
 @Named("control")
 @SessionScoped
@@ -37,15 +37,6 @@ public class Control implements Serializable {
 
 	private boolean loggedIn;
 	private boolean loginfailure = false;
-
-	public boolean getLoginfailure() {
-		return loginfailure;
-	}
-
-	public void setLoginfailure(boolean loginfailure) {
-		this.loginfailure = loginfailure;
-	}
-
 	private String confirmPassword;
 	private String requestedUrl;
 
@@ -138,7 +129,9 @@ public class Control implements Serializable {
 	public String doLogin() {
 		LoginService ls = new LoginService();
 		loggedIn = ls.doLogin(login.getUserName(), login.getPassword());
+		//System.out.println("logged:"+loggedIn);
 		if (loggedIn) {
+
 			FacesContext fc = FacesContext.getCurrentInstance();
 			Map<String, String> params = fc.getExternalContext()
 					.getRequestParameterMap();
@@ -161,11 +154,17 @@ public class Control implements Serializable {
 			loginfailure = true;
 			System.out.println("Inside Control--dologin--loggedIn = false***");
 			return "login";
+
 		}
 	}
 
-	public void changePassword() {
+	public String goToRegister(){
+		return "register";
+	}
 
+	public void changePassword() {
+		LoginService ls = new LoginService();
+		//boolean passwordChanged = ls.changePassword(login,personBean);
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {
@@ -203,6 +202,14 @@ public class Control implements Serializable {
 
 	public void setRequestedUrl(String requestedUrl) {
 		this.requestedUrl = requestedUrl;
+	}
+
+	public boolean getLoginfailure() {
+		return loginfailure;
+	}
+
+	public void setLoginfailure(boolean loginfailure) {
+		this.loginfailure = loginfailure;
 	}
 
 	private static final long serialVersionUID = 6063138477024970939L;

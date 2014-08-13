@@ -14,15 +14,17 @@
 		<div id="navigationwrap">
 			<div id="navigation">
 				<h:form>
-					<h:panelGroup rendered="#{control.loggedIn}">
-						<p:graphicImage value="#{person.photo}" />
-					</h:panelGroup>
-					<corejsf:goto name="login"
-						image="#{resource['images:Mercury.gif']}" />
+
+					<p:graphicImage value="#{person.photo}" width="32px"
+						height="32px" />
+					<corejsf:goto name="login" 
+						image="#{resource['images:Mercury.gif']}" ></corejsf:goto>
 					<corejsf:goto name="register"
 						image="#{resource['images:Mercury.gif']}" />
 					<corejsf:goto name="changePassword"
 						image="#{resource['images:Mercury.gif']}" />
+						<h:panelGroup rendered="#{control.loggedIn}">
+					</h:panelGroup>
 					<!-- <h:commandLink value="#{msgs.login}" />
 					<h:commandLink value="#{msgs.register}" /> -->
 

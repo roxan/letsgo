@@ -42,4 +42,15 @@ public class LoginService {
 			}
 		return false;
 	}
+	public boolean changePassword(Person person1, Login login1) {
+		if(person1.getPassword().equals(login1.getOldPassword())){
+			
+			
+			return true;
+		}
+		return false;	
+		}
+		
+		
+	
 }

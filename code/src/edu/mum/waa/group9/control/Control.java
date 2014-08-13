@@ -31,16 +31,16 @@ public class Control implements Serializable {
 		return "searchResult";
 	}
 
-	public String checkLogin() {
-		return null;
-	}
-
 	public String registerPerson() {
 		PersonService personServ = new PersonService();
 		personBean.setAddress(personAddress);
 		personBean.setRegistered(personServ.register(personBean));
 		System.out.println("Boolean Checked: " + personBean.isRegistered());
 		return "registration_status";
+	}
+
+	public String checkLogin(){
+		return null;
 	}
 
 	public Search getSearchBean() {

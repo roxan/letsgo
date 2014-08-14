@@ -96,10 +96,11 @@ p, ul, ol, dl, table {
 }
 
 #navigation {
-	height: 40px;
+	height: 50px;
 	background: #FFCC33;
 	border: 1px solid #ebb81f;
 	text-align: right;
+	padding: 5px 5px;
 }
 
 #contentliquid {

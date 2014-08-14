@@ -73,6 +73,11 @@ public class Control implements Serializable {
 		return runRules();
 	}
 
+	public void logout() {		
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		System.out.println("logout Success");	
+	}
+
 	public String registerPerson() {
 		PersonService personServ = new PersonService();
 		personBean.setAddress(personAddress);
@@ -119,8 +124,8 @@ public class Control implements Serializable {
 		loggedIn = ls.doLogin(personBean, login);
 
 		if (loggedIn) {
-			if (callingPage.contains("searchResult"))
-				return "index";
+			if (null!= callingPage && callingPage.contains("searchResult"))
+				return "rideDetail";
 			else
 				return "userPanel";
 

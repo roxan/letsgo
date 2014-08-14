@@ -25,6 +25,8 @@ public class LoginService {
 
 
 		if (personRow == null) {
+			MessagesUtil.displayError(MessageProvider
+					.getValue("invalidUserNameOrPassword"));
 			return false;
 		} else
 			try {

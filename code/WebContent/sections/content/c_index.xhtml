@@ -45,7 +45,7 @@
 				<p:column>
 					<p:calendar id="fromDate" label="#{msgs.departDateLabel}"
 						value="#{search.fromDate}" readOnlyInput="true"
-						placeholder="#{msgs.departDateLabel}" required="true"
+						placeholder="#{msgs.selectDate}" required="true"
 						requiredMessage="#{msgs.departDateValidationError}" />
 					<p:message for="fromDate" />
 				</p:column>
@@ -65,12 +65,12 @@
 				<p:column>
 					<p:calendar id="toDate" label="#{msgs.returnDateLable}"
 						value="#{search.toDate}" readOnlyInput="true"
-						placeholder="#{msgs.returnDateLabel}" required="true"
+						placeholder="#{msgs.selectDate}" required="true"
 						requiredMessage="#{msgs.returnDateValidationError}" />
 					<p:message for="toDate" closable="true" />
 				</p:column>
 			</h:panelGrid>
-					<p:commandButton action="#{control.doSearch}" value="Find Me Rides"
+					<p:commandButton action="#{control.doSearch}" value="#{msgs.buttonfindMeRides}"
 						 />
 		</h:form>
 		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />

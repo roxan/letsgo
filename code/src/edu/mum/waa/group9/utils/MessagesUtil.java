@@ -14,4 +14,10 @@ public class MessagesUtil {
         FacesMessage errMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, null, message);
         context.addMessage(null, errMsg);
     }
+    
+    public static void displaySuccess(String message) {
+    	FacesContext context = FacesContext.getCurrentInstance();
+    	FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, null, message);
+    	context.addMessage(null, msg);
+    }
 }

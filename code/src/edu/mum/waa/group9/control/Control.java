@@ -121,7 +121,7 @@ public class Control implements Serializable {
 
 	public String doLogin() {
 		LoginService ls = new LoginService();
-		loggedIn = ls.doLogin(personBean, login);
+		loggedIn = ls.doLogin(personBean, login,personAddress);
 
 		if (loggedIn) {
 			if (null!= callingPage && callingPage.contains("searchResult"))

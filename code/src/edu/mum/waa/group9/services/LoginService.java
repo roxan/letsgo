@@ -10,14 +10,15 @@ import org.primefaces.model.DefaultStreamedContent;
 import edu.mum.waa.group9.DaoImp.PersonDaoImpl;
 import edu.mum.waa.group9.beanImpl.Login;
 import edu.mum.waa.group9.beanImpl.Person;
+import edu.mum.waa.group9.beanImpl.PersonAddress;
 import edu.mum.waa.group9.daoFacade.PersonDaoFacade;
 
 public class LoginService {
 	CachedRowSet personRow;
 	PersonDaoFacade personFacade = new PersonDaoImpl();
 
-	public boolean doLogin(Person person, Login login) {
-		personRow = personFacade.getUnameAndPassword(login.getUserName(),login.getPassword());
+	public boolean doLogin(Person person, Login login, PersonAddress address) {
+		personRow = personFacade.getPersonAndAddress(login.getUserName(),login.getPassword());
 
 		if (personRow == null) {
 			return false;
@@ -25,7 +26,12 @@ public class LoginService {
 			try {
 				if (personRow.next()) {
 					try {
-
+						address.setId(personRow.getInt("ID"));
+						address.setCity(personRow.getString("CITY"));
+						address.setCountry(personRow.getString("COUNTRY"));
+						address.setState(personRow.getString("STATE"));
+						address.setStreet(personRow.getString("STREET"));
+						address.setZip(personRow.getString("ZIP"));
 						person.setId(personRow.getInt("ID"));
 						person.setFirstName(personRow.getString("FIRST_NAME"));
 						person.setLastName(personRow.getString("LAST_NAME"));

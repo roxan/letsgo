@@ -18,6 +18,7 @@ import edu.mum.waa.group9.beanImpl.Search;
 import edu.mum.waa.group9.exceptions.RulesException;
 import edu.mum.waa.group9.services.LoginService;
 import edu.mum.waa.group9.services.PersonService;
+import edu.mum.waa.group9.services.RideService;
 import edu.mum.waa.group9.services.SearchService;
 import edu.mum.waa.group9.utils.MessageProvider;
 import edu.mum.waa.group9.utils.MessagesUtil;
@@ -33,8 +34,10 @@ public class Control implements Serializable {
 	PersonAddress personAddress;
 	@Inject
 	private Login login;
+	@Inject
+	private Ride rideBean;
 
-	private boolean loggedIn=false;
+	private boolean loggedIn = false;
 	private boolean loginfailure = false;
 	private String confirmPassword;
 	private String requestedUrl;
@@ -73,9 +76,10 @@ public class Control implements Serializable {
 		return runRules();
 	}
 
-	public void logout() {		
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		System.out.println("logout Success");	
+	public void logout() {
+		FacesContext.getCurrentInstance().getExternalContext()
+				.invalidateSession();
+		System.out.println("logout Success");
 	}
 
 	public String registerPerson() {
@@ -83,6 +87,17 @@ public class Control implements Serializable {
 		personBean.setAddress(personAddress);
 		personBean.setRegistered(personServ.register(personBean));
 		return "registration_status";
+	}
+
+	public String createRide() {
+		System.out.println("Inside Control--createRide");
+		rideBean.setPerson(personBean);
+		RideService rideServ = new RideService();
+		boolean createSuccess = rideServ.createRide(rideBean);
+		if (createSuccess)
+			return "userPanel";
+		else
+			return null;
 	}
 
 	public String checkLogin() {
@@ -124,7 +139,7 @@ public class Control implements Serializable {
 		loggedIn = ls.doLogin(personBean, login);
 
 		if (loggedIn) {
-			if (null!= callingPage && callingPage.contains("searchResult"))
+			if (null != callingPage && callingPage.contains("searchResult"))
 				return "rideDetail";
 			else
 				return "userPanel";

@@ -43,6 +43,7 @@ public class SearchService {
 				tempPerson.setFirstName(searchResult.getString("FIRST_NAME"));
 				tempPerson.setLastName(searchResult.getString("LAST_NAME"));
 				tempPerson.setSex(searchResult.getString("SEX"));
+				tempPerson.setAge(searchResult.getInt("AGE"));
 				tempPerson.setPhone(searchResult.getString("PHONE"));
 				tempPerson.setEmail(searchResult.getString("EMAIL"));
 				tempPerson.setPassword(searchResult.getString("PASSWORD"));

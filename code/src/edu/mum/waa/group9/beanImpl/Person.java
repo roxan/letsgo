@@ -2,6 +2,7 @@ package edu.mum.waa.group9.beanImpl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -23,6 +24,8 @@ public class Person implements PersonInterface, Serializable {
 	private String firstName;
 	private String lastName;
 	private String sex;
+	private Date dob;
+	private int age;
 	private String phone;
 	private String email;
 	private String password;
@@ -77,6 +80,22 @@ public class Person implements PersonInterface, Serializable {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+	
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public int getAge(){
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
 
 	public String getPhone() {
 		return phone;
@@ -124,10 +143,6 @@ public class Person implements PersonInterface, Serializable {
 
 	public void setPhoto(StreamedContent photo) {
 		this.photo = photo;
-	}
-
-	public int getAge() {
-		return 100;
 	}
 
 	public String getFullName() {

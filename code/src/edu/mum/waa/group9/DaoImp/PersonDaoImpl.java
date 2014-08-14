@@ -16,7 +16,7 @@ import edu.mum.waa.group9.daoFacade.PersonDaoFacade;
 import edu.mum.waa.group9.utils.ConnectionManager;
 
 public class PersonDaoImpl implements PersonDaoFacade {
-	String INSERT_RECORD = "INSERT INTO Person (FIRST_NAME, LAST_NAME, SEX, PHONE, EMAIL,PASSWORD) VALUES(?,?,?,?,?,?)";
+	String INSERT_RECORD = "INSERT INTO Person (FIRST_NAME, LAST_NAME, SEX, PHONE, EMAIL,PASSWORD, AGE) VALUES(?,?,?,?,?,?,?)";
 	String INSERT_ADDRESS = "INSERT INTO Person_Address (PERSON_ID, STREET, CITY, STATE, COUNTRY,ZIP) VALUES(?, ?, ?,?,?,?)";
 	private final String retrivePersonAndAddress = "SELECT * FROM PERSON p JOIN PERSON_ADDRESS a ON p.ID=a.PERSON_ID WHERE p.EMAIL=? AND p.PASSWORD=?";
 	private final String OFFERED_RIDES = "SELECT * FROM RIDE WHERE PERSON_ID=?";
@@ -40,6 +40,7 @@ public class PersonDaoImpl implements PersonDaoFacade {
 				ps.setString(4, personBean.getSex());
 				ps.setString(5, personBean.getEmail());
 				ps.setString(6, personBean.getPassword());
+				ps.setInt(7, personBean.getAge());
 
 				ps.executeUpdate();
 				ResultSet rs = ps.getGeneratedKeys();

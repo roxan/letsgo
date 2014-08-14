@@ -5,6 +5,7 @@ CREATE TABLE PERSON(
 	sex VARCHAR(12) NOT NULL,
     phone VARCHAR(12) NOT NULL,
 	email VARCHAR(50) NOT NULL,
+	age INT NOT NULL,
 	password VARCHAR(20) NOT NULL,
 	avatar blob(16M)
 );

@@ -104,13 +104,14 @@ public class Control implements Serializable {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		Map<String, String> params = fc.getExternalContext()
 				.getRequestParameterMap();
-		requestedUrl = params.get("url")+"?faces-redirect=true";
+		requestedUrl = params.get("url") + "?faces-redirect=true";
+
+		Ride currRide = currentRideFromRideList();
+		if (currRide != null) {
+			searchBean.setCurrentRide(currRide);
+		}
 
 		if (loggedIn) {
-			Ride currRide = currentRideFromRideList();
-			if (currRide != null) {
-				searchBean.setCurrentRide(currRide);
-			}
 			return requestedUrl;
 		} else {
 			callingPage = FacesContext.getCurrentInstance().getViewRoot()
@@ -136,7 +137,7 @@ public class Control implements Serializable {
 
 	public String doLogin() {
 		LoginService ls = new LoginService();
-		loggedIn = ls.doLogin(personBean, login,personAddress);
+		loggedIn = ls.doLogin(personBean, login, personAddress);
 
 		if (loggedIn) {
 			if (null != callingPage && callingPage.contains("searchResult"))

@@ -40,12 +40,12 @@ public class Person implements PersonInterface, Serializable {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
+
 	private boolean registered = false;
 
 	private List<Ride> offerredRidesList = new ArrayList<Ride>();
-	
-	
-	public String holder(){
+
+	public String holder() {
 		return null;
 	}
 
@@ -80,7 +80,7 @@ public class Person implements PersonInterface, Serializable {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	
+
 	public Date getDob() {
 		return dob;
 	}
@@ -89,7 +89,7 @@ public class Person implements PersonInterface, Serializable {
 		this.dob = dob;
 	}
 
-	public int getAge(){
+	public int getAge() {
 		return age;
 	}
 

@@ -18,7 +18,7 @@ import edu.mum.waa.group9.utils.ConnectionManager;
 public class PersonDaoImpl implements PersonDaoFacade {
 	String INSERT_RECORD = "INSERT INTO Person (FIRST_NAME, LAST_NAME, SEX, PHONE, EMAIL,PASSWORD, AGE) VALUES(?,?,?,?,?,?,?)";
 	String INSERT_ADDRESS = "INSERT INTO Person_Address (PERSON_ID, STREET, CITY, STATE, COUNTRY,ZIP) VALUES(?, ?, ?,?,?,?)";
-	private final String retrivePersonAndAddress = "SELECT * FROM PERSON p JOIN PERSON_ADDRESS a ON p.ID=a.PERSON_ID WHERE p.EMAIL=? AND p.PASSWORD=?";
+	private final String retrivePersonAndAddress = "SELECT p.ID as PERSON_ID, a.ID as ADDRESS_ID, p.*, a.* FROM PERSON p JOIN PERSON_ADDRESS a ON p.ID=a.PERSON_ID WHERE p.EMAIL=? AND p.PASSWORD=?";
 	private final String OFFERED_RIDES = "SELECT * FROM RIDE WHERE PERSON_ID=?";
 	private CachedRowSet personInfo;
 	private CachedRowSet searchResult;
@@ -36,8 +36,8 @@ public class PersonDaoImpl implements PersonDaoFacade {
 						PreparedStatement.RETURN_GENERATED_KEYS);
 				ps.setString(1, personBean.getFirstName());
 				ps.setString(2, personBean.getLastName());
-				ps.setString(3, personBean.getPhone());
-				ps.setString(4, personBean.getSex());
+				ps.setString(3, personBean.getSex());
+				ps.setString(4, personBean.getPhone());
 				ps.setString(5, personBean.getEmail());
 				ps.setString(6, personBean.getPassword());
 				ps.setInt(7, personBean.getAge());

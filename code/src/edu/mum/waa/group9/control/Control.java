@@ -20,6 +20,7 @@ import edu.mum.waa.group9.services.LoginService;
 import edu.mum.waa.group9.services.PersonService;
 import edu.mum.waa.group9.services.RideService;
 import edu.mum.waa.group9.services.SearchService;
+import edu.mum.waa.group9.utils.DateUtil;
 import edu.mum.waa.group9.utils.MessageProvider;
 import edu.mum.waa.group9.utils.MessagesUtil;
 
@@ -79,12 +80,12 @@ public class Control implements Serializable {
 	public void logout() {
 		FacesContext.getCurrentInstance().getExternalContext()
 				.invalidateSession();
-		System.out.println("logout Success");
 	}
 
 	public String registerPerson() {
 		PersonService personServ = new PersonService();
 		personBean.setAddress(personAddress);
+		personBean.setAge(DateUtil.ageInYears(personBean.getDob()));
 		personBean.setRegistered(personServ.register(personBean));
 		return "registration_status?faces-redirect=true";
 	}

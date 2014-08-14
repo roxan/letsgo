@@ -1,3 +1,3 @@
-INSERT INTO PERSON (first_name, last_name, sex, phone, email, password) VALUES ('James','Butt','female','504-845-1427','jbutt@gmail.com','James');
-INSERT INTO PERSON (first_name, last_name, sex, phone, email, password) VALUES ('Art','Venere','male','856-264-4130','art@venere.org','Art');
-INSERT INTO PERSON (first_name, last_name, sex, phone, email, password) VALUES ('Lenna','Paprocki','female','907-921-2010','lpaprocki@hotmail.com','Lenna');
+INSERT INTO PERSON (first_name, last_name, sex, phone, email, password, age) VALUES ('James','Butt','female','504-845-1427','jbutt@gmail.com','James',37);
+INSERT INTO PERSON (first_name, last_name, sex, phone, email, password, age) VALUES ('Art','Venere','male','856-264-4130','art@venere.org','Art',37);
+INSERT INTO PERSON (first_name, last_name, sex, phone, email, password, age) VALUES ('Lenna','Paprocki','female','907-921-2010','lpaprocki@hotmail.com','Lenna',37);

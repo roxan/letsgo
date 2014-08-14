@@ -24,6 +24,8 @@ public interface PersonInterface {
 	public PersonAddress getAddress();
 
 	public String getFullName();
+	
+	public int getAge();
 
 	// setters..............
 
@@ -42,4 +44,6 @@ public interface PersonInterface {
 	public void setAddress(PersonAddress address);
 
 	public void setPhoto(StreamedContent photo);
+	
+	public void setAge(int age);
 }

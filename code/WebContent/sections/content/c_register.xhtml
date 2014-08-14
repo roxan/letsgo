@@ -34,9 +34,10 @@
 							label="#{msgs.lastNameLabel}" required="true"
 							requiredMessage="#{msgs.requiredMessages}" />
 
-						<p:outputLabel value="#{msgs.dobLabel}" for="dob" />
-						<p:calendar id="dob" readonlyInput="true" navigator="true"
-							placeholder="#{msgs.selectDate}" pattern="mm/dd/yyyy" yearRange="c-125:c+0" />
+						<p:outputLabel value="#{msgs.dobLabel}" for="dobId" />
+						<p:calendar id="dobId" value="#{person.dob}" readonlyInput="true"
+							navigator="true" placeholder="#{msgs.selectDate}"
+							pattern="mm/dd/yyyy" yearRange="c-125:c+0" />
 
 						<p:outputLabel value="#{msgs.sexLabel}" for="sexRadio" />
 						<p:selectOneRadio id="sexRadio" value="#{person.sex}">

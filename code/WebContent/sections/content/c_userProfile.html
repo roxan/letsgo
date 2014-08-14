@@ -8,59 +8,64 @@
 
 <ui:composition>
 	<h:panelGrid rendered="#{tp.coffeeCurrent}">
-		
+
 		<h:form>
-				<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
-					styleClass="borderPanelColumns">
-					<f:facet name="header">
-						<h:outputLabel value="#{msgs.userDetail}" />
-					</f:facet>				
-						<h:outputLabel for="firstName" value="#{msgs.firstNameLabel}" />
-						<p:inputText id="firstName" value="#{person.firstName}"
-							label="#{msgs.firstNameLabel}" />
+			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+				styleClass="borderPanelColumns">
+				<f:facet name="header">
+					<h:outputLabel value="#{msgs.userDetail}" />
+				</f:facet>
 
-						<h:outputLabel for="lastName" value="#{msgs.lastNameLabel}" />
-						<p:inputText id="lastName" value="#{person.lastName}"
-							label="#{msgs.lastNameLabel}"/>
+				<h:outputLabel for="avatar" value="#{msgs.image}" />
+				<p:graphicImage id="avatar" value="#{person.photo}"
+				
+					label="#{msgs.firstNameLabel}" />
+				<h:outputLabel for="firstName" value="#{msgs.firstNameLabel}" />
+				<p:inputText id="firstName" value="#{person.firstName}"
+					label="#{msgs.firstNameLabel}" />
 
-						<p:outputLabel value="#{msgs.dobLabel}" for="dob" />
-						<p:calendar id="dob" readonlyInput="true" navigator="true"
-							 pattern="mm/dd/yyyy" yearRange="c-125:c+0" />
+				<h:outputLabel for="lastName" value="#{msgs.lastNameLabel}" />
+				<p:inputText id="lastName" value="#{person.lastName}"
+					label="#{msgs.lastNameLabel}" />
 
-						<p:outputLabel value="#{msgs.sexLabel}" for="sexRadio" />
-						<p:inputText id="sexRadio" value="#{person.sex}"
-							label="#{msgs.sexLabel}" />
-						
-						<h:outputLabel for="phone" value="#{msgs.phoneLabel}" />
-						<p:inputText id="phone" value="#{person.phone}"
-							label="#{msgs.phoneLabel}" />
+				<p:outputLabel value="#{msgs.dobLabel}" for="dob" />
+				<p:calendar id="dob" readonlyInput="true" navigator="true"
+					pattern="mm/dd/yyyy" yearRange="c-125:c+0" />
 
-						<h:outputLabel for="email" value="#{msgs.emailLabel}" />
-						<p:inputText id="email" value="#{person.email}"
-							label="#{msgs.emailLabel}" />
+				<p:outputLabel value="#{msgs.sexLabel}" for="sexRadio" />
+				<p:inputText id="sexRadio" value="#{person.sex}"
+					label="#{msgs.sexLabel}" />
 
-							<h:outputLabel for="street" value="#{msgs.streetLabel}" />
-						<p:inputText id="street" value="#{address.street}"
-							label="#{msgs.streetLabel}" />
+				<h:outputLabel for="phone" value="#{msgs.phoneLabel}" />
+				<p:inputText id="phone" value="#{person.phone}"
+					label="#{msgs.phoneLabel}" />
 
-						<h:outputLabel for="city" value="#{msgs.cityLabel}" />
-						<p:inputText id="city" value="#{address.city}"
-							label="#{msgs.cityLabel}" />
+				<h:outputLabel for="email" value="#{msgs.emailLabel}" />
+				<p:inputText id="email" value="#{person.email}"
+					label="#{msgs.emailLabel}" />
 
-						<h:outputLabel for="state" value="#{msgs.stateLabel}" />
-						<p:inputText id="state" value="#{address.state}"
-							label="#{msgs.stateLabel}"  />
+				<h:outputLabel for="street" value="#{msgs.streetLabel}" />
+				<p:inputText id="street" value="#{address.street}"
+					label="#{msgs.streetLabel}" />
 
-						<h:outputLabel for="zip" value="#{msgs.zipLabel}" />
-						<p:inputText id="zip" value="#{address.zip}"
-							label="#{msgs.zipLabel}"  />
+				<h:outputLabel for="city" value="#{msgs.cityLabel}" />
+				<p:inputText id="city" value="#{address.city}"
+					label="#{msgs.cityLabel}" />
 
-						<h:outputLabel for="country" value="#{msgs.countryLabel}" />
-						<p:inputText id="country" value="#{address.country}"
-							label="#{msgs.countryLabel}"/>											
-				</p:panelGrid>				
-			</h:form>				
-		</h:panelGrid>	
+				<h:outputLabel for="state" value="#{msgs.stateLabel}" />
+				<p:inputText id="state" value="#{address.state}"
+					label="#{msgs.stateLabel}" />
+
+				<h:outputLabel for="zip" value="#{msgs.zipLabel}" />
+				<p:inputText id="zip" value="#{address.zip}"
+					label="#{msgs.zipLabel}" />
+
+				<h:outputLabel for="country" value="#{msgs.countryLabel}" />
+				<p:inputText id="country" value="#{address.country}"
+					label="#{msgs.countryLabel}" />
+			</p:panelGrid>
+		</h:form>
+	</h:panelGrid>
 </ui:composition>
 </html>
 

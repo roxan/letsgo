@@ -4,7 +4,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:corejsf="http://corejsf.com/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <head>
 <title>IGNORED</title>
@@ -14,39 +15,43 @@
 		<div id="navigationwrap">
 			<div id="navigation">
 				<h:form>
+					<p:graphicImage value="${person.photo}" width="32px" height="32px"
+						rendered="#{control.loggedIn}" style="float:left;margin:0 5px;" />
+					<h:outputFormat value="#{msgs.welcome}"
+						rendered="#{control.loggedIn}" style="float:left;margin:0 5px;">
+						<f:param value="${person.firstName}" />
+					</h:outputFormat>
+
+
+					<corejsf:goto name="#{msgs.tagHome}"
+						image="#{resource['images:home.png']}"></corejsf:goto>
+
 					<h:panelGroup rendered="#{control.loggedIn}">
-					<p:graphicImage value="#{person.photo}" width="32px"
-						height="32px" />
-					
-					</h:panelGroup>	
-						<corejsf:goto name="#{msgs.tagHome}" 
-						image="#{resource['images:home.png']}" ></corejsf:goto>
-						
-						<h:panelGroup rendered="#{control.loggedIn}">	
-						<corejsf:goto name="#{msgs.tagUserPanel}" 
-						image="#{resource['images:userPanel.png']}"  
-						rendered="#{control.loggedIn}"></corejsf:goto>	
-						</h:panelGroup>
-						
-						<h:panelGroup rendered="#{control.loggedIn}">
-						<corejsf:goto name="#{msgs.tagofferRide}" 
-						image="#{resource['images:offerride.png']}" rendered="#{control.loggedIn}">
+						<corejsf:goto name="#{msgs.tagUserPanel}"
+							image="#{resource['images:userPanel.png']}"
+							rendered="#{control.loggedIn}"></corejsf:goto>
+					</h:panelGroup>
+
+					<h:panelGroup rendered="#{control.loggedIn}">
+						<corejsf:goto name="#{msgs.tagofferRide}"
+							image="#{resource['images:offerride.png']}"
+							rendered="#{control.loggedIn}">
 						</corejsf:goto>
-						</h:panelGroup>
-							<h:panelGroup rendered="#{not control.loggedIn}">					
-					<corejsf:goto name="#{msgs.tagRegister}"
-						image="#{resource['images:member.png']}"></corejsf:goto>
-						</h:panelGroup>
-							<h:panelGroup rendered="#{not control.loggedIn}">
-						<corejsf:goto name="#{msgs.tagLogin}" 
-						image="#{resource['images:login.png']}" 
-						></corejsf:goto>
-						</h:panelGroup>
-						
-						<h:panelGroup rendered="#{control.loggedIn}" >
-					   <corejsf:goto name="#{msgs.tagLogout}"
-						image="#{resource['images:logout.png']}" rendered="#{control.loggedIn}"></corejsf:goto>
-						</h:panelGroup>
+					</h:panelGroup>
+					<h:panelGroup rendered="#{not control.loggedIn}">
+						<corejsf:goto name="#{msgs.tagRegister}"
+							image="#{resource['images:member.png']}"></corejsf:goto>
+					</h:panelGroup>
+					<h:panelGroup rendered="#{not control.loggedIn}">
+						<corejsf:goto name="#{msgs.tagLogin}"
+							image="#{resource['images:login.png']}"></corejsf:goto>
+					</h:panelGroup>
+
+					<h:panelGroup rendered="#{control.loggedIn}">
+						<corejsf:goto name="#{msgs.tagLogout}"
+							image="#{resource['images:logout.png']}"
+							rendered="#{control.loggedIn}"></corejsf:goto>
+					</h:panelGroup>
 
 				</h:form>
 			</div>

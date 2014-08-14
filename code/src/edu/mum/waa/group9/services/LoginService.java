@@ -47,6 +47,7 @@ public class LoginService {
 						person.setPassword(personRow.getString("PASSWORD"));
 						person.setPhone(personRow.getString("PHONE"));
 						person.setSex(personRow.getString("SEX"));
+						person.setAge(personRow.getInt("AGE"));
 						if (null != personRow.getBlob("AVATAR")) {
 							InputStream bs = personRow.getBlob("AVATAR")
 									.getBinaryStream();

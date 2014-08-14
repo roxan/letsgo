@@ -68,7 +68,9 @@
 			<h:outputLabel value="#{msgs.paymentType}" />
 
 			<h:selectOneRadio value="#{ride.rideType}" layout="pageDirection">
-				<f:selectItems value="#{ride.rideTypeItems}" />
+				<f:selectItem value="#{msgs.rideTypeFree}" />
+				<f:selectItem value="#{msgs.rideTypeEqual}" />
+				<f:selectItem value="#{msgs.rideTypeMutual}" />
 			</h:selectOneRadio>
 		</h:panelGrid>
 	</h:form>

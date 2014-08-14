@@ -22,13 +22,15 @@
 				<p:autoComplete id="searchFrom" dropdown="true"
 					value="#{ride.source}"
 					completeMethod="#{locationControl.filterLocation}" cache="true"
-					minQueryLength="3" forceSelection="true" emptyMessage="Source" />
+					minQueryLength="3" forceSelection="true"
+					emptyMessage="#{msgs.notFound}" />
 
 				<h:outputLabel for="searchTo" value="#{msgs.goingTo}" />
 				<p:autoComplete id="searchTo" dropdown="true"
 					value="#{ride.destination}"
 					completeMethod="#{locationControl.filterLocation}" cache="true"
-					minQueryLength="3" forceSelection="true" emptyMessage="Destination" />
+					minQueryLength="3" forceSelection="true"
+					emptyMessage="#{msgs.notFound}" />
 
 				<p:outputLabel value="#{msgs.departDate}" for="fromDate" />
 				<p:calendar id="fromDate" value="#{ride.departDate}"
@@ -40,7 +42,7 @@
 				<h:panelGroup>
 					<p:inputText id="departTime" value="#{ride.departTime}"
 						label="#{msgs.time}" required="true"
-						requiredMessage="#{msgs.requiredMessages}">						
+						requiredMessage="#{msgs.requiredMessages}">
 					</p:inputText>
 					<h:message for="departTime" style="color:red" />
 				</h:panelGroup>

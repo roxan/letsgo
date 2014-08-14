@@ -17,20 +17,23 @@
 				#{msgs.loginPageTitle}
 			</f:facet>
 				<h:outputLabel for="userName" value="#{msgs.userName}" />
-				<p:inputText id="userName" required="true" value="#{login.userName}" />
+				<p:inputText id="userName" required="true" value="#{login.userName}" requiredMessage="#{msgs.userNameRequired}" />
 				<h:outputLabel for="password" value="#{msgs.password}" />
-				<p:password id="password" required="true" value="#{login.password}" />
+				<p:password id="password" required="true" value="#{login.password}" requiredMessage="#{msgs.requiredMessages}"/>
 				
-				<h:outputText rendered="#{control.loginfailure}"
-					value="#{msgs.invalidUserNameOrPassword}" /> 
+				<!-- <h:outputText rendered="#{control.loginfailure}"
+					value="#{msgs.invalidUserNameOrPassword}" />  -->
 				<f:facet name="footer">
-					<p:commandButton value="#{msgs.loginButton}" action="#{control.doLogin}" />
-					<p:commandButton value="#{msgs.cancelButton}" immediate="true" />
-					<p:commandButton value="#{msgs.register}" action="#{control.goToRegister}"/>
+					<p:commandButton id="login" value="#{msgs.loginButton}" 
+					action="#{control.doLogin}" icon="ui-icon-check" styleClass="buttonRight"/>
+					
+					<p:commandButton value="#{msgs.register}" action="#{control.goToRegister}" 
+					icon="ui-icon-check" styleClass="buttonRight"/>
 							</f:facet>
 
 			</p:panelGrid>
-
+			<p:message for="login" rendered="#{control.loginfailure}"><h:outputText value="#{msgs.invalidUserNameOrPassword}" /></p:message>
+		<p:messages autoUpdate="true" showDetail="true" />
 		</h:form>
 	</ui:composition>
 </body>

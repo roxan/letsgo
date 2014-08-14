@@ -69,7 +69,7 @@ public class Control implements Serializable {
 	public String search() {
 		SearchService searchServ = new SearchService();
 		searchServ.search(searchBean);
-		return "searchResult";
+		return "searchResult?faces-redirect=true";
 	}
 
 	public String doSearch() {
@@ -86,7 +86,7 @@ public class Control implements Serializable {
 		PersonService personServ = new PersonService();
 		personBean.setAddress(personAddress);
 		personBean.setRegistered(personServ.register(personBean));
-		return "registration_status";
+		return "registration_status?faces-redirect=true";
 	}
 
 	public String createRide() {
@@ -104,7 +104,7 @@ public class Control implements Serializable {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		Map<String, String> params = fc.getExternalContext()
 				.getRequestParameterMap();
-		requestedUrl = params.get("url");
+		requestedUrl = params.get("url")+"?faces-redirect=true";
 
 		if (loggedIn) {
 			Ride currRide = currentRideFromRideList();
@@ -115,7 +115,7 @@ public class Control implements Serializable {
 		} else {
 			callingPage = FacesContext.getCurrentInstance().getViewRoot()
 					.getViewId();
-			return "login";
+			return "login?faces-redirect=true";
 		}
 	}
 
@@ -136,27 +136,27 @@ public class Control implements Serializable {
 
 	public String doLogin() {
 		LoginService ls = new LoginService();
-		loggedIn = ls.doLogin(personBean, login);
+		loggedIn = ls.doLogin(personBean, login,personAddress);
 
 		if (loggedIn) {
 			if (null != callingPage && callingPage.contains("searchResult"))
 				return "rideDetail";
 			else
-				return "userPanel";
+				return "userPanel?faces-redirect=true";
 
 		} else {
 			loginfailure = true;
-			return "login";
+			return "login?faces-redirect=true";
 		}
 	}
 
 	public String goToRegister() {
-		return "register";
+		return "register?faces-redirect=true";
 	}
 
 	public void changePassword() {
 		LoginService ls = new LoginService();
-		boolean passwordChanged = ls.changePassword(personBean, login);
+		ls.changePassword(personBean, login);
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {
@@ -166,7 +166,6 @@ public class Control implements Serializable {
 
 	public String offeredRides() {
 		PersonService personServ = new PersonService();
-		personBean.setId(101);
 		personServ.getOfferedRides(personBean);
 		return null;
 	}

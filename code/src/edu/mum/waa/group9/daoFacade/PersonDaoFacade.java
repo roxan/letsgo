@@ -7,7 +7,7 @@ import org.primefaces.model.UploadedFile;
 import edu.mum.waa.group9.beanInterfaces.PersonInterface;
 
 public interface PersonDaoFacade {
-	public CachedRowSet getUnameAndPassword(String email, String password);
+	public CachedRowSet getPersonAndAddress(String username, String password);
 
 	public boolean registerPerson(PersonInterface personBean);
 

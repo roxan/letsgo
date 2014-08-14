@@ -9,7 +9,7 @@ public class MessageProvider {
 
 	private static ResourceBundle bundle;
 
-	public static ResourceBundle getBundle() {
+	private static ResourceBundle getBundle() {
 		if (bundle == null) {
 			FacesContext context = FacesContext.getCurrentInstance();
 			bundle = context.getApplication()

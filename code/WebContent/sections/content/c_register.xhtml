@@ -36,7 +36,7 @@
 
 						<p:outputLabel value="#{msgs.dobLabel}" for="dob" />
 						<p:calendar id="dob" readonlyInput="true" navigator="true"
-							placeholder="hello" pattern="mm/dd/yyyy" yearRange="c-125:c+0" />
+							placeholder="#{msgs.selectDate}" pattern="mm/dd/yyyy" yearRange="c-125:c+0" />
 
 						<p:outputLabel value="#{msgs.sexLabel}" for="sexRadio" />
 						<p:selectOneRadio id="sexRadio" value="#{person.sex}">
@@ -111,8 +111,6 @@
 					</f:facet>
 				</p:panelGrid>
 				<f:facet name="footer">
-					<p:commandButton value="#{msgs.clearButton}" icon="ui-icon-check"
-						styleClass="buttonRight" onclick="clearField(this.form)" />
 					<p:commandButton value="#{msgs.registerButton}"
 						icon="ui-icon-check" styleClass="buttonRight"
 						action="#{control.registerPerson}" />

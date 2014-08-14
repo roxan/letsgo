@@ -32,6 +32,6 @@ public class Goto implements Serializable {
 
 	public String gotoPage(String key) {
 		selectedPage = myMap.get(key);
-		return selectedPage;
+		return selectedPage+"?faces-redirect=true";
 	}
 }

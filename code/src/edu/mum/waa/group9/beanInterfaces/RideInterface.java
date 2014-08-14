@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.sql.Time;
 import java.util.Date;
 
-import edu.mum.waa.group9.beanImpl.Person;
-
 public interface RideInterface {
 	
 	public String getSource();

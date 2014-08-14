@@ -23,7 +23,7 @@
 						
 						<h:panelGroup rendered="#{control.loggedIn}">	
 						<corejsf:goto name="#{msgs.tagUserPanel}" 
-						image="#{resource['images:usePanel.png']}"  
+						image="#{resource['images:userPanel.png']}"  
 						rendered="#{control.loggedIn}"></corejsf:goto>	
 						</h:panelGroup>
 						
@@ -32,13 +32,15 @@
 						image="#{resource['images:offerride.png']}" rendered="#{control.loggedIn}">
 						</corejsf:goto>
 						</h:panelGroup>
-											
+							<h:panelGroup rendered="#{not control.loggedIn}">					
 					<corejsf:goto name="#{msgs.tagRegister}"
 						image="#{resource['images:member.png']}"></corejsf:goto>
-						
+						</h:panelGroup>
+							<h:panelGroup rendered="#{not control.loggedIn}">
 						<corejsf:goto name="#{msgs.tagLogin}" 
 						image="#{resource['images:login.png']}" 
-						rendered="#{not control.loggedIn}"></corejsf:goto>
+						></corejsf:goto>
+						</h:panelGroup>
 						
 						<h:panelGroup rendered="#{control.loggedIn}" >
 					   <corejsf:goto name="#{msgs.tagLogout}"

@@ -32,7 +32,7 @@ public class TabbedPane implements Serializable {
 	private int index;
 	private static final int JEFFERSON_INDEX = 0;
 	private static final int ROOSEVELT_INDEX = 1;
-	private static final int LINCOLN_INDEX = 2;
+	private static final int CHANGE_PASSWORD = 2;
 	private static final int WASHINGTON_INDEX = 3;
 
 	private String[] tabTooltips = { "jeffersonTooltip", "rooseveltTooltip",
@@ -55,7 +55,7 @@ public class TabbedPane implements Serializable {
 	}
 
 	public void lincolnAction(ActionEvent e) {
-		index = LINCOLN_INDEX;
+		index = CHANGE_PASSWORD;
 	}
 
 	public void washingtonAction(ActionEvent e) {
@@ -74,7 +74,7 @@ public class TabbedPane implements Serializable {
 	}
 
 	public String getLincolnStyle() {
-		return getCSS(LINCOLN_INDEX);
+		return getCSS(CHANGE_PASSWORD);
 	}
 
 	public String getWashingtonStyle() {
@@ -96,7 +96,7 @@ public class TabbedPane implements Serializable {
 	}
 
 	public boolean iscustomCurrent() {
-		return index == LINCOLN_INDEX;
+		return index == CHANGE_PASSWORD;
 	}
 
 	public boolean isloginCurrent() {

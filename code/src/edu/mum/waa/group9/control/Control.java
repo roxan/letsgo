@@ -124,7 +124,7 @@ public class Control implements Serializable {
 		loggedIn = ls.doLogin(personBean, login,personAddress);
 
 		if (loggedIn) {
-			if (null!= callingPage && callingPage.contains("searchResult"))
+			if (null != callingPage && callingPage.contains("searchResult"))
 				return "rideDetail";
 			else
 				return "userPanel";
@@ -141,7 +141,7 @@ public class Control implements Serializable {
 
 	public void changePassword() {
 		LoginService ls = new LoginService();
-		boolean passwordChanged = ls.changePassword(personBean, login);
+		ls.changePassword(personBean, login);
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {

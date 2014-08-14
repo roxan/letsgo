@@ -124,6 +124,8 @@ p, ul, ol, dl, table {
 	margin: 0 auto;
 	clear: both;
 	text-align: center;
+	position: fixed;
+	bottom: 0%;
 }
 
 #footer {

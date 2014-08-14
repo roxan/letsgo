@@ -33,14 +33,14 @@ public class LoginService {
 				if (personRow.next()) {
 					try {
 
-						address.setId(personRow.getInt("ID"));
+						address.setId(personRow.getInt("ADDRESS_ID"));
 						address.setCity(personRow.getString("CITY"));
 						address.setCountry(personRow.getString("COUNTRY"));
 						address.setState(personRow.getString("STATE"));
 						address.setStreet(personRow.getString("STREET"));
 						address.setZip(personRow.getString("ZIP"));
 
-						person.setId(personRow.getInt("ID"));
+						person.setId(personRow.getInt("PERSON_ID"));
 						person.setFirstName(personRow.getString("FIRST_NAME"));
 						person.setLastName(personRow.getString("LAST_NAME"));
 						person.setEmail(personRow.getString("EMAIL"));

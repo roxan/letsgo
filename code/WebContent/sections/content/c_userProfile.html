@@ -23,9 +23,9 @@
 						<p:inputText id="lastName" value="#{person.lastName}"
 							label="#{msgs.lastNameLabel}"/>
 
-						<p:outputLabel value="#{msgs.dobLabel}" for="dob" />
-						<p:calendar id="dob" readonlyInput="true" navigator="true"
-							 pattern="mm/dd/yyyy" yearRange="c-125:c+0" />
+						<h:outputLabel for="age" value="#{msgs.ageLabel}" />
+						<p:inputText id="age" value="#{person.age}"
+							label="#{msgs.ageLabel}"/>
 
 						<p:outputLabel value="#{msgs.sexLabel}" for="sexRadio" />
 						<p:inputText id="sexRadio" value="#{person.sex}"

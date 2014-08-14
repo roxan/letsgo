@@ -36,7 +36,7 @@
 							dropdown="true" value="#{search.fromLocation}"
 							completeMethod="#{locationControl.filterLocation}" cache="true"
 							minQueryLength="3" forceSelection="true" autocomplete="true"
-							emptyMessage="No such location" required="true"
+							emptyMessage="#{msgs.noSuchPlace}" required="true"
 							requiredMessage="#{msgs.fromValidationError}" />
 						<p:message for="searchFrom" />
 					</p:column>
@@ -58,7 +58,7 @@
 							value="#{search.toLocation}"
 							completeMethod="#{locationControl.filterLocation}" cache="true"
 							minQueryLength="3" forceSelection="true"
-							emptyMessage="No such location" autocomplete="true"
+							emptyMessage="#{msgs.noSuchPlace}" autocomplete="true"
 							required="true" requiredMessage="#{msgs.toValidationError}" />
 						<p:message for="searchTo" />
 					</p:column>

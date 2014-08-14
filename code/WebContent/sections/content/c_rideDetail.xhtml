@@ -17,59 +17,80 @@
 				</div>
 				<div class="panel-body">
 					<ul class="list-group">
-						<li class="list-group-item"><p:graphicImage value="#{search.currentRide.person.photo}"
-						width="128" height="128" /></li>
+						<li class="list-group-item"><p:graphicImage
+								value="#{search.currentRide.person.photo}" width="128"
+								height="128" /></li>
 
-						<li class="list-group-item"><b>Name:</b> #{search.currentRide.person.firstName}</li>
-						<li class="list-group-item"><b>Age:</b> #{search.currentRide.person.getAge()}</li>
-						<li class="list-group-item"><b>Sex:</b> #{search.currentRide.person.sex}</li>
+						<li class="list-group-item"><b>Name:</b>
+							#{search.currentRide.person.firstName}</li>
+						<li class="list-group-item"><b>Age:</b>
+							#{search.currentRide.person.getAge()}</li>
+						<li class="list-group-item"><b>Sex:</b>
+							#{search.currentRide.person.sex}</li>
 					</ul>
 				</div>
 			</div>
-				
-			<div class="panel panel-default">	
-			<div class="panel-heading">
+		</div>
+
+		<div class="col-md-4 col-sm-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
 					<h4>#{msgs.tripDetailText}</h4>
 				</div>
 				<div class="panel-body">
 					<ul class="list-group">
-						<li class="list-group-item"><b>#{msgs.fromLabel}</b> #{search.currentRide.source}</li>
-						<li class="list-group-item"><b>#{msgs.toLabel}</b> #{search.currentRide.destination}</li>
-						<li class="list-group-item"><b>#{msgs.descriptionLabel}</b> #{search.currentRide.description}</li>
-						<li class="list-group-item"><b>#{msgs.vehicleDescriptionLabel}</b> #{search.currentRide.vehicleDescription}</li>
+						<li class="list-group-item"><b>#{msgs.fromLabel}</b>
+							#{search.currentRide.source}</li>
+						<li class="list-group-item"><b>#{msgs.toLabel}</b>
+							#{search.currentRide.destination}</li>
+						<li class="list-group-item"><b>#{msgs.descriptionLabel}</b>
+							#{search.currentRide.description}</li>
+						<li class="list-group-item"><b>#{msgs.vehicleDescriptionLabel}</b>
+							#{search.currentRide.vehicleDescription}</li>
 					</ul>
 				</div>
 			</div>
+		</div>
+
+		<div class="col-md-4 col-sm-6">
 			<div class="panel panel-default">
-			<div class="panel-heading">
+				<div class="panel-heading">
 					<h4>#{msgs.contactInfoText}</h4>
 				</div>
 				<div class="panel-body">
 					<ul class="list-group">
-						<li class="list-group-item"><b>#{msgs.phoneLabel}</b> #{search.currentRide.person.phone}</li>
-						<li class="list-group-item"><b>#{msgs.emailLabel}</b> #{search.currentRide.person.email}</li>
-						<li class="list-group-item"><b>#{msgs.addressLabel}</b> #{search.currentRide.person.address.fullAddress()}</li>
-						<li class="list-group-item"><b>#{msgs.vehicleDescriptionLabel}</b> #{search.currentRide.vehicleDescription}</li>
+						<li class="list-group-item"><b>#{msgs.phoneLabel}</b>
+							#{search.currentRide.person.phone}</li>
+						<li class="list-group-item"><b>#{msgs.emailLabel}</b>
+							#{search.currentRide.person.email}</li>
+						<li class="list-group-item"><b>#{msgs.addressLabel}</b>
+							#{search.currentRide.person.address.fullAddress()}</li>
+						<li class="list-group-item"><b>#{msgs.vehicleDescriptionLabel}</b>
+							#{search.currentRide.vehicleDescription}</li>
 					</ul>
 				</div>
 			</div>
-			
+		</div>
+
+		<div class="col-md-4 col-sm-6">
 			<div class="panel panel-default">
-			<div class="panel-heading">
+				<div class="panel-heading">
 					<h4>#{msgs.costInfoText}</h4>
 				</div>
 				<div class="panel-body">
 					<ul class="list-group">
-						<li class="list-group-item"><b>#{msgs.expectedExpenseLabel}</b> #{search.currentRide.expectedExpense}</li>
-						<li class="list-group-item"><b>#{msgs.rideTypeLabel}</b> #{search.currentRide.rideType}</li>
-						<li class="list-group-item"><b>#{msgs.addressLabel}</b> #{search.currentRide.person.address.fullAddress()}</li>
-						<li class="list-group-item"><b>#{msgs.vehicleDescriptionLabel}</b> #{search.currentRide.vehicleDescription}</li>
+						<li class="list-group-item"><b>#{msgs.expectedExpenseLabel}</b>
+							#{search.currentRide.expectedExpense}</li>
+						<li class="list-group-item"><b>#{msgs.rideTypeLabel}</b>
+							#{search.currentRide.rideType}</li>
+						<li class="list-group-item"><b>#{msgs.addressLabel}</b>
+							#{search.currentRide.person.address.fullAddress()}</li>
+						<li class="list-group-item"><b>#{msgs.vehicleDescriptionLabel}</b>
+							#{search.currentRide.vehicleDescription}</li>
 					</ul>
 				</div>
 			</div>
-	</div>
-			
-
+		</div>
 
 	</ui:composition>
 </body>

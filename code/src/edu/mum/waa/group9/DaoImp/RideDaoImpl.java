@@ -27,7 +27,7 @@ public class RideDaoImpl implements RideDaoFacade {
 				ps = con.prepareStatement(INSERT_RECORD);
 				ps.setInt(1, rideBean.getPerson().getId());
 				ps.setString(2, rideBean.getSource());
-				ps.setString(3, rideBean.getDescription());
+				ps.setString(3, rideBean.getDestination());
 				ps.setDate(4, DateUtil.sqlDate(rideBean.getDepartDate()));
 				ps.setString(5, rideBean.getDepartTime());
 				ps.setDate(6, DateUtil.sqlDate(rideBean.getReturnDate()));

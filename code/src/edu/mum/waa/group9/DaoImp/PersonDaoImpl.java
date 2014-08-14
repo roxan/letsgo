@@ -108,7 +108,6 @@ public class PersonDaoImpl implements PersonDaoFacade {
 			ps.execute();
 			ps.close();
 			con.close();
-			System.out.println("udating password");
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
 		}

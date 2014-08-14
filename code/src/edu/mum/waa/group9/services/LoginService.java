@@ -11,13 +11,16 @@ import edu.mum.waa.group9.DaoImp.PersonDaoImpl;
 import edu.mum.waa.group9.beanImpl.Login;
 import edu.mum.waa.group9.beanImpl.Person;
 import edu.mum.waa.group9.daoFacade.PersonDaoFacade;
+import edu.mum.waa.group9.utils.MessageProvider;
+import edu.mum.waa.group9.utils.MessagesUtil;
 
 public class LoginService {
 	CachedRowSet personRow;
 	PersonDaoFacade personFacade = new PersonDaoImpl();
 
 	public boolean doLogin(Person person, Login login) {
-		personRow = personFacade.getUnameAndPassword(login.getUserName(),login.getPassword());
+		personRow = personFacade.getUnameAndPassword(login.getUserName(),
+				login.getPassword());
 
 		if (personRow == null) {
 			return false;
@@ -25,7 +28,6 @@ public class LoginService {
 			try {
 				if (personRow.next()) {
 					try {
-
 						person.setId(personRow.getInt("ID"));
 						person.setFirstName(personRow.getString("FIRST_NAME"));
 						person.setLastName(personRow.getString("LAST_NAME"));
@@ -46,20 +48,21 @@ public class LoginService {
 					}
 				}
 			} catch (SQLException e) {
-
 				e.printStackTrace();
 			}
 		return false;
 	}
 
-	public boolean changePassword(Person person1, Login login1) {
-		String password=person1.getPassword();
-		String password1=login1.getPassword();
-		 if(password.equals(password1)){
-			 personFacade.updatePassword(person1.getId(), login1.getNewPassword());
+	public boolean changePassword(Person person, Login login) {
+		if (null != person && null != login
+				&& person.getPassword().equals(login.getPassword())) {
+			personFacade.updatePassword(person.getId(), login.getNewPassword());
+			MessagesUtil.displaySuccess(MessageProvider
+					.getValue("changePasswordSuccess"));
 			return true;
 		}
+		MessagesUtil.displayError(MessageProvider
+				.getValue("changePasswordFailure"));
 		return false;
 	}
-
 }

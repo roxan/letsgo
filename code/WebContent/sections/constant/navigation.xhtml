@@ -14,21 +14,36 @@
 		<div id="navigationwrap">
 			<div id="navigation">
 				<h:form>
-
+					<h:panelGroup rendered="#{control.loggedIn}">
 					<p:graphicImage value="#{person.photo}" width="32px"
 						height="32px" />
+					</h:panelGroup>	
 						<corejsf:goto name="#{msgs.tagHome}" 
-						image="#{resource['images:home.png']}" ></corejsf:goto>					
+						image="#{resource['images:home.png']}" ></corejsf:goto>
+						
+						<h:panelGroup rendered="#{control.loggedIn}">	
+						<corejsf:goto name="#{msgs.tagUserPanel}" 
+						image="#{resource['images:usePanel.png']}"  
+						rendered="#{control.loggedIn}"></corejsf:goto>	
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{control.loggedIn}">
+						<corejsf:goto name="#{msgs.tagofferRide}" 
+						image="#{resource['images:offerride.png']}" rendered="#{control.loggedIn}">
+						</corejsf:goto>
+						</h:panelGroup>
+											
 					<corejsf:goto name="#{msgs.tagRegister}"
 						image="#{resource['images:member.png']}"></corejsf:goto>
+						
 						<corejsf:goto name="#{msgs.tagLogin}" 
-						image="#{resource['images:login.png']}" ></corejsf:goto>
-					<corejsf:goto name="#{msgs.tagLogout}"
-						image="#{resource['images:logout.png']}" ></corejsf:goto>
-						<h:panelGroup rendered="#{control.loggedIn}">
-					</h:panelGroup>
-					<!-- <h:commandLink value="#{msgs.login}" />
-					<h:commandLink value="#{msgs.register}" /> -->
+						image="#{resource['images:login.png']}" 
+						rendered="#{not control.loggedIn}"></corejsf:goto>
+						
+						<h:panelGroup rendered="#{control.loggedIn}" >
+					   <corejsf:goto name="#{msgs.tagLogout}"
+						image="#{resource['images:logout.png']}" rendered="#{control.loggedIn}"></corejsf:goto>
+						</h:panelGroup>
 
 				</h:form>
 			</div>

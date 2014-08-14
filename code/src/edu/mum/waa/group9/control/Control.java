@@ -34,7 +34,7 @@ public class Control implements Serializable {
 	@Inject
 	private Login login;
 
-	private boolean loggedIn;
+	private boolean loggedIn=false;
 	private boolean loginfailure = false;
 	private String confirmPassword;
 	private String requestedUrl;

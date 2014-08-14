@@ -21,6 +21,8 @@ public class Goto implements Serializable {
         myMap.put(MessageProvider.getValue("tagHome"),"index");
         myMap.put(MessageProvider.getValue("tagRegister"),"register");
         myMap.put(MessageProvider.getValue("tagLogout"),"logout");
+        myMap.put(MessageProvider.getValue("tagofferRide"),"offerRide");
+        myMap.put(MessageProvider.getValue("tagUserPanel"),"userPanel");
         
     }
 

@@ -104,7 +104,7 @@ public class Control implements Serializable {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		Map<String, String> params = fc.getExternalContext()
 				.getRequestParameterMap();
-		requestedUrl = params.get("url") + "?faces-redirect=true";
+		requestedUrl = params.get("url");
 
 		Ride currRide = currentRideFromRideList();
 		if (currRide != null) {

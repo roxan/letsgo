@@ -23,8 +23,6 @@ public class LocationDaoImpl implements LocationDaoFacade {
 		Connection con;
 		try {
 			con = ConnectionManager.getConnection();
-			System.out.println("fdas");
-			System.out.println(con);
 			try {
 				stmt = con.createStatement();
 				// ToDo: use preparedStatement

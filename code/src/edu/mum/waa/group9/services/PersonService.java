@@ -36,6 +36,7 @@ public class PersonService {
 		searchResult = getOfferedRidesDao.getOfferedRides(person);
 
 		try {
+			person.getOfferredRidesList().clear();
 			while (searchResult.next()) {
 
 				Ride tempRide = new Ride();
@@ -58,8 +59,6 @@ public class PersonService {
 						.getBigDecimal("EXPECTED_EXPENSE"));
 				tempRide.setRideType(searchResult.getString("RIDE_TYPE"));
 				person.getOfferredRidesList().add(tempRide);
-				System.out.println("Source: "
-						+ searchResult.getString("SOURCE"));
 			}
 
 		} catch (SQLException e) {

@@ -15,62 +15,65 @@
 			<h:panelGrid columns="4" styleClass="search" rowClasses="rowClass">
 
 				<p:column>
-					<h:outputText value="#{msgs.from}" />
+					<h:outputText value="#{msgs.indexFrom}" />
 				</p:column>
 
 				<p:column>
-					<h:outputText value="#{msgs.departDate}" />
+					<h:outputText value="#{msgs.departDateLabel}" />
 				</p:column>
 
 				<p:column>
-					<h:outputText value="#{msgs.to}" />
+					<h:outputText value="#{msgs.indexTo}" />
 				</p:column>
 
 				<p:column>
-					<h:outputText value="#{msgs.returnDate}" />
+					<h:outputText value="#{msgs.returnDateLabel}" />
 				</p:column>
 
 				<p:column>
-					<p:autoComplete id="searchFrom" dropdown="true"
-						value="#{search.fromLocation}"
+					<p:autoComplete id="searchFrom" label="#{msgs.from}"
+						dropdown="true" value="#{search.fromLocation}"
 						completeMethod="#{locationControl.filterLocation}" cache="true"
 						minQueryLength="3" forceSelection="true" autocomplete="true"
-						emptyMessage="No such location" />
+						emptyMessage="No such location" required="true"
+						requiredMessage="#{msgs.fromValidationError}" />
+					<p:message for="searchFrom" />
 				</p:column>
 
 
 
 				<p:column>
-					<p:calendar id="fromDate" value="#{search.fromDate}"
-						readOnlyInput="true" placeholder="From Date" />
+					<p:calendar id="fromDate" label="#{msgs.departDateLabel}"
+						value="#{search.fromDate}" readOnlyInput="true"
+						placeholder="#{msgs.departDateLabel}" required="true"
+						requiredMessage="#{msgs.departDateValidationError}" />
+					<p:message for="fromDate" />
 				</p:column>
 
 
 
 				<p:column>
-					<p:autoComplete id="searchTo" dropdown="true"
+					<p:autoComplete id="searchTo" label="#{msgs.to}" dropdown="true"
 						value="#{search.toLocation}"
 						completeMethod="#{locationControl.filterLocation}" cache="true"
 						minQueryLength="3" forceSelection="true"
-						emptyMessage="No such location" autocomplete="true" />
+						emptyMessage="No such location" autocomplete="true"
+						required="true" requiredMessage="#{msgs.toValidationError}" />
+					<p:message for="searchTo" />
 				</p:column>
 
 				<p:column>
-					<p:calendar id="toDate" value="#{search.toDate}"
-						readOnlyInput="true" placeholder="To Date" />
-				</p:column>
-
-				<p:column></p:column>
-				<p:column></p:column>
-				<p:column></p:column>
-				<p:column>
-					<h:commandButton action="#{control.search}" value="Go"
-						style="text-align:right;float:right;" />
+					<p:calendar id="toDate" label="#{msgs.returnDateLable}"
+						value="#{search.toDate}" readOnlyInput="true"
+						placeholder="#{msgs.returnDateLabel}" required="true"
+						requiredMessage="#{msgs.returnDateValidationError}" />
+					<p:message for="toDate" closable="true" />
 				</p:column>
 			</h:panelGrid>
+					<p:commandButton action="#{control.doSearch}" value="Find Me Rides"
+						 />
 		</h:form>
-		<p:messages id="messages" showDetail="true" autoUpdate="true"
-			closable="true" />
+		<p:messages id="messages" autoUpdate="true" closable="true" />
 	</ui:composition>
 </body>
 </html>

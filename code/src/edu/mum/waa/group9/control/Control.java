@@ -119,8 +119,8 @@ public class Control implements Serializable {
 		loggedIn = ls.doLogin(personBean, login);
 
 		if (loggedIn) {
-			if (callingPage.contains("searchResult"))
-				return "index";
+			if (null!= callingPage && callingPage.contains("searchResult"))
+				return "rideDetail";
 			else
 				return "userPanel";
 

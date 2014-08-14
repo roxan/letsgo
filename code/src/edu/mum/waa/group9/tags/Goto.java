@@ -12,6 +12,9 @@ import edu.mum.waa.group9.utils.MessageProvider;
 @Named("goto")
 @SessionScoped
 public class Goto implements Serializable {
+	
+	private static final long serialVersionUID = 2224876206900045793L;
+	
 	private String selectedPage;
 	private static Map<String,String> myMap;
 	static

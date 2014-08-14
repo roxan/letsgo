@@ -79,7 +79,6 @@ public class Control implements Serializable {
 	public void logout() {
 		FacesContext.getCurrentInstance().getExternalContext()
 				.invalidateSession();
-		System.out.println("logout Success");
 	}
 
 	public String registerPerson() {

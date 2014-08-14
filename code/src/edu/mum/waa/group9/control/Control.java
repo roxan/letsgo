@@ -18,6 +18,7 @@ import edu.mum.waa.group9.beanImpl.Search;
 import edu.mum.waa.group9.exceptions.RulesException;
 import edu.mum.waa.group9.services.LoginService;
 import edu.mum.waa.group9.services.PersonService;
+import edu.mum.waa.group9.services.RideService;
 import edu.mum.waa.group9.services.SearchService;
 import edu.mum.waa.group9.utils.MessageProvider;
 import edu.mum.waa.group9.utils.MessagesUtil;
@@ -33,8 +34,10 @@ public class Control implements Serializable {
 	PersonAddress personAddress;
 	@Inject
 	private Login login;
+	@Inject
+	private Ride rideBean;
 
-	private boolean loggedIn=false;
+	private boolean loggedIn = false;
 	private boolean loginfailure = false;
 	private String confirmPassword;
 	private String requestedUrl;
@@ -73,9 +76,10 @@ public class Control implements Serializable {
 		return runRules();
 	}
 
-	public void logout() {		
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		System.out.println("logout Success");	
+	public void logout() {
+		FacesContext.getCurrentInstance().getExternalContext()
+				.invalidateSession();
+		System.out.println("logout Success");
 	}
 
 	public String registerPerson() {
@@ -85,17 +89,29 @@ public class Control implements Serializable {
 		return "registration_status?faces-redirect=true";
 	}
 
+	public String createRide() {
+		System.out.println("Inside Control--createRide");
+		rideBean.setPerson(personBean);
+		RideService rideServ = new RideService();
+		boolean createSuccess = rideServ.createRide(rideBean);
+		if (createSuccess)
+			return "userPanel";
+		else
+			return null;
+	}
+
 	public String checkLogin() {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		Map<String, String> params = fc.getExternalContext()
 				.getRequestParameterMap();
-		requestedUrl = params.get("url")+"?faces-redirect=true";
+		requestedUrl = params.get("url") + "?faces-redirect=true";
+
+		Ride currRide = currentRideFromRideList();
+		if (currRide != null) {
+			searchBean.setCurrentRide(currRide);
+		}
 
 		if (loggedIn) {
-			Ride currRide = currentRideFromRideList();
-			if (currRide != null) {
-				searchBean.setCurrentRide(currRide);
-			}
 			return requestedUrl;
 		} else {
 			callingPage = FacesContext.getCurrentInstance().getViewRoot()
@@ -121,7 +137,7 @@ public class Control implements Serializable {
 
 	public String doLogin() {
 		LoginService ls = new LoginService();
-		loggedIn = ls.doLogin(personBean, login,personAddress);
+		loggedIn = ls.doLogin(personBean, login, personAddress);
 
 		if (loggedIn) {
 			if (null != callingPage && callingPage.contains("searchResult"))

@@ -59,10 +59,10 @@ public class SearchService {
 				tempRide.setDestination(searchResult.getString("DESTINATION"));
 				tempRide.setDepartDate(DateUtil.utilDate(searchResult
 						.getDate("DEPART_DATE")));
-				tempRide.setDepartTime(searchResult.getTime("DEPART_TIME"));
+				tempRide.setDepartTime(searchResult.getString("DEPART_TIME"));
 				tempRide.setReturnDate(DateUtil.utilDate(searchResult
 						.getDate("RETURN_DATE")));
-				tempRide.setReturnTime(searchResult.getTime("RETURN_TIME"));
+				tempRide.setReturnTime(searchResult.getString("RETURN_TIME"));
 				tempRide.setDescription(searchResult.getString("DESCRIPTION"));
 				tempRide.setCapacity(searchResult.getInt("CAPACITY"));
 				tempRide.setVehicleDescription(searchResult

@@ -9,9 +9,9 @@ public interface RideInterface {
 	public String getSource();
 	public String getDestination();
 	public Date getDepartDate();
-	public Time getDepartTime();
+	public String getDepartTime();
 	public Date getReturnDate();
-	public Time getReturnTime();
+	public String getReturnTime();
 	public BigDecimal getExpectedExpense();
 	public int getCapacity();
 	public String getDescription();
@@ -24,9 +24,9 @@ public interface RideInterface {
 	public void setSource(String source);
 	public void setDestination(String destination);
 	public void setDepartDate(Date departDate);
-	public void setDepartTime(Time departTime);
+	public void setDepartTime(String departTime);
 	public void setReturnDate(Date returnDate);
-	public void setReturnTime(Time returnTime);
+	public void setReturnTime(String returnTime);
 	public void setExpectedExpense(BigDecimal expectedExpense);
 	public void setCapacity(int capacity);
 	public void setDescription(String description);

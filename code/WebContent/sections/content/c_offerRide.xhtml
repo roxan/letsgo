@@ -10,70 +10,91 @@
 </head>
 <body>
 	<ui:composition>
+
 		<h:form>
-		<h:panelGrid columns="2" cellpadding="3" cellspacing="3">
-			<f:facet name="header">#{msgs.rideInformation}</f:facet>
+			<p:panelGrid columns="2" cellspacing="4" cellpadding="4"
+				styleClass="noBorderPanelColumns">
+				<f:facet name="header">
+					<h:outputLabel value="#{msgs.rideInformation}" />
+				</f:facet>
 
-			<h:outputLabel value="#{msgs.from}" />
+				<h:outputLabel for="searchFrom" value="#{msgs.goingFrom}" />
+				<p:autoComplete id="searchFrom" dropdown="true"
+					value="#{ride.source}"
+					completeMethod="#{locationControl.filterLocation}" cache="true"
+					minQueryLength="3" forceSelection="true" emptyMessage="Source" />
 
-			<p:autoComplete id="searchFrom" dropdown="true"
-				value="#{ride.source}"
-				completeMethod="#{locationControl.filterLocation}" cache="true"
-				minQueryLength="3" forceSelection="true" emptyMessage="Source" />
+				<h:outputLabel for="searhTo" value="#{msgs.goingTo}" />
+				<p:autoComplete id="searchTo" dropdown="true"
+					value="#{ride.destination}"
+					completeMethod="#{locationControl.filterLocation}" cache="true"
+					minQueryLength="3" forceSelection="true" emptyMessage="Destination" />
 
-			<h:outputLabel value="#{msgs.to}" />
+				<p:outputLabel value="#{msgs.departDate}" for="fromDate" />
+				<p:calendar id="fromDate" value="#{ride.departDate}"
+					readonlyInput="true" navigator="true"
+					placeholder="#{msgs.departDate}" pattern="mm/dd/yyyy"
+					yearRange="c-125:c+0" />
 
-			<p:autoComplete id="searchTo" dropdown="true"
-				value="#{ride.destination}"
-				completeMethod="#{locationControl.filterLocation}" cache="true"
-				minQueryLength="3" forceSelection="true" emptyMessage="Destination" />
+				<h:outputLabel for="departTime" value="#{msgs.time}" />
+				<h:panelGroup>
+					<p:inputText id="departTime" value="#{ride.departTime}"
+						label="#{msgs.time}" required="true"
+						requiredMessage="#{msgs.requiredMessages}">						
+					</p:inputText>
+					<h:message for="departTime" style="color:red" />
+				</h:panelGroup>
 
-			<h:outputLabel value="#{msgs.departDate}" />
+				<p:outputLabel value="#{msgs.returnDate}" for="toDate" />
+				<p:calendar id="toDate" value="#{ride.returnDate}"
+					readonlyInput="true" navigator="true"
+					placeholder="#{msgs.returnDate}" pattern="mm/dd/yyyy"
+					yearRange="c-125:c+0" />
 
+				<h:outputLabel for="returnTime" value="#{msgs.time}" />
+				<h:panelGroup>
+					<p:inputText id="returnTime" value="#{ride.returnTime}"
+						label="#{msgs.time}" required="true"
+						requiredMessage="#{msgs.requiredMessages}">
+					</p:inputText>
+					<h:message for="returnTime" style="color:red" />
+				</h:panelGroup>
 
-			<h:panelGroup>
-				<h:panelGrid columns="3">
-					<p:calendar value="#{ride.departDate}" />
-					<h:outputLabel value="#{msgs.time}"></h:outputLabel>
-					<h:inputText value="#{ride.departTime}">
-					</h:inputText>
-				</h:panelGrid>
-			</h:panelGroup>
+				<h:outputLabel for="description" value="#{msgs.description}" />
+				<p:inputTextarea id="description" value="#{ride.description}"
+					label="#{msgs.description}" />
 
+				<h:outputLabel for="vDescription" value="#{msgs.vehicleDesc}" />
+				<p:inputTextarea id="vDescription"
+					value="#{ride.vehicleDescription}" label="#{msgs.vehicleDesc}" />
 
-			<h:outputLabel value="#{msgs.returnDate}" />
-			<h:panelGroup>
-				<h:panelGrid columns="3">
-					<p:calendar value="#{ride.returnDate}" />
-					<h:outputLabel value="#{msgs.time}"></h:outputLabel>
-					<h:inputText value="#{ride.returnTime}">
-					</h:inputText>
+				<h:outputLabel for="expExpense" value="#{msgs.expectedExpences}" />
+				<p:inputText id="expExpense" value="#{ride.expectedExpense}"
+					label="#{msgs.expectedExpences}" />
 
-				</h:panelGrid>
-			</h:panelGroup>
+				<p:outputLabel value="#{msgs.paymentType}" for="rideRadio" />
+				<h:selectOneRadio id="rideRadio" value="#{ride.rideType}"
+					layout="pageDirection">
+					<f:selectItem itemLabel="#{msgs.rideTypeFree}"
+						itemValue="#{msgs.rideTypeFree}" />
+					<f:selectItem itemLabel="#{msgs.rideTypeEqual}"
+						itemValue="#{msgs.rideTypeEqual}" />
+					<f:selectItem itemLabel="#{msgs.rideTypeMutual}"
+						itemValue="#{msgs.rideTypeMutual}" />
+				</h:selectOneRadio>
 
-			<h:outputLabel value="#{msgs.description}" />
+				<h:commandButton value="#{msgs.clearButton}" icon="ui-icon-check"
+					styleClass="buttonRight" onclick="clearField(this.form)"
+					immediate="true" />
+				<h:commandButton value="#{msgs.createRideButton}"
+					icon="ui-icon-check" styleClass="buttonRight"
+					action="#{control.createRide}" />
 
-			<h:inputTextarea value="#{ride.description}" />
+			</p:panelGrid>
 
-			<h:outputLabel value="#{msgs.vehicleDesc}" />
-
-			<h:inputTextarea value="#{ride.vehicleDescription}" />
-
-			<h:outputLabel value="#{msgs.expectedExpences}" />
-
-			<p:inputText id="expectedExpencesID" value="#{person.firstName}"
-				label="#{msgs.expectedExpences}" />
-
-			<h:outputLabel value="#{msgs.paymentType}" />
-
-			<h:selectOneRadio value="#{ride.rideType}" layout="pageDirection">
-				<f:selectItem value="#{msgs.rideTypeFree}" />
-				<f:selectItem value="#{msgs.rideTypeEqual}" />
-				<f:selectItem value="#{msgs.rideTypeMutual}" />
-			</h:selectOneRadio>
-		</h:panelGrid>
-	</h:form>
+			<f:facet name="footer">
+			</f:facet>
+		</h:form>
 
 	</ui:composition>
 </body>

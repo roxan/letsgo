@@ -19,14 +19,17 @@
 				<!-- Tabs -->
 
 				<f:facet name="header">
-					<h:panelGrid columns="2" styleClass="tabbedPaneHeader">
+					<h:panelGrid columns="3" styleClass="tabbedPaneHeader">
 
 						<h:commandButton value="Ride Offered" size="10"
-							actionListener="#{tp.jeffersonAction}">
+							actionListener="#{tp.jeffersonAction}" immediate="true">
 						</h:commandButton>
 						<h:commandButton value="Profile"
-							actionListener="#{tp.rooseveltAction}">
+							actionListener="#{tp.rooseveltAction}" immediate="true">
 						</h:commandButton>
+						
+						<h:commandButton value="Change Password" immediate="true" 
+						actionListener="#{tp.lincolnAction}" ></h:commandButton>
 
 					</h:panelGrid>
 				</f:facet>
@@ -50,7 +53,8 @@
 
 				<ui:include src="/sections/content/c_userProfile.html"
 					rendered="#{tp.coffeeCurrent}" />
-
+				
+				<ui:include src="/sections/content/c_changePassword.xhtml"/>
 
 			</h:panelGrid>
 		</h:form>

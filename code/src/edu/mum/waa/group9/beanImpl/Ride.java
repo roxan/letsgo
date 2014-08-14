@@ -20,9 +20,9 @@ public class Ride implements RideInterface, Serializable {
 	private String source;
 	private String destination;
 	private Date departDate;
-	private Time departTime;
+	private String departTime;
 	private Date returnDate;
-	private Time returnTime;
+	private String returnTime;
 	private String description;
 	private int capacity;
 	private String vehicleDescription;
@@ -63,11 +63,11 @@ public class Ride implements RideInterface, Serializable {
 		this.departDate = departDate;
 	}
 
-	public Time getDepartTime() {
+	public String getDepartTime() {
 		return departTime;
 	}
 
-	public void setDepartTime(Time departTime) {
+	public void setDepartTime(String departTime) {
 		this.departTime = departTime;
 	}
 
@@ -79,11 +79,11 @@ public class Ride implements RideInterface, Serializable {
 		this.returnDate = returnDate;
 	}
 
-	public Time getReturnTime() {
+	public String getReturnTime() {
 		return returnTime;
 	}
 
-	public void setReturnTime(Time returnTime) {
+	public void setReturnTime(String returnTime) {
 		this.returnTime = returnTime;
 	}
 
@@ -160,7 +160,7 @@ public class Ride implements RideInterface, Serializable {
 		sb.append(" on ");
 		sb.append(new SimpleDateFormat("mm/dd/yy").format(departDate));
 		sb.append(" at ");
-		sb.append(new SimpleDateFormat("hh:mm a").format(departTime));
+		sb.append(departTime);
 
 		return sb.toString();
 	}
@@ -174,7 +174,7 @@ public class Ride implements RideInterface, Serializable {
 		sb.append(" on ");
 		sb.append(new SimpleDateFormat("mm/dd/yy").format(returnDate));
 		sb.append(" at ");
-		sb.append(new SimpleDateFormat("hh:mm a").format(returnTime));
+		sb.append(returnTime);
 
 		return sb.toString();
 	}

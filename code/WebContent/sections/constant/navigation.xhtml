@@ -17,12 +17,14 @@
 
 					<p:graphicImage value="#{person.photo}" width="32px"
 						height="32px" />
-					<corejsf:goto name="login" 
-						image="#{resource['images:Mercury.gif']}" ></corejsf:goto>
-					<corejsf:goto name="register"
-						image="#{resource['images:Mercury.gif']}" />
-					<corejsf:goto name="changePassword"
-						image="#{resource['images:Mercury.gif']}" />
+						<corejsf:goto name="#{msgs.tagHome}" 
+						image="#{resource['images:home.png']}" ></corejsf:goto>					
+					<corejsf:goto name="#{msgs.tagRegister}"
+						image="#{resource['images:member.png']}"></corejsf:goto>
+						<corejsf:goto name="#{msgs.tagLogin}" 
+						image="#{resource['images:login.png']}" ></corejsf:goto>
+					<corejsf:goto name="#{msgs.tagLogout}"
+						image="#{resource['images:logout.png']}" ></corejsf:goto>
 						<h:panelGroup rendered="#{control.loggedIn}">
 					</h:panelGroup>
 					<!-- <h:commandLink value="#{msgs.login}" />

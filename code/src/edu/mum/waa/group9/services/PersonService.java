@@ -36,6 +36,7 @@ public class PersonService {
 		searchResult = getOfferedRidesDao.getOfferedRides(person);
 
 		try {
+			person.getOfferredRidesList().clear();
 			while (searchResult.next()) {
 
 				Ride tempRide = new Ride();

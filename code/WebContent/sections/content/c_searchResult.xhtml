@@ -10,25 +10,37 @@
 </head>
 <body>
 	<ui:composition>
-		<p:dataTable var="rideVar" value="#{search.rideList}">
-			<p:column>
-				<p:commandLink value="#{rideVar.nameExpenseSummary()}" action="#{control.checkLogin}">
-<!-- 					<h:outputText value="#{rideVar.nameExpenseSummary()}" /> -->
-					<f:param name="url" value="#{msgs.rideDetailPage}" />
-					<f:param name="rideId" value="#{rideVar.id}" />
-					<f:param name="rideSeeker" value="#{msgs.rideDetailPage}" />
-				</p:commandLink>
-			</p:column>
+		<ui:repeat var="rideVar" value="#{search.rideList}">
+			<div class="col-md-4 col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
 
-			<p:column>
-				<h:outputText value="#{rideVar.departSummary()}" />
-			</p:column>
-
-			<p:column>
-				<h:outputText value="#{rideVar.returnSummary()}" />
-			</p:column>
-
-		</p:dataTable>
+						<h4>
+							<h:outputText value="\$ #{rideVar.expectedExpense}" />
+						</h4>
+					</div>
+					<div class="panel-body">
+						<img src="resources/images/car.png" class="img-circle pull-right" />
+						<p:commandLink
+							value="#{rideVar.person.firstName} #{rideVar.person.lastName}"
+							action="#{control.checkLogin}">
+							<f:param name="url" value="#{msgs.rideDetailPage}" />
+							<f:param name="rideId" value="#{rideVar.id}" />
+							<f:param name="rideSeeker" value="#{msgs.rideDetailPage}" />
+						</p:commandLink>
+						<div class="clearfix"></div>
+						<hr />
+						<p>
+							<h:outputText
+								value="#{rideVar.departSummary()} #{rideVar.returnSummary()}" />
+						</p>
+						<h5>
+							<h:outputText value="#{rideVar.departDate} #{rideVar.returnDate}" />
+						</h5>
+					</div>
+				</div>
+			</div>
+		</ui:repeat>
 	</ui:composition>
 </body>
 </html>

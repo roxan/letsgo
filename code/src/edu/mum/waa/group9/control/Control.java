@@ -151,7 +151,6 @@ public class Control implements Serializable {
 
 	public String offeredRides() {
 		PersonService personServ = new PersonService();
-		personBean.setId(101);
 		personServ.getOfferedRides(personBean);
 		return null;
 	}
